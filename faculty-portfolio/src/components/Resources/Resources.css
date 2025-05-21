@@ -1,0 +1,12 @@
+.resourcesBox{
+  padding-left: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.resources{
+  padding-top: 20px;
+}
+h1{
+  padding-left: 6px;
+}

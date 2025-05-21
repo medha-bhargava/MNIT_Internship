@@ -1,0 +1,9 @@
+.publicationBox{
+  padding-left: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.publications{
+  padding-top: 20px;
+}

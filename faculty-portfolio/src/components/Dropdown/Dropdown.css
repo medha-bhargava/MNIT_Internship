@@ -1,0 +1,24 @@
+.dropdown-item {
+  background-color: #dedddd;
+  border-radius: 16px;
+  margin-bottom: 12px;
+  width: 1255px;
+  overflow: hidden;
+}
+.dropdown-header {
+  padding: 12px 20px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.dropdown-content {
+  padding: 12px 20px;
+  background-color: #f9f9f9;
+  font-size: 17px;
+}
+.arrow {
+  font-size: 14px;
+}

@@ -1,0 +1,49 @@
+h1{
+  text-align: center;
+  margin-top: 90px;
+}
+.loginBox{
+  padding: 24px 16px;
+  width: 320px;
+  border-radius: 15px;
+  margin: 32px auto;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  background-color: rgb(225, 225, 225);
+}
+input{
+  width: 100%;
+  padding: 6px;
+  margin: 5px 0 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  height: 2.2em;
+  font-size: 1rem;
+}
+label{
+  display: block;
+  margin: 6px 0;
+}
+.logbtn{
+  width: 40%;
+  display: block;
+  margin: 20px auto 0 auto;
+  margin-top: 20px;
+  padding: 8px;
+  border: none;
+  border-radius: 20px;
+  color: rgb(255, 255, 255);
+  background: linear-gradient(to right, #8d49e4, #ce85f5);
+  font-size: medium;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.5s;
+}
+/* .logbtn:hover{
+  background: linear-gradient(to right, #7f32e4, #b759ea);
+  color: rgb(0, 0, 0);
+} */
+.logbtn:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
