@@ -37,7 +37,7 @@ a:hover{
     background: linear-gradient(to right, #8d49e4, #ce85f5);
     color: white;
 }
-.btn:hover {
+.logoutbtn:hover {
   transform: scale(1.05);
   opacity: 0.9;
 }
