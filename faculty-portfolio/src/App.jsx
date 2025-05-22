@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <div className="login-selection">
-        <h1 className="title">Welcome to the Faculty Portal</h1>
+        <h1 className="title">Welcome to the Faculty Portfolio Portal</h1>
         <div className="buttons">
           <button className="btn student" onClick={() => navigate('/student-login')}>
             Login as Student
