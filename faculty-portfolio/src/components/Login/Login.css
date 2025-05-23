@@ -1,0 +1,66 @@
+.loginBox {
+  max-width: 350px;
+  margin: 100px auto;
+  padding: 25px;
+  border-radius: 10px;
+  background-color: #f3f3f3;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.loginBox .login {
+  margin-bottom: 20px;
+}
+
+.loginBox input,
+.loginBox select {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.button {
+  width: 40%;
+  padding: 6px;
+  margin: 15px auto;
+  background: linear-gradient(to right, #8d49e4, #ce85f5);
+  color: white;
+  border: none;
+  font-weight: bold;
+  border-radius: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+}
+.button:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+.error {
+  color: red;
+  font-size: 1.1rem;
+  margin-top: 10px;
+  text-align: center;
+}
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 3px solid white;
+  border-top: 3px solid transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
