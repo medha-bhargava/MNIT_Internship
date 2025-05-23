@@ -1,11 +1,11 @@
-.login-selection {
+/* .login-selection {
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background: linear-gradient(to right, #e0f7fa, #e1bee7);
-  /* font-family: 'Segoe UI', sans-serif; */
+  font-family: 'Segoe UI', sans-serif;
 }
 .title {
   margin-top: -50px;
@@ -37,4 +37,4 @@
 .btn:hover {
   transform: scale(1.05);
   opacity: 0.9;
-}
+} */

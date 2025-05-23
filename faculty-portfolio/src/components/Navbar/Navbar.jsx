@@ -1,26 +1,31 @@
-import "./Navbar.css"
-import logo from './logo.png'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import logo from './logo.png';
+import './Navbar.css';
 
 const Navbar = () => {
-    const navigate = useNavigate();
-
     const [role, setRole] = useState(null);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [isLoggingOut, setIsLoggingOut] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
-        const storedRole = localStorage.getItem("role");
         const token = localStorage.getItem("authToken");
-        setRole(storedRole);
+        const storedRole = localStorage.getItem("role");
         setIsLoggedIn(!!token);
+        setRole(storedRole);
     }, []);
 
     const handleLogout = () => {
-        localStorage.removeItem("authToken");
-        localStorage.removeItem("role");
-        sessionStorage.clear();
-        navigate("/");
+        setIsLoggingOut(true);
+        setTimeout(() => {
+            localStorage.removeItem("authToken");
+            localStorage.removeItem("role");
+            setIsLoggedIn(false);
+            setRole(null);
+            navigate("/");
+            setIsLoggingOut(false);
+        }, 1000);
     };
 
     return (
@@ -30,35 +35,40 @@ const Navbar = () => {
                     <img src={logo} alt="logo" />
                 </div>
                 <ul>
-                    {/* Only show all links if admin and logged in */}
+                    <li><Link to="/home">Home</Link></li>
+                    <li><Link to="/publications">Publications</Link></li>
+                    <li><Link to="/courses">Courses</Link></li>
+
+                    {/* Student and Admin can see Resources */}
+                    {(role === "student" || role === "admin") && isLoggedIn && (
+                        <li><Link to="/resources">Resources for Students*</Link></li>
+                    )}
+
+                    {/* Only admin can see Edit Profile */}
                     {role === "admin" && isLoggedIn && (
+                        <li><Link to="/editProfile">Edit Profile</Link></li>
+                    )}
+
+                    {/* Login options only when not logged in */}
+                    {!isLoggedIn && (
                         <>
-                            <li><Link to="/home">Home</Link></li>
-                            <li><Link to="/publications">Publications</Link></li>
-                            <li><Link to="/courses">Courses</Link></li>
-                            <li><Link to="/resources">Resources for Students*</Link></li>
-                            <li><Link to="/editProfile">Edit Profile</Link></li>
+                            <li><Link to="/login?role=student&redirect=/resources">Resources for Students*</Link></li>
+                            <li><Link to="/login?role=admin&redirect=/editProfile">Edit Profile</Link></li>
                         </>
                     )}
 
-                    {/* Only show resources if student is logged in */}
-                    {role === "student" && isLoggedIn && (
-                        <>
-                            <li><Link to="/home">Home</Link></li>
-                            <li><Link to="/publications">Publications</Link></li>
-                            <li><Link to="/courses">Courses</Link></li>
-                            <li><Link to="/resources">Resources for Students*</Link></li>
-                        </>
-                    )}
-
-                    {/* Always show logout if logged in */}
+                    {/* Logout button if logged in */}
                     {isLoggedIn && (
-                        <li><button className="logoutbtn" onClick={handleLogout}>Logout</button></li>
+                        <li>
+                            <button className="logoutbtn" onClick={handleLogout} disabled={isLoggingOut}>
+                                {isLoggingOut ? <div className="spinner"></div> : "Logout"}
+                            </button>
+                        </li>
                     )}
                 </ul>
             </nav>
         </div>
-    )
-}
+    );
+};
 
-export default Navbar
+export default Navbar;

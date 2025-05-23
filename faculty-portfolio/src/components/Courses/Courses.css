@@ -1,5 +1,6 @@
 .coursesBox{
   padding-left: 90px;
+  padding-top: 70px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
