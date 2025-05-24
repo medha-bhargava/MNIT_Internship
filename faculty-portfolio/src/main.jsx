@@ -8,6 +8,8 @@ import PublicationPage from './components/Publications/Publications.jsx'
 import CoursesPage from './components/Courses/Courses.jsx'
 import Resources from './components/Resources/Resources.jsx'
 import EditProfile from './components/EditProfile/EditProfile.jsx'
+import AccessDenied from "./components/AccessDenied/AccessDenied.jsx";
+
 import './index.css'
 
 createRoot(document.getElementById('root')).render(
@@ -20,15 +22,26 @@ createRoot(document.getElementById('root')).render(
         <Route path="/publications" element={<PublicationPage />} />
         <Route path="/courses" element={<CoursesPage />} />
 
-        {/* Protected Resources Route for student and admin */}
-        <Route element={<ProtectedRoute allowedRoles={['student', 'admin']} />}>
-          <Route path="/resources" element={<Resources />} />
-        </Route>
+        {/* ✅ Protected: only student and admin */}
+        <Route
+          path="/resources"
+          element={
+            <ProtectedRoute allowedRoles={["student", "admin"]}>
+              <Resources />
+            </ProtectedRoute>
+          }
+        />
 
-        {/* Protected Edit Profile for admin only */}
-        <Route element={<ProtectedRoute allowedRoles={['admin']} />}>
-          <Route path="/editProfile" element={<EditProfile />} />
-        </Route>
+        {/* ✅ Protected: only admin */}
+        <Route
+          path="/editProfile"
+          element={
+            <ProtectedRoute allowedRoles={["admin"]}>
+              <EditProfile />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="/access-denied" element={<AccessDenied />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,

@@ -39,25 +39,25 @@ const Navbar = () => {
                     <li><Link to="/publications">Publications</Link></li>
                     <li><Link to="/courses">Courses</Link></li>
 
-                    {/* Student and Admin can see Resources */}
-                    {(role === "student" || role === "admin") && isLoggedIn && (
+                    {/* Only show after login based on role */}
+                    {isLoggedIn && (role === "student" || role === "admin") && (
                         <li><Link to="/resources">Resources for Students*</Link></li>
                     )}
 
-                    {/* Only admin can see Edit Profile */}
-                    {role === "admin" && isLoggedIn && (
+                    {isLoggedIn && role === "admin" && (
                         <li><Link to="/editProfile">Edit Profile</Link></li>
                     )}
 
-                    {/* Login options only when not logged in */}
+                    {/* Show login if not logged in */}
                     {!isLoggedIn && (
-                        <>
-                            <li><Link to="/login?role=student&redirect=/resources">Resources for Students*</Link></li>
-                            <li><Link to="/login?role=admin&redirect=/editProfile">Edit Profile</Link></li>
-                        </>
+                        <li>
+                            <button className="logoutbtn" onClick={() => navigate("/login")}>
+                                Login
+                            </button>
+                        </li>
                     )}
 
-                    {/* Logout button if logged in */}
+                    {/* Show logout if logged in */}
                     {isLoggedIn && (
                         <li>
                             <button className="logoutbtn" onClick={handleLogout} disabled={isLoggingOut}>

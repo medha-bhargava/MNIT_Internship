@@ -51,7 +51,11 @@ const Login = () => {
                 <h1>Login</h1>
             </div>
 
-            <select value={role} onChange={(e) => setRole(e.target.value)}>
+            <select
+                value={role}
+                onChange={(e) => setRole(e.target.value)}
+                disabled={!!roleFromURL} // Disable dropdown if role is preselected
+            >
                 <option value="student">Login as Student</option>
                 <option value="admin">Login as Admin</option>
             </select>
