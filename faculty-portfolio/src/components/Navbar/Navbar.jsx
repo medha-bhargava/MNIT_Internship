@@ -10,17 +10,21 @@ const Navbar = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const token = localStorage.getItem("authToken");
+        // const token = localStorage.getItem("authToken");
+        const storedUserId = localStorage.getItem("userId");
         const storedRole = localStorage.getItem("role");
-        setIsLoggedIn(!!token);
+        // setIsLoggedIn(!!token);
+        setIsLoggedIn(!!storedUserId);
         setRole(storedRole);
     }, []);
 
     const handleLogout = () => {
         setIsLoggingOut(true);
         setTimeout(() => {
-            localStorage.removeItem("authToken");
+            // localStorage.removeItem("authToken");
+            localStorage.removeItem("userId");
             localStorage.removeItem("role");
+            localStorage.removeItem("userName");
             setIsLoggedIn(false);
             setRole(null);
             navigate("/");

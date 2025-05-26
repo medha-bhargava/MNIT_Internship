@@ -22,28 +22,45 @@ const Login = () => {
         }
     }, [roleFromURL]);
 
-    const handleLogin = () => {
+    const handleLogin = async () => {
         setIsLoggingIn(true);
         setError("");
 
-        const dummyCredentials = {
-            student: { id: "123", pass: "123" },
-            admin: { id: "123", pass: "123" },
-        };
+        try {
+            console.log("Sending to backend:", {
+                userId,
+                password,
+                role,
+            });
+            const response = await fetch("http://localhost:8083/api/auth/login", {
+                method: "POST",
+                headers: { 
+                    "Content-Type": "application/json" 
+                },
+                credentials: "include",
+                body: JSON.stringify({
+                    userId,
+                    password,
+                    role
+                })
+            });
 
-        setTimeout(() => {
-            const validCredentials = dummyCredentials[role];
-            if (userId === validCredentials.id && password === validCredentials.pass) {
-                localStorage.setItem("authToken", "dummyToken");
-                localStorage.setItem("role", role);
-                setIsLoggingIn(false);
-                navigate(redirectPath || "/home");
-            } else {
-                setIsLoggingIn(false);
-                setError("Invalid User ID or Password");
+            if (!response.ok) {
+                throw new Error("Invalid User ID, Password or Role");
             }
-        }, 1500);
+
+            const data = await response.json();
+            localStorage.setItem("role", role);
+            localStorage.setItem("userName", data.userName);
+            localStorage.setItem("userId", userId);
+            setIsLoggingIn(false);
+            navigate(redirectPath || "/home");
+        } catch (err) {
+            setIsLoggingIn(false);
+            setError(err.message);
+        }
     };
+
 
     return (
         <div className="loginBox">

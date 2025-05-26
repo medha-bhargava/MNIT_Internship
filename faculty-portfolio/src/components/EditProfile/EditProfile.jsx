@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import './EditProfile.css';
 import Navbar from '../Navbar/Navbar';
 
@@ -32,7 +31,7 @@ function EditProfile() {
     return labels[value] || '';
   };
 
-  const handleUpdate = async () => {
+  const handleUpdate = () => {
     if (!section || !subField || !info) {
       alert('Please fill out all fields before updating.');
       return;
@@ -44,14 +43,10 @@ function EditProfile() {
       info,
     };
 
-    try {
-      const response = await axios.post('http://localhost:5000/api/update-profile', updateData);
-      alert(`Updated ${getSubFieldLabel(subField)} successfully!`);
-      setInfo('');
-    } catch (error) {
-      console.error('Update failed:', error);
-      alert('Failed to update. Please try again.');
-    }
+    console.log('Updated Data:', updateData);
+    alert(`Updated ${getSubFieldLabel(subField)} successfully!`);
+    
+    setInfo('');
   };
 
   return (
