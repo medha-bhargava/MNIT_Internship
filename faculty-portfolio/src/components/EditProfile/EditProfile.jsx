@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './EditProfile.css';
 import Navbar from '../Navbar/Navbar';
+import AddPublicationForm from '../Publications/AddPublication';
+import AddCourseForm from '../Courses/AddCourse';
 
 function EditProfile() {
   const [section, setSection] = useState('');
@@ -9,8 +11,9 @@ function EditProfile() {
 
   const subOptions = {
     home: ['about', 'news'],
-    publications: ['journal', 'conference', 'bookChapter'],
-    courses: ['currentlyTeaching', 'previouslyTaught'],
+    publications: ['add'],
+    // publications: ['add', 'update', 'remove'],
+    courses: ['addCourse'],
     resources: ['previousPapers', 'importantQuestions', 'videoLinks', 'notes'],
   };
 
@@ -18,11 +21,8 @@ function EditProfile() {
     const labels = {
       about: 'About Me',
       news: 'News',
-      journal: 'Journal',
-      conference: 'Conference',
-      bookChapter: 'Book Chapter',
-      currentlyTeaching: 'Currently Teaching',
-      previouslyTaught: 'Previously Taught',
+      add: 'Add Publication',
+      addCourse: 'Add Course',
       previousPapers: 'Previous Year Papers',
       importantQuestions: 'Important Questions',
       videoLinks: 'Video Links',
@@ -45,7 +45,7 @@ function EditProfile() {
 
     console.log('Updated Data:', updateData);
     alert(`Updated ${getSubFieldLabel(subField)} successfully!`);
-    
+
     setInfo('');
   };
 
@@ -105,20 +105,38 @@ function EditProfile() {
             </div>
           )}
 
-          <div className="row">
-            <div className="input-group">
-              <textarea
-                rows="6"
-                value={info}
-                onChange={(e) => setInfo(e.target.value)}
-                placeholder={
-                  subField
-                    ? `Add information for ${getSubFieldLabel(subField)}`
-                    : 'Add Information'
-                }
-              />
+          {!(
+            (section === 'publications' && (subField === 'add' || subField === 'update')) ||
+            (section === 'courses' && subField === 'addCourse')
+          ) && (
+              <div className="row">
+                <div className="input-group">
+                  <textarea
+                    rows="6"
+                    value={info}
+                    onChange={(e) => setInfo(e.target.value)}
+                    placeholder={
+                      subField
+                        ? `Add information for ${getSubFieldLabel(subField)}`
+                        : 'Add Information'
+                    }
+                  />
+                </div>
+              </div>
+            )}
+
+
+          {section === 'publications' && subField === 'add' && (
+            <div className="row">
+              <AddPublicationForm />
             </div>
-          </div>
+          )}
+
+          {section === 'courses' && subField === 'addCourse' && (
+            <div className="row">
+              <AddCourseForm />
+            </div>
+          )}
 
           <div className="row">
             <button className="update-button" onClick={handleUpdate}>

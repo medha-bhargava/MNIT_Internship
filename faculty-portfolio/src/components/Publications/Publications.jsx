@@ -1,8 +1,27 @@
-import './Publications.css'
-import Navbar from '../Navbar/Navbar'
-import Dropdown from '../Dropdown/Dropdown'
+import { useEffect, useState } from 'react';
+import './Publications.css';
+import Navbar from '../Navbar/Navbar';
+import Dropdown from '../Dropdown/Dropdown';
 
 function Publications() {
+  const [publications, setPublications] = useState([]);
+
+  useEffect(() => {
+    const fetchPublications = async () => {
+      try {
+        const response = await fetch('http://localhost:8083/api/publications/all');
+        const data = await response.json();
+        setPublications(data);
+      } catch (err) {
+        console.error('Failed to fetch publications:', err);
+      }
+    };
+
+    fetchPublications();
+  }, []);
+
+  const filterByType = (type) =>
+    publications.filter((pub) => pub.type === type);
 
   return (
     <>
@@ -12,25 +31,29 @@ function Publications() {
         <div className="publications">
           <div className="journal">
             <Dropdown title="Journal">
-              <p>Journal publication 1</p>
-              <p>Journal publication 2</p>
+              {filterByType("Journal").map((pub, index) => (
+                <p key={index}>{pub.ieeeCitation}</p>
+              ))}
             </Dropdown>
           </div>
           <div className="conference">
             <Dropdown title="Conference">
-              <p>Conference paper 1</p>
-              <p>Conference paper 2</p>
+              {filterByType("Conference").map((pub, index) => (
+                <p key={index}>{pub.ieeeCitation}</p>
+              ))}
             </Dropdown>
           </div>
           <div className="book-chapter">
             <Dropdown title="Book-Chapter">
-              <p>Book chapter 1</p>
+              {filterByType("Book-Chapter").map((pub, index) => (
+                <p key={index}>{pub.ieeeCitation}</p>
+              ))}
             </Dropdown>
           </div>
         </div>
       </div>
     </>
-  )
+  );
 }
 
-export default Publications
+export default Publications;
