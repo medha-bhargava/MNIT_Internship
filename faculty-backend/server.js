@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 import authRoutes from "./routes/authRoutes.js";
 import publicationRoutes from "./routes/publicationRoutes.js";
 import courseRoutes from "./routes/courseRoutes.js";
+import resourceRoutes from "./routes/resourceRoutes.js";
 
 dotenv.config();
 
@@ -36,10 +37,10 @@ app.use((req, res, next) => {
 app.use(express.json());
 
 // ✅ Step 5: Routes
-// app.use("/api/auth", authRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/publications", publicationRoutes);
 app.use("/api/courses", courseRoutes);
+app.use("/api/resources", resourceRoutes);
 
 // ✅ Step 6: MongoDB + Server start
 connect(process.env.MONGODB_URI)

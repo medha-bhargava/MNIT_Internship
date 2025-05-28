@@ -8,8 +8,9 @@ import PublicationPage from './components/Publications/Publications.jsx'
 import AddPublication from './components/Publications/AddPublication.jsx';
 import CoursesPage from './components/Courses/Courses.jsx'
 import AddCourse from './components/Courses/AddCourse.jsx';
-import Resources from './components/Resources/Resources.jsx'
-import EditProfile from './components/EditProfile/EditProfile.jsx'
+import Resources from './components/Resources/Resources.jsx';
+import AddResource from './components/Resources/AddResource.jsx';
+import EditProfile from './components/EditProfile/EditProfile.jsx';
 import AccessDenied from "./components/AccessDenied/AccessDenied.jsx";
 
 import './index.css'
@@ -32,6 +33,16 @@ createRoot(document.getElementById('root')).render(
           element={
             <ProtectedRoute allowedRoles={["student", "admin"]}>
               <Resources />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* Add this new route below for AddResource, admin only */}
+        <Route
+          path="/add-resource"
+          element={
+            <ProtectedRoute allowedRoles={["admin"]}>
+              <AddResource />
             </ProtectedRoute>
           }
         />

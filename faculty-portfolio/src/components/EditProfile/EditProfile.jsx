@@ -3,6 +3,7 @@ import './EditProfile.css';
 import Navbar from '../Navbar/Navbar';
 import AddPublicationForm from '../Publications/AddPublication';
 import AddCourseForm from '../Courses/AddCourse';
+import AddResourceForm from '../Resources/AddResource';
 
 function EditProfile() {
   const [section, setSection] = useState('');
@@ -11,22 +12,24 @@ function EditProfile() {
 
   const subOptions = {
     home: ['about', 'news'],
-    publications: ['add'],
+    publications: ['addPublication'],
     // publications: ['add', 'update', 'remove'],
     courses: ['addCourse'],
-    resources: ['previousPapers', 'importantQuestions', 'videoLinks', 'notes'],
+    // resources: ['addResource', 'previousPapers', 'importantQuestions', 'videoLinks', 'notes'],
+    resources: ['addResource'],
   };
 
   const getSubFieldLabel = (value) => {
     const labels = {
       about: 'About Me',
       news: 'News',
-      add: 'Add Publication',
+      addPublication: 'Add Publication',
       addCourse: 'Add Course',
-      previousPapers: 'Previous Year Papers',
-      importantQuestions: 'Important Questions',
-      videoLinks: 'Video Links',
-      notes: 'Notes',
+      addResource: 'Add Resource',
+      // previousPapers: 'Previous Year Papers',
+      // importantQuestions: 'Important Questions',
+      // videoLinks: 'Video Links',
+      // notes: 'Notes',
     };
     return labels[value] || '';
   };
@@ -106,8 +109,9 @@ function EditProfile() {
           )}
 
           {!(
-            (section === 'publications' && (subField === 'add' || subField === 'update')) ||
-            (section === 'courses' && subField === 'addCourse')
+            (section === 'publications' && (subField === 'addPublication' || subField === 'updatePublication')) ||
+            (section === 'courses' && subField === 'addCourse') ||
+            (section === 'resources' && subField === 'addResource')
           ) && (
               <div className="row">
                 <div className="input-group">
@@ -126,7 +130,7 @@ function EditProfile() {
             )}
 
 
-          {section === 'publications' && subField === 'add' && (
+          {section === 'publications' && subField === 'addPublication' && (
             <div className="row">
               <AddPublicationForm />
             </div>
@@ -135,6 +139,12 @@ function EditProfile() {
           {section === 'courses' && subField === 'addCourse' && (
             <div className="row">
               <AddCourseForm />
+            </div>
+          )}
+
+          {section === 'resources' && subField === 'addResource' && (
+            <div className="row">
+              <AddResourceForm />
             </div>
           )}
 
