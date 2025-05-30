@@ -2,39 +2,50 @@
   display: flex;
   padding: 30px;
 }
-.left{
+
+.left {
   width: 25%;
   text-align: center;
   padding: 20px;
 }
+
 .profile-img {
   width: 140px;
   border-radius: 50%;
   background-color: #cecece;
 }
+
 .faculty-info {
   margin-top: 15px;
   font-size: 1rem;
   color: #3f3f3f;
 }
+
 .right {
   width: 75%;
   padding: 20px;
 }
+
 .section-box {
   margin-bottom: 40px;
 }
+
 .section-box h2 {
   font-size: 1.4rem;
   margin-bottom: 10px;
   color: #222;
 }
+
 .content-box {
-  height: 170px;
+  /* height: 250px; */
+  /* max-height: 300px; */
+  /* overflow-y: auto; */
+  height: fit-content;
   background-color: #eaeaea;
   border-radius: 15px;
   padding: 15px;
 }
+
 .news-scroller {
   height: 140px;
   overflow: hidden;
@@ -46,6 +57,7 @@
   justify-content: flex-start;
   background-color: #eaeaea;
 }
+
 .news-scroller ol {
   list-style: none;
   margin: 0;
@@ -56,12 +68,15 @@
   flex-direction: column;
   gap: 12px;
 }
+
 .news-scroller:hover ol {
   animation-play-state: paused;
 }
+
 .news-scroller li {
   line-height: 1.5;
 }
+
 /* @keyframes scrollYoyo {
   0% {
     transform: translateY(0);
@@ -70,16 +85,39 @@
     transform: translateY(-100%);
   }
 } */
- @keyframes scrollCircular {
+@keyframes scrollCircular {
   0% {
-    transform: translateY(0); 
+    transform: translateY(0);
   }
+
   100% {
     transform: translateY(-100%);
   }
 }
+
 .news-scroller ol::after {
   content: '';
   display: block;
   height: 100%;
+}
+
+.loading-text,
+.error-text {
+  margin-top: 20px;
+  font-size: 1rem;
+}
+
+.loading-text {
+  color: #777;
+}
+
+.error-text {
+  color: #d8000c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #ffd2d2;
+  padding: 8px 12px;
+  border-radius: 10px;
 }

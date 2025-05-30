@@ -41,6 +41,11 @@ input{
   font-size: 1rem;
 }
 textarea{
+  font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+  /* resize: vertical; */
+  /* transition: all 0.3s ease; */
+  /* white-space: pre-wrap; */
+  /* overflow-wrap: break-word; */
   padding: 0.6rem;
   border-radius: 10px;
   border: none;

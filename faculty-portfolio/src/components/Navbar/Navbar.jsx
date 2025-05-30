@@ -42,6 +42,8 @@ const Navbar = () => {
                     <li><Link to="/home">Home</Link></li>
                     <li><Link to="/publications">Publications</Link></li>
                     <li><Link to="/courses">Courses</Link></li>
+                    <li><Link to="/projects">Projects</Link></li>
+                    <li><Link to="/events">Events</Link></li>
 
                     {/* Only show after login based on role */}
                     {isLoggedIn && (role === "student" || role === "admin") && (

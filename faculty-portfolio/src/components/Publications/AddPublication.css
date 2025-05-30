@@ -52,6 +52,10 @@
     outline: none;
 } */
 
+.date-font{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 .add-button {
     width: 45%;
     display: block;

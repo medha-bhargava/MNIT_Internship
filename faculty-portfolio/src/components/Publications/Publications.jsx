@@ -11,6 +11,7 @@ function Publications() {
       try {
         const response = await fetch('http://localhost:8083/api/publications/all');
         const data = await response.json();
+        // console.log("Fetched publications:", data);
         setPublications(data);
       } catch (err) {
         console.error('Failed to fetch publications:', err);
@@ -21,7 +22,7 @@ function Publications() {
   }, []);
 
   const filterByType = (type) =>
-    publications.filter((pub) => pub.type === type);
+    publications.filter((pub) => pub.pType === type);
 
   return (
     <>

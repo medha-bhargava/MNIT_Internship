@@ -38,7 +38,7 @@ function Resources() {
         });
 
         setResources(groupedResources);
-        console.log(groupedResources);
+        // console.log(groupedResources);
       } catch (err) {
         setError(err.message);
       } finally {
