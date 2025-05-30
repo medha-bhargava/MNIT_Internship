@@ -476,13 +476,16 @@ function AddPublicationForm() {
                             </select>
                         </div>
                         <div className="input-group">
-                            <input
+                            <select
                                 name="publicationType"
-                                type="text"
-                                placeholder="Type of Publication"
+                                className="select"
                                 value={formData.publicationType}
                                 onChange={handleChange}
-                            />
+                            >
+                                <option value="">--Type of Publication--</option>
+                                <option value="Book">Book</option>
+                                <option value="Book Chapter">Book Chapter</option>
+                            </select>
                         </div>
                     </div>
                 </>

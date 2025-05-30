@@ -6,6 +6,9 @@ import dotenv from "dotenv";
 import authRoutes from "./routes/authRoutes.js";
 import publicationRoutes from "./routes/publicationRoutes.js";
 import courseRoutes from "./routes/courseRoutes.js";
+import projectRoutes from './routes/projectRoutes.js'
+import facultyRoutes from './routes/facultyRoutes.js';
+import eventRoutes from './routes/eventRoutes.js';
 import resourceRoutes from "./routes/resourceRoutes.js";
 import adminRoutes from './routes/adminRoutes.js';
 
@@ -41,6 +44,9 @@ app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/publications", publicationRoutes);
 app.use("/api/courses", courseRoutes);
+app.use("/api/projects", projectRoutes);
+app.use('/api/faculty', facultyRoutes);
+app.use('/api/events', eventRoutes);
 app.use("/api/resources", resourceRoutes);
 app.use('/api', adminRoutes);
 

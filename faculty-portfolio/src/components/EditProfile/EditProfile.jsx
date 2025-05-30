@@ -3,6 +3,8 @@ import './EditProfile.css';
 import Navbar from '../Navbar/Navbar';
 import AddPublicationForm from '../Publications/AddPublication';
 import AddCourseForm from '../Courses/AddCourse';
+import AddProjectForm from '../Projects/AddProject';
+import AddEventForm from '../Events/AddEvent';
 import AddResourceForm from '../Resources/AddResource';
 
 function EditProfile() {
@@ -26,6 +28,8 @@ function EditProfile() {
     courses: ['addCourse'],
     // resources: ['addResource', 'previousPapers', 'importantQuestions', 'videoLinks', 'notes'],
     resources: ['addResource'],
+    projects: ['addProject'],
+    events: ['addEvent'],
   };
 
   const getSubFieldLabel = (value) => {
@@ -35,6 +39,8 @@ function EditProfile() {
       addPublication: 'Add Publication',
       addCourse: 'Add Course',
       addResource: 'Add Resource',
+      addProject: 'Add Project',
+      addEvent: 'Add Event',
       // previousPapers: 'Previous Year Papers',
       // importantQuestions: 'Important Questions',
       // videoLinks: 'Video Links',
@@ -162,6 +168,8 @@ function EditProfile() {
                   <option value="home">Home</option>
                   <option value="publications">Publications</option>
                   <option value="courses">Courses</option>
+                  <option value="projects">Projects</option>
+                  <option value="events">Events</option>
                   <option value="resources">Resources</option>
                 </select>
               </div>
@@ -212,6 +220,18 @@ function EditProfile() {
             {section === 'courses' && subField === 'addCourse' && (
               <div className="row">
                 <AddCourseForm />
+              </div>
+            )}
+
+            {section === 'projects' && subField === 'addProject' && (
+              <div className="row">
+                <AddProjectForm />
+              </div>
+            )}
+
+            {section === 'events' && subField === 'addEvent' && (
+              <div className="row">
+                <AddEventForm />
               </div>
             )}
 

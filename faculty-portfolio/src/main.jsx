@@ -10,6 +10,9 @@ import CoursesPage from './components/Courses/Courses.jsx'
 import AddCourse from './components/Courses/AddCourse.jsx';
 import Resources from './components/Resources/Resources.jsx';
 import AddResource from './components/Resources/AddResource.jsx';
+import Projects from "./components/Projects/Projects.jsx";
+import AddProjects from "./components/Projects/AddProject.jsx";
+import Events from './components/Events/Events.jsx';
 import EditProfile from './components/EditProfile/EditProfile.jsx';
 import AccessDenied from "./components/AccessDenied/AccessDenied.jsx";
 
@@ -26,6 +29,11 @@ createRoot(document.getElementById('root')).render(
         <Route path="/add-publication" element={<AddPublication />} />
         <Route path="/courses" element={<CoursesPage />} />
         <Route path="/add-course" element={<AddCourse/>} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/events" element={<Events />} />
+
+        <Route path="/add-projects" element={<AddProjects />} />
+
 
         {/* ✅ Protected: only student and admin */}
         <Route

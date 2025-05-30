@@ -1,0 +1,16 @@
+.projects-page {
+    padding-left: 80px;
+    padding-top: 70px;
+}
+.projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.project-card {
+    width: 1210px;
+    border: 1px solid #ccc;
+    padding: 25px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
