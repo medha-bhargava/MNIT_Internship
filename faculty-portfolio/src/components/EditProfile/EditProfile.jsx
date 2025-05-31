@@ -5,6 +5,7 @@ import AddPublicationForm from '../Publications/AddPublication';
 import AddCourseForm from '../Courses/AddCourse';
 import AddProjectForm from '../Projects/AddProject';
 import AddEventForm from '../Events/AddEvent';
+import AddPhDForm from '../PhD Supervised/AddPhDSupervised';
 import AddResourceForm from '../Resources/AddResource';
 
 function EditProfile() {
@@ -30,6 +31,7 @@ function EditProfile() {
     resources: ['addResource'],
     projects: ['addProject'],
     events: ['addEvent'],
+    phd: ['addPhDSupervised'],
   };
 
   const getSubFieldLabel = (value) => {
@@ -41,6 +43,7 @@ function EditProfile() {
       addResource: 'Add Resource',
       addProject: 'Add Project',
       addEvent: 'Add Event',
+      addPhDSupervised: 'Add PhD Supervised',
       // previousPapers: 'Previous Year Papers',
       // importantQuestions: 'Important Questions',
       // videoLinks: 'Video Links',
@@ -170,6 +173,7 @@ function EditProfile() {
                   <option value="courses">Courses</option>
                   <option value="projects">Projects</option>
                   <option value="events">Events</option>
+                  <option value="phd">PhD Supervised</option>
                   <option value="resources">Resources</option>
                 </select>
               </div>
@@ -232,6 +236,12 @@ function EditProfile() {
             {section === 'events' && subField === 'addEvent' && (
               <div className="row">
                 <AddEventForm />
+              </div>
+            )}
+
+            {section === 'phd' && subField === 'addPhDSupervised' && (
+              <div className="row">
+                <AddPhDForm />
               </div>
             )}
 

@@ -1,23 +1,10 @@
-.events-container {
-    padding-left: 80px;
+.eventBox {
+    padding-left: 90px;
     padding-top: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
-
-.events-title {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 1.5rem;
-}
-
-.events-wrapper {
-    width: 1210px;
-    border: 1px solid #ccc;
-    padding: 25px;
-    border-radius: 10px;
-    background-color: #f9f9f9;
-}
-
-.events-intro {
-    font-size: 1.1rem;
-    color: #444;
+.events{
+    padding-top: 20px;
 }

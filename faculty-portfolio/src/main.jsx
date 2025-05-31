@@ -13,6 +13,8 @@ import AddResource from './components/Resources/AddResource.jsx';
 import Projects from "./components/Projects/Projects.jsx";
 import AddProjects from "./components/Projects/AddProject.jsx";
 import Events from './components/Events/Events.jsx';
+import PhDSupervised from './components/PhD Supervised/PhDSupervised.jsx';
+import AddPhDSupervised from './components/PhD Supervised/AddPhDSupervised.jsx';
 import EditProfile from './components/EditProfile/EditProfile.jsx';
 import AccessDenied from "./components/AccessDenied/AccessDenied.jsx";
 
@@ -30,9 +32,10 @@ createRoot(document.getElementById('root')).render(
         <Route path="/courses" element={<CoursesPage />} />
         <Route path="/add-course" element={<AddCourse/>} />
         <Route path="/projects" element={<Projects />} />
-        <Route path="/events" element={<Events />} />
-
         <Route path="/add-projects" element={<AddProjects />} />
+        <Route path="/events" element={<Events />} />
+        <Route path="/phd" element={<PhDSupervised />} />
+        <Route path="/add-phd" element={<AddPhDSupervised />} />
 
 
         {/* ✅ Protected: only student and admin */}
