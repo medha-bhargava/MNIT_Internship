@@ -22,7 +22,10 @@ function Events() {
 
     const isUpcoming = (event) => {
         const today = new Date();
-        return new Date(event.dateFrom) >= today;
+        today.setHours(0, 0, 0, 0);
+        const eventDate = new Date(event.dateFrom);
+        eventDate.setHours(0, 0, 0, 0);
+        return eventDate >= today;
     };
 
     const filterByType = (type) => {
@@ -33,7 +36,7 @@ function Events() {
 
     const renderEvent = (event) => {
         return (
-            <p key={event._id}>
+            <p key={event._id} className="eventItem">
                 <strong>{event.eventTitle}</strong>, {event.institute}, {event.city}, {event.country} <br />
                 <em>{new Date(event.dateFrom).toLocaleDateString()} - {new Date(event.dateTo).toLocaleDateString()}</em><br />
                 {event.designation && <span><strong>Designation:</strong> {event.designation} | </span>}
