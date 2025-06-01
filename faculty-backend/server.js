@@ -64,6 +64,6 @@ connect(process.env.MONGODB_URI)
   .catch((err) => console.error("MongoDB connection failed:", err));
 
 app.use((req, res) => {
-    console.log(`Unmatched request: ${req.method} ${req.url}`);
-    res.status(404).send("Not Found");
+  console.log(`Unmatched request: ${req.method} ${req.url}`);
+  res.status(404).send("Not Found");
 });

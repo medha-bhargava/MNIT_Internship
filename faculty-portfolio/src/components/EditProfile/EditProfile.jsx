@@ -27,7 +27,6 @@ function EditProfile() {
     publications: ['addPublication'],
     // publications: ['add', 'update', 'remove'],
     courses: ['addCourse'],
-    // resources: ['addResource', 'previousPapers', 'importantQuestions', 'videoLinks', 'notes'],
     resources: ['addResource'],
     projects: ['addProject'],
     events: ['addEvent'],
@@ -44,10 +43,6 @@ function EditProfile() {
       addProject: 'Add Project',
       addEvent: 'Add Event',
       addPhDSupervised: 'Add PhD Supervised',
-      // previousPapers: 'Previous Year Papers',
-      // importantQuestions: 'Important Questions',
-      // videoLinks: 'Video Links',
-      // notes: 'Notes',
     };
     return labels[value] || '';
   };
@@ -71,7 +66,7 @@ function EditProfile() {
     };
 
     fetchProfile();
-  }, [subField]); // re-run when subField changes
+  }, [subField]);
 
   const handleInputChange = (e) => {
     setProfile({ ...profile, [e.target.name]: e.target.value });
@@ -92,7 +87,7 @@ function EditProfile() {
       // Update simple text content like name, email, about, etc.
       const payload = {
         ...profile,
-        [subField]: info, // e.g., about: info
+        [subField]: info,
       };
 
       // console.log('📦 Payload being sent to backend:', payload);

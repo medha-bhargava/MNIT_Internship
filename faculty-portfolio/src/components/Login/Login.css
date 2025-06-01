@@ -40,16 +40,19 @@
   align-items: center;
   height: 40px;
 }
+
 .button:hover {
   transform: scale(1.05);
   opacity: 0.9;
 }
+
 .error {
   color: red;
   font-size: 1.1rem;
   margin-top: 10px;
   text-align: center;
 }
+
 .spinner {
   width: 18px;
   height: 18px;

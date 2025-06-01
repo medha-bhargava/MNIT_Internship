@@ -243,28 +243,23 @@ function AddProject() {
                     ))} */}
                     {formData.coInvestigators.map((coInv, index) => (
                         <div className="input-group" key={index}>
-                            <label>Co-Investigator-{index + 1} (if any)</label>
-                            <select
-                                className="select"
+                            {/* <label>Co-Investigator-{index + 1} (if any)</label> */}
+                            <input
+                                type="text"
+                                className="text-input"
                                 value={coInv}
                                 onChange={(e) => handleCoInvestigatorChange(index, e.target.value)}
-                            >
-                                <option value="">--Select--</option>
-                                {facultyList.map((faculty) => (
-                                    <option key={faculty._id} value={faculty.name}>
-                                        {faculty.name}
-                                    </option>
-                                ))}
-                                <option value="Other">Other</option>
-                            </select>
-                            {coInv === 'Other' && (
+                                placeholder={`Co-Investigator-${index + 1}`}
+                            />
+
+                            {/* {coInv === 'Other' && (
                                 <input
                                     type="text"
                                     className="inputOther"
                                     placeholder="Enter name"
                                     onChange={(e) => handleCoInvestigatorChange(index, e.target.value)}
                                 />
-                            )}
+                            )} */}
                         </div>
                     ))}
                 </div>
