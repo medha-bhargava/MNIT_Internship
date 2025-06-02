@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from '../Navbar/Navbar';
 import Dropdown from '../Dropdown/Dropdown';
+import { Link } from 'react-router-dom';
 import './Courses.css';
 
 function Courses() {
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const role = localStorage.getItem('role');
+  const isLoggedIn = !!localStorage.getItem('token');
+  const canAccessClassroom = (role === 'student' || role === 'admin') && isLoggedIn;
+
 
   useEffect(() => {
     const fetchCourses = async () => {
@@ -44,8 +49,13 @@ function Courses() {
               <Dropdown title="Currently Teaching">
                 {currentlyTeaching.length > 0 ? (
                   currentlyTeaching.map(course => (
+                    // <p key={course.courseId}>
+                    //   {`${course.courseId}: ${course.courseName} (${course.institute})`}
+                    // </p>
                     <p key={course.courseId}>
-                      {`${course.courseId}: ${course.courseName} (${course.institute})`}
+                      <Link to={`/courses/${encodeURIComponent(course.courseName)}`} className="course-link">
+                        {`${course.courseId}: ${course.courseName} (${course.institute})`}
+                      </Link>
                     </p>
                   ))
                 ) : (
@@ -58,8 +68,14 @@ function Courses() {
               <Dropdown title="Previously Taught">
                 {previouslyTaught.length > 0 ? (
                   previouslyTaught.map(course => (
+                    // <p key={course.courseId}>
+                    //   {`${course.courseId}: ${course.courseName} (${course.institute})`}
+                    // </p>
+                    // Remove if not needed
                     <p key={course.courseId}>
-                      {`${course.courseId}: ${course.courseName} (${course.institute})`}
+                      <Link to={`/courses/${encodeURIComponent(course.courseName)}`} className="course-link">
+                        {`${course.courseId}: ${course.courseName} (${course.institute})`}
+                      </Link>
                     </p>
                   ))
                 ) : (

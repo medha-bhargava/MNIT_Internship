@@ -6,9 +6,11 @@ function AddCourse() {
     const [courseName, setCourseName] = useState('');
     const [courseType, setCourseType] = useState('');
     const [institute, setInstitute] = useState('');
+    const [syllabusLink, setSyllabusLink] = useState('');
+    const [classroomLink, setClassroomLink] = useState('');
 
     const handleAdd = async () => {
-        if (!courseId || !courseName || !courseType || !institute) {
+        if (!courseId || !courseName || !courseType || !institute || !syllabusLink ||!classroomLink) {
             alert('Please fill all course fields.');
             return;
         }
@@ -17,7 +19,7 @@ function AddCourse() {
             const response = await fetch('http://localhost:8083/api/courses/add', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ courseId, courseName, courseType, institute }),
+                body: JSON.stringify({ courseId, courseName, courseType, institute, syllabusLink, classroomLink }),
             });
 
             const data = await response.json();
@@ -27,6 +29,8 @@ function AddCourse() {
                 setCourseName('');
                 setCourseType('');
                 setInstitute('');
+                setClassroomLink('');
+                setSyllabusLink('');
             } else {
                 alert(data.message || 'Something went wrong.');
             }
@@ -80,6 +84,26 @@ function AddCourse() {
                         placeholder="Institute"
                         value={institute}
                         onChange={(e) => setInstitute(e.target.value)}
+                    />
+                </div>
+            </div>
+            <div className="row">
+                <div className="input-group">
+                    <input
+                        className='input'
+                        type="text"
+                        placeholder="Google Classroom Link"
+                        value={classroomLink}
+                        onChange={(e) => setClassroomLink(e.target.value)}
+                    />
+                </div>
+                <div className="input-group">
+                    <input
+                        className='input'
+                        type="text"
+                        placeholder="Syllabus Link"
+                        value={syllabusLink}
+                        onChange={(e) => setSyllabusLink(e.target.value)}
                     />
                 </div>
             </div>

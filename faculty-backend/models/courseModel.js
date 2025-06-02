@@ -4,7 +4,9 @@ const courseSchema = new Schema({
   courseId: { type: String, required: true, unique: true, trim: true },
   courseName: { type: String, required: true, trim: true },
   courseType: { type: String, enum: ['Currently Teaching', 'Previously Taught'], required: true },
-  institute: { type: String, required: true, trim: true }
+  institute: { type: String, required: true, trim: true },
+  syllabusLink: { type: String, trim: true },
+  classroomLink: { type: String, trim: true }
 });
 
 const Course = model('Course', courseSchema);

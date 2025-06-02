@@ -43,6 +43,57 @@
   color: #333;
 }
 
+/* Remove if not needed */
+.course-link {
+  /* color: #4a00e0; */
+  font-weight: 500;
+  text-decoration: none;
+  transition: 0.2s;
+  cursor: pointer;
+  margin-right: 1rem;
+}
+
+.course-link:hover {
+  color: #7b2ff7;
+}
+
+.course-entry {
+  margin-bottom: 1rem;
+}
+
+.course-link-disabled {
+  color: grey;
+  font-style: italic;
+  cursor: pointer;
+}
+
+.course-item {
+  padding: 0.75rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.course-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.25rem;
+}
+
+.course-links a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #5a28e5;
+}
+
+.course-links a:hover {
+  text-decoration: underline;
+}
+
+.classroom-locked {
+  color: gray;
+  font-style: italic;
+}
+
+
 /* .coursesBox{
   padding-left: 90px;
   padding-top: 70px;
