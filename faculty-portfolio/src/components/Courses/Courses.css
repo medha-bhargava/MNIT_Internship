@@ -1,4 +1,49 @@
-.coursesBox{
+.coursesBox {
+  padding: 70px 5%;
+  /* padding-left: 90px;
+  padding-top: 70px; */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #ffffff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.coursesBox h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 24px;
+  color: #222222;
+}
+
+.courses {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.latest p {
+  padding: 8px 10px;
+  border-left: 4px solid #8d49e4;
+  margin-bottom: 4px;
+  border-radius: 8px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+}
+
+.till_date p {
+  padding: 8px 10px;
+  border-left: 4px solid #8d49e4;
+  margin-bottom: 4px;
+  border-radius: 8px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+}
+
+/* .coursesBox{
   padding-left: 90px;
   padding-top: 70px;
   display: flex;
@@ -7,4 +52,4 @@
 }
 .courses{
   padding-top: 20px;
-}
+} */

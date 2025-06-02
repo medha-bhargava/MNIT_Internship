@@ -61,7 +61,7 @@
   outline: none;
 } */
 .add-project-button {
-  width: 35%;
+  width: 28%;
   display: block;
   margin: 20px auto 0 auto;
   padding: 12px;
@@ -69,10 +69,11 @@
   border-radius: 20px;
   color: #fff;
   background: linear-gradient(to right, #8d49e4, #ce85f5);
+  box-shadow: 0 4px 15px 3px rgba(141, 73, 228, 0.3);
   font-size: medium;
   font-weight: bold;
   cursor: pointer;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition: 0.5s;
 }
 
 .add-project-button:hover {

@@ -70,6 +70,7 @@ textarea {
   border-radius: 20px;
   color: rgb(255, 255, 255);
   background: linear-gradient(to right, #8d49e4, #ce85f5);
+  box-shadow: 0 4px 15px 3px rgba(141, 73, 228, 0.3);
   font-size: medium;
   font-weight: bold;
   cursor: pointer;

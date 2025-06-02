@@ -20,7 +20,7 @@ function EditProfile() {
     email: '',
   });
   const [loading, setLoading] = useState(true);
-  const [message, setMessage] = useState('');
+  // const [message, setMessage] = useState('');
 
   const subOptions = {
     home: ['about', 'news'],
@@ -99,9 +99,11 @@ function EditProfile() {
           body: JSON.stringify(payload),
         });
         if (!res.ok) throw new Error('Update failed');
-        setMessage(`✅ ${getSubFieldLabel(subField)} updated!`);
+        // setMessage(`✅ ${getSubFieldLabel(subField)} updated!`);
+        alert(`${getSubFieldLabel(subField)} updated!`)
       } catch (err) {
-        setMessage(`❌ Error: ${err.message}`);
+        // setMessage(`❌ Error: ${err.message}`);
+        alert(`Error: ${err.message}`)
       }
     }
   };
@@ -253,7 +255,7 @@ function EditProfile() {
                 </button>
               </div>
             )}
-            {message && <p style={{ color: message.includes('✅') ? 'green' : 'red' }}>{message}</p>}
+            {/* {message && <p style={{ color: message.includes('✅') ? 'green' : 'red' }}>{message}</p>} */}
           </div>
         )}
       </div>

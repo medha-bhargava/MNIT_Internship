@@ -56,8 +56,8 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.add-button {
-    width: 45%;
+.add-publication-button {
+    width: 42%;
     display: block;
     margin: 20px auto 0 auto;
     padding: 12px;
@@ -65,13 +65,14 @@
     border-radius: 20px;
     color: rgb(255, 255, 255);
     background: linear-gradient(to right, #8d49e4, #ce85f5);
+    box-shadow: 0 4px 15px 3px rgba(141, 73, 228, 0.3);
     font-size: medium;
     font-weight: bold;
     cursor: pointer;
     transition: 0.5s;
 }
 
-.add-button:hover {
+.add-publication-button:hover {
     transform: scale(1.05);
     opacity: 0.9;
 }

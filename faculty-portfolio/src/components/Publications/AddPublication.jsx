@@ -494,7 +494,7 @@ function AddPublicationForm() {
             {pType && (
                 <div className="row">
                     <div className="input-group">
-                        <button className="add-button" onClick={handleAdd}>
+                        <button className="add-publication-button" onClick={handleAdd}>
                             Add Publication
                         </button>
                     </div>

@@ -30,10 +30,10 @@ function Projects() {
   return (
     <>
       <Navbar />
-      <div className="projects-page">
+      <div className="projectsBox">
         <h1>Projects</h1>
         <div className="projects">
-          <Dropdown title="Ongoing Projects">
+          <Dropdown title="Ongoing">
             {filterByStatus("Ongoing").map((project, index) => (
               <div className="project-entry" key={index}>
                 <p>
@@ -54,7 +54,7 @@ function Projects() {
             ))}
           </Dropdown>
 
-          <Dropdown title="Completed Projects">
+          <Dropdown title="Completed">
             {filterByStatus("Completed").map((project, index) => (
               <div className="project-entry" key={index}>
                 <p>

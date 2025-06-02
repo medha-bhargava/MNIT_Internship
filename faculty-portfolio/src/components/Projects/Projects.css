@@ -1,4 +1,42 @@
-.projects-page {
+.projectsBox {
+  padding: 70px 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #ffffff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.projectsBox h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 24px;
+  color: #222222;
+}
+
+.projects {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.project-entry {
+  padding: 8px 10px;
+  margin-bottom: 9px;
+  background-color: #f8f8f8;
+  border-left: 4px solid #8d49e4;
+  border-radius: 8px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+}
+
+.project-entry p {
+  margin: 2px 0;
+}
+
+/* .projects-page {
     padding-left: 90px;
     padding-top: 70px;
 }
@@ -18,4 +56,4 @@
 }
 .project-card {
     padding: 10px;
-}
+} */

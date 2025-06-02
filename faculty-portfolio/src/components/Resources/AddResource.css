@@ -1,6 +1,6 @@
 .add-resource-wrapper {
     margin: 50px auto;
-    padding: 40px;
+    padding: 30px;
     background-color: #f9f9f9;
     border-radius: 16px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -52,7 +52,7 @@
 } */
 
 .add-resource-button {
-    width: 45%;
+    width: 40%;
     display: block;
     margin: 20px auto 0 auto;
     padding: 12px;
@@ -60,6 +60,7 @@
     border-radius: 20px;
     color: rgb(255, 255, 255);
     background: linear-gradient(to right, #8d49e4, #ce85f5);
+    box-shadow: 0 4px 15px 3px rgba(141, 73, 228, 0.3);
     font-size: medium;
     font-weight: bold;
     cursor: pointer;

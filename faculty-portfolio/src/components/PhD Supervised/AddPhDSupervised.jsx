@@ -35,7 +35,8 @@ const AddPhDSupervised = () => {
             const data = await res.json();
             if (!res.ok) throw new Error(data.message || 'Something went wrong');
 
-            setMessage('PhD supervision entry added successfully ✅');
+            // setMessage('PhD supervision entry added successfully ✅');
+            alert('PhD supervision entry added successfully ');
             setFormData({
                 researchTopicTitle: '',
                 scholarId: '',
@@ -195,10 +196,9 @@ const AddPhDSupervised = () => {
 
                 </div>
 
-                <button type="submit" className="add-button">Add PhD Entry</button>
+                <button type="submit" className="add-phd-button">Add PhD Entry</button>
             </form>
-
-            {message && <p className="phdStatus-message">{message}</p>}
+            {/* {message && <p className="phdStatus-message">{message}</p>} */}
         </div>
     );
 };

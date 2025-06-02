@@ -1,4 +1,43 @@
-.publicationBox{
+.publicationBox {
+  padding: 70px 5%;
+  /* padding-left: 90px;
+  padding-top: 70px; */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  background-color: #ffffff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.publicationBox h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 24px;
+  color: #222222;
+}
+
+.publications {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.journal p,
+.conference p,
+.book-chapter p {
+  padding: 7px 9px;
+  border-left: 4px solid #8d49e4;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+}
+
+
+/* .publicationBox{
   padding-left: 90px;
   padding-top: 70px;
   display: flex;
@@ -7,4 +46,4 @@
 }
 .publications{
   padding-top: 20px;
-}
+} */

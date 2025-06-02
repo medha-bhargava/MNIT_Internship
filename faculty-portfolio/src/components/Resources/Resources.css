@@ -1,4 +1,52 @@
-.resourcesBox{
+.resourcesBox {
+  padding: 70px 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #ffffff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.resourcesBox h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 24px;
+  color: #222222;
+}
+
+.resources {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.alink {
+  text-decoration: none;
+  color: #343434;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+
+.alink:hover {
+  color: #8d49e4;
+}
+
+.pyqs p,
+.impques p,
+.videolinks p,
+.notes p {
+  padding: 8px 10px;
+  margin-bottom: 10px;
+  background-color: #f8f8f8;
+  border-left: 4px solid #8d49e4;
+  border-radius: 8px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+}
+
+/* .resourcesBox{
   padding-left: 90px;
   padding-top: 70px;
   display: flex;
@@ -16,4 +64,4 @@ h1{
   color: #343434;
   font-size: medium !important;
   transition: color 0.3s ease;
-}
+} */

@@ -1,4 +1,49 @@
 .phd-supervised-page {
+    padding: 70px 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.phd-supervised-page h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 24px;
+    color: #222222;
+}
+
+.phd-cards-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.phd-card {
+    padding: 8px 10px;
+    border-left: 4px solid #8d49e4;
+    border-radius: 8px;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #333;
+    box-shadow: none;
+    background-color: transparent;
+    transition: none;
+}
+
+/* .phd-card:hover {
+    background-color: #f4f0fb;
+    transition: 0.9s;
+} */
+
+.phd-card p {
+    margin: 2px 0;
+}
+
+
+/* .phd-supervised-page {
     padding-left: 90px;
     padding-top: 70px;
 }
@@ -36,4 +81,4 @@
 .phd-card p {
     margin: 0.25rem 0;
     font-size: 0.95rem;
-}
+} */
