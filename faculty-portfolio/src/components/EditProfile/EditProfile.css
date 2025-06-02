@@ -80,3 +80,24 @@ textarea {
   transform: scale(1.05);
   opacity: 0.9;
 }
+input[type="file"] {
+  padding: 0.4rem;
+  font-size: 1rem;
+  
+}
+.update-photo-button{
+  width: 25%;
+  display: block;
+  margin: 20px auto 0 auto;
+  margin-top: 20px;
+  padding: 12px;
+  border: none;
+  border-radius: 20px;
+  color: rgb(255, 255, 255);
+  background: linear-gradient(to right, #8d49e4, #ce85f5);
+  box-shadow: 0 4px 15px 3px rgba(141, 73, 228, 0.3);
+  font-size: medium;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.5s;
+}

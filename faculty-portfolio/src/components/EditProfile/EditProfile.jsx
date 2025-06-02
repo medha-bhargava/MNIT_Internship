@@ -21,9 +21,10 @@ function EditProfile() {
   });
   const [loading, setLoading] = useState(true);
   // const [message, setMessage] = useState('');
+  const [selectedPhoto, setSelectedPhoto] = useState(null);
 
   const subOptions = {
-    home: ['about', 'news'],
+    home: ['about', 'news', 'changePhoto'],
     publications: ['addPublication'],
     // publications: ['add', 'update', 'remove'],
     courses: ['addCourse'],
@@ -37,6 +38,7 @@ function EditProfile() {
     const labels = {
       about: 'About Me',
       news: 'News',
+      changePhoto: 'Change Profile Photo',
       addPublication: 'Add Publication',
       addCourse: 'Add Course',
       addResource: 'Add Resource',
@@ -70,6 +72,10 @@ function EditProfile() {
 
   const handleInputChange = (e) => {
     setProfile({ ...profile, [e.target.name]: e.target.value });
+  };
+
+  const handlePhotoUpload = (e) => {
+    setSelectedPhoto(e.target.files[0]);
   };
 
   const handleUpdate = async () => {
@@ -107,6 +113,30 @@ function EditProfile() {
       }
     }
   };
+
+  const handlePhotoUpdate = async () => {
+    if (!selectedPhoto) {
+      alert('Please select a photo to upload.');
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('photo', selectedPhoto);
+
+    try {
+      const res = await fetch('http://localhost:8083/api/profile/photo', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!res.ok) throw new Error('Photo upload failed');
+      alert('Profile photo updated!');
+      setSelectedPhoto(null);
+    } catch (err) {
+      alert(`Error: ${err.message}`);
+    }
+  };
+
   return (
     <>
       <Navbar />
@@ -195,7 +225,7 @@ function EditProfile() {
               </div>
             )}
 
-            {section === 'home' && (
+            {section === 'home' && (subField === 'about' || subField === 'news') && (
               <div className="row">
                 <div className="input-group">
                   <textarea
@@ -209,6 +239,28 @@ function EditProfile() {
                     }
                   />
                 </div>
+              </div>
+            )}
+
+            {section === 'home' && subField === 'changePhoto' && (
+              <div className="row">
+                <div className="input-group">
+                  <label>Upload New Profile Photo</label>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    // onChange={(e) => handlePhotoUpload(e)}
+                    onChange={handlePhotoUpload}
+                  />
+                </div>
+              </div>
+            )}
+
+            {section === 'home' && subField === 'changePhoto' && (
+              <div className="row">
+                <button className="update-photo-button" onClick={handlePhotoUpdate}>
+                  Upload Photo
+                </button>
               </div>
             )}
 
@@ -248,7 +300,8 @@ function EditProfile() {
               </div>
             )}
 
-            {section === 'home' && (
+
+            {section === 'home' && subField !== 'changePhoto' && (
               <div className="row">
                 <button className="update-button" onClick={handleUpdate}>
                   Update Profile

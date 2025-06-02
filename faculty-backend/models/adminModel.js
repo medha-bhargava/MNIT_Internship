@@ -6,6 +6,7 @@ const adminSchema = new Schema({
   email: String,
   about: String,
   news: String,
+  profilePhoto: String,
 });
 
 export default model('Admin', adminSchema);

@@ -17,7 +17,7 @@
   padding: 24px;
   border-radius: 16px;
   box-shadow: 0 2px 10px 6px rgba(0, 0, 0, 0.06);
-  margin-bottom: 65px;
+  margin-bottom: 61px;
   margin-top: 15px;
 }
 
@@ -56,7 +56,6 @@
   padding-left: 12px;
 }
 
-/* Content Box for About and News */
 .content-box {
   background-color: #eeeeee;
   border-radius: 16px;
@@ -67,7 +66,6 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
 }
 
-/* News Scroller */
 .news-scroller {
   /* height: 160px; */
   overflow: hidden;

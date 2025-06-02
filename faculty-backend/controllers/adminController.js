@@ -34,4 +34,31 @@ const updateProfile = async (req, res) => {
     }
 };
 
-export { getProfile, updateProfile };
+const uploadProfilePhoto = async (req, res) => {
+    //   try {
+    //     // For example, save filename in DB or process file
+    //     console.log('Uploaded file:', req.file);
+    //     // Save req.file.filename to user profile in DB if needed
+    //     res.status(200).json({ message: 'Photo uploaded successfully' });
+    //   } catch (error) {
+    //     res.status(500).json({ message: 'Failed to upload photo', error });
+    //   }
+    try {
+        const file = req.file;
+        if (!file) return res.status(400).json({ message: 'No file uploaded' });
+
+        // Save the filename to the profile (optional, but usually needed)
+        const updated = await Admin.findOneAndUpdate(
+            {},
+            { profilePhoto: req.file.filename },
+            { new: true, upsert: true }
+        );
+
+        console.log('Photo saved as:', file.filename);
+        res.status(200).json({ message: 'Photo uploaded successfully', filename: file.filename });
+    } catch (error) {
+        console.error('Upload error:', error.message);
+        res.status(500).json({ message: 'Failed to upload photo', error });
+    }
+};
+export { getProfile, updateProfile, uploadProfilePhoto };

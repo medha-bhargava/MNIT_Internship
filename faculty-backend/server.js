@@ -51,6 +51,7 @@ app.use('/api/events', eventRoutes);
 app.use('/api/phd', phdRoutes);
 app.use("/api/resources", resourceRoutes);
 app.use('/api', adminRoutes);
+app.use('/uploads', express.static('uploads'));
 
 
 // ✅ Step 6: MongoDB + Server start

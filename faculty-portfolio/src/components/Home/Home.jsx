@@ -1,7 +1,7 @@
 import './Home.css';
 import Navbar from '../Navbar/Navbar';
-// import profilepic from './profilepic.png';
-import myphoto from './myphoto.png';
+import profilepic from './profilepic.png';
+// import myphoto from './myphoto.png';
 import { useEffect, useState } from 'react';
 
 function Home() {
@@ -32,7 +32,21 @@ function Home() {
       <Navbar />
       <div className="container">
         <div className="left">
-          <img src={myphoto} alt="Profile" className="profile-img" />
+          {loading ? (
+            <p className="loading-text">Loading photo...</p>
+          ) : error ? (
+            <p className="error-text">{error}</p>
+          ) : (
+            <img
+              src={
+                profile.profilePhoto
+                  ? `http://localhost:8083/uploads/${profile.profilePhoto}`
+                  : profilepic
+              }
+              alt="Profile"
+              className="profile-img"
+            />
+          )}
           <div className="faculty-info">
             {loading ? (
               <p className="loading-text">Loading profile info...</p>
