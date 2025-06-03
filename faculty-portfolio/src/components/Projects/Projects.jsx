@@ -34,45 +34,53 @@ function Projects() {
         <h1>Projects</h1>
         <div className="projects">
           <Dropdown title="Ongoing">
-            {filterByStatus("Ongoing").map((project, index) => (
-              <div className="project-entry" key={index}>
-                <p>
-                  <strong>{project.projectTitle}</strong>, {project.projectType}, {project.projectLevel}
-                  <br />
-                  <em>{formatDate(project.dateFrom)} - {formatDate(project.dateTo)}</em>
-                </p>
-                <p>
-                  <strong>Role:</strong> {project.role} | <strong>Funding Agency:</strong> {project.fundingAgency}
-                </p>
-                <p>
-                  <strong>Amount:</strong> Rs. {project.amount} Lacs | <strong>ERP ID:</strong> {project.erpId}
-                </p>
-                {project.coInvestigators?.length > 0 && (
-                  <p><strong>Co-Investigators:</strong> {project.coInvestigators.join(', ')}</p>
-                )}
-              </div>
-            ))}
+            {filterByStatus("Ongoing").length > 0 ? (
+              filterByStatus("Ongoing").map((project, index) => (
+                <div className="project-entry" key={index}>
+                  <p>
+                    <strong>{project.projectTitle}</strong>, {project.projectType}, {project.projectLevel}
+                    <br />
+                    <em>{formatDate(project.dateFrom)} - {formatDate(project.dateTo)}</em>
+                  </p>
+                  <p>
+                    <strong>Role:</strong> {project.role} | <strong>Funding Agency:</strong> {project.fundingAgency}
+                  </p>
+                  <p>
+                    <strong>Amount:</strong> Rs. {project.amount} Lacs | <strong>ERP ID:</strong> {project.erpId}
+                  </p>
+                  {project.coInvestigators?.length > 0 && (
+                    <p><strong>Co-Investigators:</strong> {project.coInvestigators.join(', ')}</p>
+                  )}
+                </div>
+              ))
+            ) : (
+              <p className="no-records">No records found.</p>
+            )}
           </Dropdown>
 
           <Dropdown title="Completed">
-            {filterByStatus("Completed").map((project, index) => (
-              <div className="project-entry" key={index}>
-                <p>
-                  <strong>{project.projectTitle}</strong>, {project.projectType}, {project.projectLevel}
-                  <br />
-                  <em>{formatDate(project.dateFrom)} - {formatDate(project.dateTo)}</em>
-                </p>
-                <p>
-                  <strong>Role:</strong> {project.role} | <strong>Funding Agency:</strong> {project.fundingAgency}
-                </p>
-                <p>
-                  <strong>Amount:</strong> ₹{project.amount} Lacs | <strong>ERP ID:</strong> {project.erpId}
-                </p>
-                {project.coInvestigators?.length > 0 && (
-                  <p><strong>Co-Investigators:</strong> {project.coInvestigators.join(', ')}</p>
-                )}
-              </div>
-            ))}
+            {filterByStatus("Completed").length > 0 ? (
+              filterByStatus("Completed").map((project, index) => (
+                <div className="project-entry" key={index}>
+                  <p>
+                    <strong>{project.projectTitle}</strong>, {project.projectType}, {project.projectLevel}
+                    <br />
+                    <em>{formatDate(project.dateFrom)} - {formatDate(project.dateTo)}</em>
+                  </p>
+                  <p>
+                    <strong>Role:</strong> {project.role} | <strong>Funding Agency:</strong> {project.fundingAgency}
+                  </p>
+                  <p>
+                    <strong>Amount:</strong> ₹{project.amount} Lacs | <strong>ERP ID:</strong> {project.erpId}
+                  </p>
+                  {project.coInvestigators?.length > 0 && (
+                    <p><strong>Co-Investigators:</strong> {project.coInvestigators.join(', ')}</p>
+                  )}
+                </div>
+              ))
+            ) : (
+              <p className="no-records">No records found.</p>
+            )}
           </Dropdown>
         </div>
       </div>

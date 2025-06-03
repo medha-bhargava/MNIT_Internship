@@ -34,16 +34,14 @@ function Events() {
             : events.filter((event) => !isUpcoming(event));
     };
 
-    const renderEvent = (event) => {
-        return (
-            <p key={event._id} className="eventItem">
-                <strong>{event.eventTitle}</strong>, {event.institute}, {event.city}, {event.country} <br />
-                <em>{new Date(event.dateFrom).toLocaleDateString()} - {new Date(event.dateTo).toLocaleDateString()}</em><br />
-                {event.designation && <span><strong>Designation:</strong> {event.designation} | </span>}
-                {event.sponsoredBy && <span><strong>Sponsored By:</strong> {event.sponsoredBy}</span>}
-            </p>
-        );
-    };
+    const renderEvent = (event) => (
+        <p key={event._id} className="eventItem">
+            <strong>{event.eventTitle}</strong>, {event.institute}, {event.city}, {event.country} <br />
+            <em>{new Date(event.dateFrom).toLocaleDateString()} - {new Date(event.dateTo).toLocaleDateString()}</em><br />
+            {event.designation && <span><strong>Designation:</strong> {event.designation} | </span>}
+            {event.sponsoredBy && <span><strong>Sponsored By:</strong> {event.sponsoredBy}</span>}
+        </p>
+    );
 
     return (
         <>
@@ -53,12 +51,20 @@ function Events() {
                 <div className="events">
                     <div className="upcoming">
                         <Dropdown title="Upcoming">
-                            {filterByType("Upcoming").map(renderEvent)}
+                            {filterByType("Upcoming").length > 0 ? (
+                                filterByType("Upcoming").map(renderEvent)
+                            ) : (
+                                <p className="no-records">No records found.</p>
+                            )}
                         </Dropdown>
                     </div>
                     <div className="past">
                         <Dropdown title="Past">
-                            {filterByType("Past").map(renderEvent)}
+                            {filterByType("Past").length > 0 ? (
+                                filterByType("Past").map(renderEvent)
+                            ) : (
+                                <p className="no-records">No records found.</p>
+                            )}
                         </Dropdown>
                     </div>
                 </div>

@@ -168,7 +168,7 @@ function AddProject() {
                         <label>Date From</label>
                         <input
                             type="date"
-                            className="input"
+                            className="date input"
                             name="dateFrom"
                             value={formData.dateFrom}
                             onChange={handleChange}
@@ -178,7 +178,7 @@ function AddProject() {
                         <label>Date To</label>
                         <input
                             type="date"
-                            className="input"
+                            className="date input"
                             name="dateTo"
                             value={formData.dateTo}
                             onChange={handleChange}

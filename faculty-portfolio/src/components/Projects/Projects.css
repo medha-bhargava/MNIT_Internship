@@ -36,6 +36,12 @@
   margin: 2px 0;
 }
 
+.no-records {
+  border-left: 4px solid #8d49e4;
+  border-radius: 8px;
+  padding: 10px 16px;
+}
+
 /* .projects-page {
     padding-left: 90px;
     padding-top: 70px;

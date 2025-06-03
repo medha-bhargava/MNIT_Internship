@@ -9,9 +9,9 @@ import courseRoutes from "./routes/courseRoutes.js";
 import projectRoutes from './routes/projectRoutes.js'
 import facultyRoutes from './routes/facultyRoutes.js';
 import eventRoutes from './routes/eventRoutes.js';
-import phdRoutes from './routes/phdRoutes.js';
 import resourceRoutes from "./routes/resourceRoutes.js";
 import adminRoutes from './routes/adminRoutes.js';
+import studentRoutes from "./routes/studentRoutes.js";
 
 dotenv.config();
 
@@ -48,10 +48,10 @@ app.use("/api/courses", courseRoutes);
 app.use("/api/projects", projectRoutes);
 app.use('/api/faculty', facultyRoutes);
 app.use('/api/events', eventRoutes);
-app.use('/api/phd', phdRoutes);
 app.use("/api/resources", resourceRoutes);
 app.use('/api', adminRoutes);
 app.use('/uploads', express.static('uploads'));
+app.use("/api/students", studentRoutes);
 
 
 // ✅ Step 6: MongoDB + Server start

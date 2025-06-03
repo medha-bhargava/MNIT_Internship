@@ -60,3 +60,9 @@
     transform: scale(1.05);
     opacity: 0.9;
 }
+
+.no-records {
+  border-left: 4px solid #8d49e4;
+  border-radius: 8px;
+  padding: 10px 16px;
+}

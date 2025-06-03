@@ -5,7 +5,7 @@ import AddPublicationForm from '../Publications/AddPublication';
 import AddCourseForm from '../Courses/AddCourse';
 import AddProjectForm from '../Projects/AddProject';
 import AddEventForm from '../Events/AddEvent';
-import AddPhDForm from '../PhD Supervised/AddPhDSupervised';
+import AddStudentForm from '../Students/AddStudent';
 import AddResourceForm from '../Resources/AddResource';
 
 function EditProfile() {
@@ -31,7 +31,7 @@ function EditProfile() {
     resources: ['addResource'],
     projects: ['addProject'],
     events: ['addEvent'],
-    phd: ['addPhDSupervised'],
+    students: ['addStudentSupervised'],
   };
 
   const getSubFieldLabel = (value) => {
@@ -44,7 +44,7 @@ function EditProfile() {
       addResource: 'Add Resource',
       addProject: 'Add Project',
       addEvent: 'Add Event',
-      addPhDSupervised: 'Add PhD Supervised',
+      addStudentSupervised: 'Add Student Supervised',
     };
     return labels[value] || '';
   };
@@ -200,7 +200,7 @@ function EditProfile() {
                   <option value="courses">Courses</option>
                   <option value="projects">Projects</option>
                   <option value="events">Events</option>
-                  <option value="phd">PhD Supervised</option>
+                  <option value="students">Student Supervised</option>
                   <option value="resources">Resources</option>
                 </select>
               </div>
@@ -249,7 +249,6 @@ function EditProfile() {
                   <input
                     type="file"
                     accept="image/*"
-                    // onChange={(e) => handlePhotoUpload(e)}
                     onChange={handlePhotoUpload}
                   />
                 </div>
@@ -288,9 +287,9 @@ function EditProfile() {
               </div>
             )}
 
-            {section === 'phd' && subField === 'addPhDSupervised' && (
+            {section === 'students' && subField === 'addStudentSupervised' && (
               <div className="row">
-                <AddPhDForm />
+                <AddStudentForm />
               </div>
             )}
 

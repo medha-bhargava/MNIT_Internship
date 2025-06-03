@@ -32,23 +32,35 @@ function Publications() {
         <div className="publications">
           <div className="journal">
             <Dropdown title="Journal">
-              {filterByType("Journal").map((pub, index) => (
-                <p key={index}>{pub.ieeeCitation}</p>
-              ))}
+              {filterByType("Journal").length > 0 ? (
+                filterByType("Journal").map((pub, index) => (
+                  <p key={index}>{pub.ieeeCitation}</p>
+                ))
+              ) : (
+                <p className="no-records">No records found.</p>
+              )}
             </Dropdown>
           </div>
           <div className="conference">
             <Dropdown title="Conference">
-              {filterByType("Conference").map((pub, index) => (
-                <p key={index}>{pub.ieeeCitation}</p>
-              ))}
+              {filterByType("Conference").length > 0 ? (
+                filterByType("Conference").map((pub, index) => (
+                  <p key={index}>{pub.ieeeCitation}</p>
+                ))
+              ) : (
+                <p className="no-records">No records found.</p>
+              )}
             </Dropdown>
           </div>
           <div className="book-chapter">
             <Dropdown title="Book-Chapter">
-              {filterByType("Book-Chapter").map((pub, index) => (
-                <p key={index}>{pub.ieeeCitation}</p>
-              ))}
+              {filterByType("Book-Chapter").length > 0 ? (
+                filterByType("Book-Chapter").map((pub, index) => (
+                  <p key={index}>{pub.ieeeCitation}</p>
+                ))
+              ) : (
+                <p className="no-records">No records found.</p>
+              )}
             </Dropdown>
           </div>
         </div>

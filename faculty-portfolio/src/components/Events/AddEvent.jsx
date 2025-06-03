@@ -88,7 +88,7 @@ function AddEvent() {
                             value={formData.eventType}
                             onChange={handleChange}
                         >
-                            <option value="">--Select-Type-of-Event--</option>
+                            <option value="">--Type of Event--</option>
                             <option value="International">International</option>
                             <option value="National">National</option>
                         </select>
@@ -144,7 +144,7 @@ function AddEvent() {
                         <input
                             type="date"
                             name="dateFrom"
-                            className="input"
+                            className="date input"
                             value={formData.dateFrom}
                             onChange={handleChange}
                         />
@@ -154,7 +154,7 @@ function AddEvent() {
                         <input
                             type="date"
                             name="dateTo"
-                            className="input"
+                            className="date input"
                             value={formData.dateTo}
                             onChange={handleChange}
                         />
