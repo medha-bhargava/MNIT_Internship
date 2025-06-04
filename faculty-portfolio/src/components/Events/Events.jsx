@@ -54,7 +54,7 @@ function Events() {
                             {filterByType("Upcoming").length > 0 ? (
                                 filterByType("Upcoming").map(renderEvent)
                             ) : (
-                                <p className="no-records">No records found.</p>
+                                <p className="no-event-records">No records found.</p>
                             )}
                         </Dropdown>
                     </div>
@@ -63,7 +63,7 @@ function Events() {
                             {filterByType("Past").length > 0 ? (
                                 filterByType("Past").map(renderEvent)
                             ) : (
-                                <p className="no-records">No records found.</p>
+                                <p className="no-event-records">No records found.</p>
                             )}
                         </Dropdown>
                     </div>

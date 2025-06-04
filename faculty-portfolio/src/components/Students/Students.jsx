@@ -49,7 +49,7 @@ const Students = () => {
                                 {students.length > 0 ? (
                                     <ul className=" ul student-list">
                                         {students.map((student, idx) => (
-                                            <li key={idx} className="student-item">
+                                            <li key={idx} className={`student-item ${student.sStatus === "Ongoing" ? "ongoing" : "completed"}`}>
                                                 <strong>{student.sName}</strong> — {student.sTitle} (
                                                 {student.sInstitute}, {student.sYear})
                                             </li>

@@ -3,8 +3,10 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: center;
   background-color: #ffffff;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #222222;
 }
 
 .projectsBox h1 {
@@ -12,54 +14,70 @@
   font-weight: bold;
   margin-bottom: 24px;
   color: #222222;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .projects {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 5px;
 }
 
+/* Each project entry styled similar to publications and courses */
 .project-entry {
-  padding: 8px 10px;
-  margin-bottom: 9px;
-  background-color: #f8f8f8;
-  border-left: 4px solid #8d49e4;
-  border-radius: 8px;
-  font-size: 16px;
-  line-height: 1.5;
-  color: #333;
+  padding: 12px 18px;
+  margin-bottom: 14px;
+  border-left: 5px solid transparent;
+  border-radius: 12px;
+  font-size: 17px;
+  line-height: 1.6;
+  color: #4a4a4a;
+  cursor: default;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 8px rgba(141, 73, 228, 0.07);
+  background-color: #fff;
 }
 
-.project-entry p {
-  margin: 2px 0;
+/* Differentiate project status by border color */
+.dropdown-title-ongoing + .dropdown-content .project-entry,
+.projects > div:first-child .project-entry {
+  border-left-color: #8d49e4;
 }
 
-.no-records {
-  border-left: 4px solid #8d49e4;
-  border-radius: 8px;
-  padding: 10px 16px;
+.dropdown-title-completed + .dropdown-content .project-entry,
+.projects > div:last-child .project-entry {
+  border-left-color: #b67be6;
 }
 
-/* .projects-page {
-    padding-left: 90px;
-    padding-top: 70px;
+/* Hover effect: subtle shadow and slide */
+.project-entry:hover, .no-project-records:hover{
+  box-shadow: 0 4px 20px rgba(141, 73, 228, 0.2);
+  transform: translateX(4px);
+  /* color: #2e1a72; */
 }
-.projects {
-    padding-top: 20px;
-}
-.projects-list {
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
-}
-.project-entry {
-    padding: 5px;
-    margin-bottom: 17px;
-    font-size: 16px;
-    line-height: 1.4;
-}
-.project-card {
-    padding: 10px;
+
+/* Paragraphs inside project entry */
+/* .project-entry p {
+  margin: 4px 0;
 } */
+
+/* Co-investigators list (optional) */
+/* .project-entry p strong {
+  font-weight: 600;
+} */
+
+
+/* No records found style */
+.no-project-records {
+  border-left: 5px solid #8d49e4;
+  border-radius: 12px;
+  padding: 14px 20px;
+  font-style: italic;
+  -webkit-user-select: none;
+  user-select: none;
+  background-color: #fff;
+  transition: all 0.25s ease;
+}
+

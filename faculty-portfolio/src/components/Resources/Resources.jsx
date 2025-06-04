@@ -71,7 +71,7 @@ function Resources() {
                     </p>
                   ))
                 ) : (
-                  <p>No previous year papers uploaded yet.</p>
+                  <p className="no-resource-records">No previous year papers uploaded yet.</p>
                 )}
               </Dropdown>
             </div>
@@ -88,7 +88,7 @@ function Resources() {
                     </p>
                   ))
                 ) : (
-                  <p>No important questions available.</p>
+                  <p className="no-resource-records">No important questions available.</p>
                 )}
               </Dropdown>
             </div>
@@ -105,7 +105,7 @@ function Resources() {
                     </p>
                   ))
                 ) : (
-                  <p>No video links uploaded.</p>
+                  <p className="no-resource-records">No video links uploaded.</p>
                 )}
               </Dropdown>
             </div>
@@ -122,7 +122,7 @@ function Resources() {
                     </p>
                   ))
                 ) : (
-                  <p>No notes available yet.</p>
+                  <p className="no-resource-records">No notes available yet.</p>
                 )}
               </Dropdown>
             </div>

@@ -1,6 +1,6 @@
 nav {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #d7d7d6;
+  background-color: #e4e4e3d4;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -16,7 +16,6 @@ ul {
   flex-wrap: wrap;
   gap: 24px;
   padding: 4px 12px;
-  background-color: #d7d7d6;
   margin: 0;
 }
 

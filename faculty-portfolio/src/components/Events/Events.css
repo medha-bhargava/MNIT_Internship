@@ -3,8 +3,10 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    justify-content: center;
     background-color: #ffffff;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #222222;
 }
 
 .eventBox h1 {
@@ -12,39 +14,63 @@
     font-weight: bold;
     margin-bottom: 24px;
     color: #222222;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 .events {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 5px;
+}
+
+.upcoming .eventItem,
+.dropdown-title-upcoming+.dropdown-content .eventItem {
+    border-left: 5px solid #8d49e4;
+}
+
+.past .eventItem,
+.dropdown-title-past+.dropdown-content .eventItem {
+    border-left: 5px solid #b67be6;
 }
 
 .eventItem {
-    padding: 8px 10px;
-    margin-bottom: 10px;
-    background-color: #f8f8f8;
-    border-left: 4px solid #8d49e4;
-    border-radius: 8px;
-    font-size: 16px;
-    line-height: 1.5;
-    color: #333;
+    padding: 12px 18px;
+    margin-bottom: 14px;
+    border-radius: 12px;
+    font-size: 17px;
+    line-height: 1.6;
+    color: #4a4a4a;
+    cursor: default;
+    transition: all 0.25s ease;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(141, 73, 228, 0.07);
 }
 
-.project-entry p {
-    margin: 4px 0;
+.eventItem:hover,
+.no-event-records:hover {
+    box-shadow: 0 4px 20px rgba(141, 73, 228, 0.2);
+    transform: translateX(4px);
 }
-/* .eventBox {
-    padding-left: 90px;
-    padding-top: 70px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+
+.upcoming .no-event-records,
+.dropdown-title-upcoming+.dropdown-content .no-event-records {
+    border-left: 5px solid #8d49e4;
 }
-.events{
-    padding-top: 20px;
+
+.past .no-event-records,
+.dropdown-title-past+.dropdown-content .no-event-records {
+    border-left: 5px solid #b67be6;
 }
-.eventItem{
-    margin-bottom: 17px;
-} */
+
+.no-event-records {
+    border-radius: 12px;
+    padding: 14px 20px;
+    font-style: italic;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(141, 73, 228, 0.07);
+    transition: all 0.25s ease;
+    -webkit-user-select: none;
+    user-select: none;
+}

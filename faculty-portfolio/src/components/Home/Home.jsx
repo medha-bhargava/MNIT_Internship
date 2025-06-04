@@ -29,8 +29,23 @@ function Home() {
 
   return (
     <>
+      <div className="bg-blobs">
+        <div className="blob blob1"></div>
+        <div className="blob blob2"></div>
+        <div className="blob blob3"></div>
+      </div>
+      <div className="bg-blobs">
+        <div className="blob blob1"></div>
+        <div className="blob blob2"></div>
+        <div className="blob blob3"></div>
+      </div>
       <Navbar />
       <div className="container">
+        <div className="bg-blobs">
+          <div className="blob blob1"></div>
+          <div className="blob blob2"></div>
+          <div className="blob blob3"></div>
+        </div>
         <div className="left">
           {loading ? (
             <p className="loading-text">Loading photo...</p>
@@ -83,21 +98,18 @@ function Home() {
                 <p className="loading-text">Loading news...</p>
               ) : error ? (
                 <p className="error-text">{error}</p>
+              ) : profile.news ? (
+                <ol>
+                  {profile.news.split('\n').map((line, index) => (
+                    <li key={index}>{line}</li>
+                  ))}
+                </ol>
               ) : (
-                <div className="news-scroller">
-                  {profile.news ? (
-                    <ol>
-                      {profile.news.split('\n').map((line, index) => (
-                        <li key={index}>{line}</li>
-                      ))}
-                    </ol>
-                  ) : (
-                    <p>No news available.</p>
-                  )}
-                </div>
+                <p>No news available.</p>
               )}
             </div>
           </section>
+
         </div>
       </div>
     </>

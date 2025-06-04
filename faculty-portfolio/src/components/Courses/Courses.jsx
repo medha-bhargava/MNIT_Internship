@@ -49,9 +49,6 @@ function Courses() {
               <Dropdown title="Currently Teaching">
                 {currentlyTeaching.length > 0 ? (
                   currentlyTeaching.map(course => (
-                    // <p key={course.courseId}>
-                    //   {`${course.courseId}: ${course.courseName} (${course.institute})`}
-                    // </p>
                     <p key={course.courseId}>
                       <Link to={`/courses/${encodeURIComponent(course.courseName)}`} className="course-link">
                         {`${course.courseId}: ${course.courseName} (${course.institute})`}
@@ -59,7 +56,7 @@ function Courses() {
                     </p>
                   ))
                 ) : (
-                  <p>No courses currently teaching.</p>
+                  <p>No record found.</p>
                 )}
               </Dropdown>
             </div>
@@ -68,10 +65,6 @@ function Courses() {
               <Dropdown title="Previously Taught">
                 {previouslyTaught.length > 0 ? (
                   previouslyTaught.map(course => (
-                    // <p key={course.courseId}>
-                    //   {`${course.courseId}: ${course.courseName} (${course.institute})`}
-                    // </p>
-                    // Remove if not needed
                     <p key={course.courseId}>
                       <Link to={`/courses/${encodeURIComponent(course.courseName)}`} className="course-link">
                         {`${course.courseId}: ${course.courseName} (${course.institute})`}
@@ -79,7 +72,7 @@ function Courses() {
                     </p>
                   ))
                 ) : (
-                  <p>No previously taught courses.</p>
+                  <p>No record found.</p>
                 )}
               </Dropdown>
             </div>
