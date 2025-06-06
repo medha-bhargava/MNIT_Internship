@@ -156,7 +156,7 @@ function EditProfile() {
                   type="text"
                   placeholder="Enter name"
                   disabled
-                  // style={{ cursor: 'not-allowed' }}
+                // style={{ cursor: 'not-allowed' }}
                 />
               </div>
               <div className="input-group">
@@ -168,7 +168,7 @@ function EditProfile() {
                   type="text"
                   placeholder="Enter contact number"
                   disabled
-                  // style={{ cursor: 'not-allowed' }}
+                // style={{ cursor: 'not-allowed' }}
                 />
               </div>
             </div>
