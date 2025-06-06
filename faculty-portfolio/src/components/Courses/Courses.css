@@ -4,7 +4,7 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #222222;
 }
@@ -14,8 +14,8 @@
   font-weight: bold;
   margin-bottom: 24px;
   color: #222222;
-  -webkit-user-select: none;
-  user-select: none;
+  border-left: 4px solid #b67be6;
+  padding-left: 12px;
 }
 
 .courses {
@@ -26,7 +26,6 @@
 }
 
 /* Use these wrappers for dropdown content */
-
 .latest p,
 .till_date p {
   padding: 12px 18px;
@@ -55,14 +54,12 @@
 .till_date p:hover {
   box-shadow: 0 4px 20px rgba(141, 73, 228, 0.2);
   transform: translateX(4px);
-  /* color: #2e1a72; */
 }
 
 /* Links inside paragraphs */
 .course-link {
   font-weight: 500;
   text-decoration: none;
-  /* color: #4a00e0; */
   transition: color 0.2s ease;
   cursor: pointer;
 }
@@ -71,6 +68,7 @@
   color: #7b2ff7;
 }
 
+
 /* No courses message styling */
 .latest p:empty,
 .till_date p:empty {
@@ -78,9 +76,42 @@
   border-radius: 12px;
   padding: 14px 20px;
   font-style: italic;
-  /* color: #9a79d4; */
   -webkit-user-select: none;
   user-select: none;
 }
 
-/* Optional: disable text selection on headings or no-records */
+.course-item {
+  margin-bottom: 12px;
+}
+
+.course-details-inline {
+  margin-left: 25px;
+  margin-top: 8px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.syllabus-button,
+.classroom-button {
+  width: 14%;
+  padding: 12px;
+  text-align: center;
+  background: linear-gradient(90deg, #8d49e4, #ce85f5);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  /* font-size: 0.9rem; */
+  font-size: 15px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  box-shadow: 0 4px 15px 3px rgba(141, 73, 228, 0.3);
+}
+
+.syllabus-button:hover,
+.classroom-button:hover {
+  transform: scale(1.07);
+  opacity: 0.9;
+}

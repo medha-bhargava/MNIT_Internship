@@ -60,7 +60,7 @@ function Resources() {
         {!loading && !error && (
           <div className="resources">
             <div className="pyqs">
-              <Dropdown title="Previous Year Papers">
+              <Dropdown title="Previous Year Papers" className="dropdown-pyqs">
                 {resources['Previous Year Papers'].length > 0 ? (
                   resources['Previous Year Papers'].map((item, index) => (
                     <p key={index}>
@@ -77,7 +77,7 @@ function Resources() {
             </div>
 
             <div className="impques">
-              <Dropdown title="Important Questions">
+              <Dropdown title="Important Questions" className="dropdown-impq">
                 {resources['Important Questions'].length > 0 ? (
                   resources['Important Questions'].map((item, index) => (
                     <p key={index}>
@@ -94,7 +94,7 @@ function Resources() {
             </div>
 
             <div className="videolinks">
-              <Dropdown title="Video Links">
+              <Dropdown title="Video Links" className="dropdown-videolinks">
                 {resources['Video Links'].length > 0 ? (
                   resources['Video Links'].map((item, index) => (
                     <p key={index}>
@@ -111,7 +111,7 @@ function Resources() {
             </div>
 
             <div className="notes">
-              <Dropdown title="Notes">
+              <Dropdown title="Notes" className="dropdown-notes">
                 {resources['Notes'].length > 0 ? (
                   resources['Notes'].map((item, index) => (
                     <p key={index}>

@@ -31,7 +31,7 @@ function Publications() {
         <h1>Publications</h1>
         <div className="publications">
           <div className="journal">
-            <Dropdown title="Journal">
+            <Dropdown title="Journal" className="dropdown-journal">
               {filterByType("Journal").length > 0 ? (
                 filterByType("Journal").map((pub, index) => (
                   <p key={index}>{pub.ieeeCitation}</p>
@@ -42,7 +42,7 @@ function Publications() {
             </Dropdown>
           </div>
           <div className="conference">
-            <Dropdown title="Conference">
+            <Dropdown title="Conference" className="dropdown-conference">
               {filterByType("Conference").length > 0 ? (
                 filterByType("Conference").map((pub, index) => (
                   <p key={index}>{pub.ieeeCitation}</p>
@@ -53,7 +53,7 @@ function Publications() {
             </Dropdown>
           </div>
           <div className="book-chapter">
-            <Dropdown title="Book-Chapter">
+            <Dropdown title="Book-Chapter" className="dropdown-bookchapter">
               {filterByType("Book-Chapter").length > 0 ? (
                 filterByType("Book-Chapter").map((pub, index) => (
                   <p key={index}>{pub.ieeeCitation}</p>

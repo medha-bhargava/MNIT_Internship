@@ -141,7 +141,7 @@ function EditProfile() {
     <>
       <Navbar />
       <div className="edit-profile-wrapper">
-        <h1 className="heading">Edit Profile</h1>
+        <h1 className="headingEdit">Edit Profile</h1>
         {loading ? (
           <p>Loading...</p>
         ) : (
@@ -156,6 +156,7 @@ function EditProfile() {
                   type="text"
                   placeholder="Enter name"
                   disabled
+                  // style={{ cursor: 'not-allowed' }}
                 />
               </div>
               <div className="input-group">
@@ -167,6 +168,7 @@ function EditProfile() {
                   type="text"
                   placeholder="Enter contact number"
                   disabled
+                  // style={{ cursor: 'not-allowed' }}
                 />
               </div>
             </div>

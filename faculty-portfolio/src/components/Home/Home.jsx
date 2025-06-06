@@ -3,6 +3,8 @@ import Navbar from '../Navbar/Navbar';
 import profilepic from './profilepic.png';
 // import myphoto from './myphoto.png';
 import { useEffect, useState } from 'react';
+// import { FcDocument } from "react-icons/fc";
+import { IoIosDocument } from "react-icons/io";
 
 function Home() {
   const [profile, setProfile] = useState(null);
@@ -29,23 +31,25 @@ function Home() {
 
   return (
     <>
-      <div className="bg-blobs">
-        <div className="blob blob1"></div>
-        <div className="blob blob2"></div>
-        <div className="blob blob3"></div>
-      </div>
-      <div className="bg-blobs">
-        <div className="blob blob1"></div>
-        <div className="blob blob2"></div>
-        <div className="blob blob3"></div>
-      </div>
       <Navbar />
+      {/* <div className="ball-container">
+        <div className="ball ball1"></div>
+        <div className="ball ball2"></div>
+        <div className="ball ball3"></div>
+        <div className="ball ball4"></div>
+        <div className="ball ball5"></div>
+        <div className="ball ball6"></div>
+        <div className="ball ball7"></div>
+        <div className="ball ball8"></div>
+        <div className="ball ball9"></div>
+        <div className="ball ball10"></div>
+        <div className="ball ball11"></div>
+        <div className="ball ball12"></div>
+        <div className="ball ball13"></div>
+        <div className="ball ball14"></div>
+        <div className="ball ball15"></div>
+      </div> */}
       <div className="container">
-        <div className="bg-blobs">
-          <div className="blob blob1"></div>
-          <div className="blob blob2"></div>
-          <div className="blob blob3"></div>
-        </div>
         <div className="left">
           {loading ? (
             <p className="loading-text">Loading photo...</p>
@@ -74,6 +78,11 @@ function Home() {
                 <p>{profile.email}</p>
               </>
             )}
+          </div>
+          <div className="detailedCV">
+            <span>
+              <IoIosDocument className="cv-icon"/><a href="#">Detailed CV</a>
+            </span>
           </div>
         </div>
 

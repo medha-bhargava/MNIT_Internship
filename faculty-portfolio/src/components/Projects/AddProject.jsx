@@ -2,14 +2,19 @@ import { useState, useEffect } from 'react';
 import './AddProject.css';
 
 function AddProject() {
+    const currentYear = new Date().getFullYear();
+    const years = [];
+    for (let y = currentYear; y >= 1950; y--) years.push(y);
+
+    // In your formData state:
     const [formData, setFormData] = useState({
         role: '',
         projectLevel: '',
         projectType: '',
         projectTitle: '',
         fundingAgency: '',
-        dateFrom: '',
-        dateTo: '',
+        yearFrom: '',
+        yearTo: '',
         amount: '',
         status: '',
         erpId: '',
@@ -52,7 +57,7 @@ function AddProject() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const requiredFields = ['role', 'projectLevel', 'projectType', 'projectTitle', 'fundingAgency', 'dateFrom', 'dateTo', 'amount', 'status', 'erpId'];
+        const requiredFields = ['role', 'projectLevel', 'projectType', 'projectTitle', 'fundingAgency', 'yearFrom', 'yearTo', 'amount', 'status', 'erpId'];
 
         for (let field of requiredFields) {
             if (!formData[field]) {
@@ -90,8 +95,8 @@ function AddProject() {
                     projectType: '',
                     projectTitle: '',
                     fundingAgency: '',
-                    dateFrom: '',
-                    dateTo: '',
+                    yearFrom: '',
+                    yearTo: '',
                     amount: '',
                     status: '',
                     erpId: '',
@@ -112,11 +117,11 @@ function AddProject() {
             <form onSubmit={handleSubmit}>
                 <div className="row">
                     <div className="input-group">
-                        {/* <label>Role</label> */}
-                        <select className="select" name="role" value={formData.role} onChange={handleChange}>
-                            <option value="">--Role--</option>
-                            <option value="PI">Principal Investigator</option>
-                            <option value="Co-PI">Co-Principal Investigator</option>
+                        {/* <label>Project Type</label> */}
+                        <select className="select" name="projectType" value={formData.projectType} onChange={handleChange}>
+                            <option value="">--Project-Type--</option>
+                            <option value="Research">Research</option>
+                            <option value="Consultancy">Consultancy</option>
                         </select>
                     </div>
                     <div className="input-group">
@@ -129,11 +134,11 @@ function AddProject() {
                         </select>
                     </div>
                     <div className="input-group">
-                        {/* <label>Project Type</label> */}
-                        <select className="select" name="projectType" value={formData.projectType} onChange={handleChange}>
-                            <option value="">--Project-Type--</option>
-                            <option value="Research">Research</option>
-                            <option value="Consultancy">Consultancy</option>
+                        {/* <label>Role</label> */}
+                        <select className="select" name="role" value={formData.role} onChange={handleChange}>
+                            <option value="">--Role--</option>
+                            <option value="PI">Principal Investigator</option>
+                            <option value="Co-PI">Co-Principal Investigator</option>
                         </select>
                     </div>
                 </div>
@@ -165,26 +170,23 @@ function AddProject() {
 
                 <div className="row">
                     <div className="input-group">
-                        <label>Date From</label>
-                        <input
-                            type="date"
-                            className="date input"
-                            name="dateFrom"
-                            value={formData.dateFrom}
-                            onChange={handleChange}
-                        />
+                        <select className="select" name="yearFrom" value={formData.yearFrom} onChange={handleChange}>
+                            <option value="">--Year From--</option>
+                            {years.map((y) => (
+                                <option key={y} value={y}>{y}</option>
+                            ))}
+                        </select>
                     </div>
                     <div className="input-group">
-                        <label>Date To</label>
-                        <input
-                            type="date"
-                            className="date input"
-                            name="dateTo"
-                            value={formData.dateTo}
-                            onChange={handleChange}
-                        />
+                        <select className="select" name="yearTo" value={formData.yearTo} onChange={handleChange}>
+                            <option value="">--Year To--</option>
+                            {years.map((y) => (
+                                <option key={y} value={y}>{y}</option>
+                            ))}
+                        </select>
                     </div>
                 </div>
+
 
                 <div className="row">
                     <div className="input-group">

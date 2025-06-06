@@ -6,7 +6,8 @@ function AddStudent() {
         name: '',
         section: '',
         topic: '',
-        year: '',
+        yearFrom: '',
+        yearTo: '',
         status: '',
         institute: '',
     });
@@ -22,9 +23,9 @@ function AddStudent() {
     };
 
     const handleSubmit = async () => {
-        const { name, section, topic, year, status, institute } = student;
+        const { name, section, topic, yearFrom, yearTo, status, institute } = student;
 
-        if (!name || !topic || !year || !section || !status || !institute) {
+        if (!name || !topic || !yearFrom || !section || !status) {
             alert('Please fill in all required fields.');
             return;
         }
@@ -35,8 +36,12 @@ function AddStudent() {
             sTitle: topic,
             sStatus: status,
             sInstitute: institute,
-            sYear: parseInt(year),
+            sYearFrom: parseInt(yearFrom),
         };
+
+        if (yearTo) {
+            payload.sYearTo = parseInt(yearTo);
+        }
 
         try {
             const res = await fetch('http://localhost:8083/api/students/add', {
@@ -50,7 +55,8 @@ function AddStudent() {
                 name: '',
                 section: '',
                 topic: '',
-                year: '',
+                yearFrom: '',
+                yearTo: '',
                 status: '',
                 institute: '',
             });
@@ -101,10 +107,9 @@ function AddStudent() {
                         required
                     >
                         <option value="">--Degree--</option>
-                        <option value="PhD">Ph.D</option>
-                        <option value="M.Tech">M.Tech</option>
-                        <option value="B.Tech">B.Tech</option>
-                        <option value="M.Sc">M.Sc</option>
+                        <option value="PhD">PhD</option>
+                        <option value="PG">PG(M.Tech/MS)</option>
+                        <option value="UG">UG</option>
                     </select>
                 </div>
 
@@ -125,6 +130,35 @@ function AddStudent() {
 
             <div className="row">
                 <div className="input-group">
+                    <select
+                        name="yearFrom"
+                        value={student.yearFrom}
+                        onChange={handleChange}
+                        className="select"
+                        required
+                    >
+                        <option value="">--Year From--</option>
+                        {years.map((y) => (
+                            <option key={y} value={y}>{y}</option>
+                        ))}
+                    </select>
+                </div>
+                <div className="input-group">
+                    <select
+                        name="yearTo"
+                        value={student.yearTo}
+                        onChange={handleChange}
+                        className="select"
+                    >
+                        <option value="">--Year To (optional)--</option>
+                        {years.map((y) => (
+                            <option key={y} value={y}>{y}</option>
+                        ))}
+                    </select>
+                </div>
+            </div>
+            <div className="row">
+                <div className="input-group">
                     <input
                         type="text"
                         name="institute"
@@ -134,21 +168,6 @@ function AddStudent() {
                         placeholder="Institute"
                         required
                     />
-                </div>
-
-                <div className="input-group">
-                    <select
-                        name="year"
-                        value={student.year}
-                        onChange={handleChange}
-                        className="select"
-                        required
-                    >
-                        <option value="">--Year--</option>
-                        {years.map((y) => (
-                            <option key={y} value={y}>{y}</option>
-                        ))}
-                    </select>
                 </div>
             </div>
 

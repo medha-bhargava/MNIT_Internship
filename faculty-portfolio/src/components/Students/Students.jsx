@@ -20,18 +20,17 @@ const Students = () => {
         fetchStudents();
     }, []);
 
-    const degrees = ["PhD", "M.Tech", "MS", "B.Tech"];
+    const degrees = ["PhD", "PG", "UG"];
     const statuses = ["Ongoing", "Completed"];
 
-    // Group students by degree & status for dropdowns
     const groupedData = degrees.map((degree) => {
         return {
             degree,
             statuses: statuses.map((status) => ({
                 status,
-                students: students.filter(
-                    (s) => s.sDegree === degree && s.sStatus === status
-                ),
+                students: students
+                    .filter((s) => s.sDegree === degree && s.sStatus === status)
+                    .sort((a, b) => (b.sYearFrom || 0) - (a.sYearFrom || 0)),
             })),
         };
     });
@@ -43,15 +42,21 @@ const Students = () => {
                 <h2 className="students-title">Students Supervised</h2>
 
                 {groupedData.map(({ degree, statuses }) => (
-                    <Dropdown key={degree} title={degree}>
+                    <Dropdown key={degree} title={degree} className={`dropdown-${degree.toLowerCase()}`}>
                         {statuses.map(({ status, students }) => (
-                            <Dropdown key={status} title={status}>
+                            <Dropdown key={status} title={status} className={`dropdown-${status.toLowerCase()}`}>
                                 {students.length > 0 ? (
-                                    <ul className=" ul student-list">
+                                    <ul className="ul student-list">
                                         {students.map((student, idx) => (
-                                            <li key={idx} className={`student-item ${student.sStatus === "Ongoing" ? "ongoing" : "completed"}`}>
+                                            <li
+                                                key={idx}
+                                                className={`student-item ${student.sStatus.trim().toLowerCase() === "ongoing" ? "ongoing" : "completed"
+                                                    }`}
+                                            >
                                                 <strong>{student.sName}</strong> — {student.sTitle} (
-                                                {student.sInstitute}, {student.sYear})
+                                                {student.sYearFrom}
+                                                {student.sYearTo ? ` - ${student.sYearTo}` : ''}
+                                                )
                                             </li>
                                         ))}
                                     </ul>

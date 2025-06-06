@@ -50,7 +50,7 @@ function Events() {
                 <h1>Events</h1>
                 <div className="events">
                     <div className="upcoming">
-                        <Dropdown title="Upcoming">
+                        <Dropdown title="Upcoming" className="dropdown-upcoming">
                             {filterByType("Upcoming").length > 0 ? (
                                 filterByType("Upcoming").map(renderEvent)
                             ) : (
@@ -59,7 +59,7 @@ function Events() {
                         </Dropdown>
                     </div>
                     <div className="past">
-                        <Dropdown title="Past">
+                        <Dropdown title="Past" className="dropdown-past">
                             {filterByType("Past").length > 0 ? (
                                 filterByType("Past").map(renderEvent)
                             ) : (

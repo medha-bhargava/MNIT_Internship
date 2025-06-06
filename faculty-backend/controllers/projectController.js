@@ -9,12 +9,12 @@ const addProject = async (req, res) => {
             projectType,
             projectTitle,
             fundingAgency,
-            dateFrom,
-            dateTo,
+            yearFrom,
+            yearTo,
             amount,
             status,
             erpId,
-            coInvestigators // if you have this optional field
+            coInvestigators
         } = req.body;
 
         const requiredFields = [
@@ -23,12 +23,13 @@ const addProject = async (req, res) => {
             'projectType',
             'projectTitle',
             'fundingAgency',
-            'dateFrom',
-            'dateTo',
+            'yearFrom',
+            'yearTo',
             'amount',
             'status',
             'erpId'
         ];
+
         console.log("Request Body:", req.body);
         const missingFields = requiredFields.filter(field => !req.body[field]);
         if (missingFields.length > 0) {
@@ -43,7 +44,7 @@ const addProject = async (req, res) => {
             return res.status(400).json({ message: 'Amount must be a number' });
         }
 
-        if (!role || !projectLevel || !projectTitle || !projectType ||!fundingAgency) {
+        if (!role || !projectLevel || !projectTitle || !projectType || !fundingAgency) {
             return res.status(400).json({ message: 'Please fill in all required fields.' });
         }
 
@@ -53,14 +54,14 @@ const addProject = async (req, res) => {
             projectType,
             projectTitle,
             fundingAgency,
-            dateFrom,
-            dateTo,
+            yearFrom,
+            yearTo,
             amount: numericAmount,
             status,
             erpId,
-            coInvestigators // optional
+            coInvestigators
         });
-        
+
         await newProject.save();
 
         res.status(201).json({ message: 'Project added successfully' });

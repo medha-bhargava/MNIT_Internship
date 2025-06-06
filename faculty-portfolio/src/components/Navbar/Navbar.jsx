@@ -46,7 +46,7 @@ const Navbar = () => {
 
                     {/* Only show after login based on role */}
                     {isLoggedIn && (role === "student" || role === "admin") && (
-                        <li><Link to="/resources">Resources for Students*</Link></li>
+                        <li><Link to="/resources">Resources for Students</Link></li>
                     )}
 
                     {isLoggedIn && role === "admin" && (
