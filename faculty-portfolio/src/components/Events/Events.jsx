@@ -65,20 +65,83 @@ function Events() {
                 <div className="events">
                     <div className="upcoming">
                         <Dropdown title="Upcoming" className="dropdown-upcoming">
-                            {filterByType("Upcoming").length > 0 ? (
+                            {/* {filterByType("Upcoming").length > 0 ? (
                                 filterByType("Upcoming").map(renderEvent)
                             ) : (
                                 <p className="no-event-records">No records found.</p>
+                            )} */}
+                            {filterByType("Upcoming").length > 0 ? (
+                                <table className="events-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Sr.No.</th>
+                                            <th>Title</th>
+                                            <th>Location</th>
+                                            <th>City</th>
+                                            <th>Country</th>
+                                            <th>Date</th>
+                                            <th>Participation Type</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {filterByType("Upcoming").map((event, index) => (
+                                            <tr key={event._id}>
+                                                <td style={{ textAlign: "center" }}>{index + 1}</td>
+                                                <td>{event.eventTitle}</td>
+                                                <td style={{ textAlign: "center" }}>{event.institute}</td>
+                                                <td style={{ textAlign: "center" }}>{event.city}</td>
+                                                <td style={{ textAlign: "center" }}>{event.country}</td>
+                                                <td style={{ textAlign: "center" }}>
+                                                    {new Date(event.dateFrom).toLocaleDateString()} -{' '}
+                                                    {new Date(event.dateTo).toLocaleDateString()}
+                                                </td>
+                                                <td style={{ textAlign: "center" }}>{event.participationType || '-'}</td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            ) : (
+                                <p className="no-event-records">No records found.</p>
                             )}
+
                         </Dropdown>
                     </div>
                     <div className="past">
                         <Dropdown title="Past" className="dropdown-past">
                             {filterByType("Past").length > 0 ? (
-                                filterByType("Past").map(renderEvent)
+                                <table className="events-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Sr.No.</th>
+                                            <th>Title</th>
+                                            <th>Location</th>
+                                            <th>City</th>
+                                            <th>Country</th>
+                                            <th>Date</th>
+                                            <th>Participation Type</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {filterByType("Past").map((event, index) => (
+                                            <tr key={event._id}>
+                                                <td style={{ textAlign: "center" }}>{index + 1}</td>
+                                                <td>{event.eventTitle}</td>
+                                                <td style={{ textAlign: "center" }}>{event.institute}</td>
+                                                <td style={{ textAlign: "center" }}>{event.city}</td>
+                                                <td style={{ textAlign: "center" }}>{event.country}</td>
+                                                <td style={{ textAlign: "center" }}>
+                                                    {new Date(event.dateFrom).toLocaleDateString()} - {' '}
+                                                    {new Date(event.dateTo).toLocaleDateString()}
+                                                </td>
+                                                <td style={{ textAlign: "center" }}>{event.participationType || '-'}</td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
                             ) : (
                                 <p className="no-event-records">No records found.</p>
                             )}
+
                         </Dropdown>
                     </div>
                 </div>
