@@ -22,7 +22,9 @@ function Publications() {
   }, []);
 
   const filterByType = (type) =>
-    publications.filter((pub) => pub.pType === type);
+    publications
+      .filter((pub) => pub.pType === type)
+  // .sort((a, b) => parseInt(b.pYear) - parseInt(a.pYear));
 
   return (
     <>
@@ -34,7 +36,17 @@ function Publications() {
             <Dropdown title="Journal" className="dropdown-journal">
               {filterByType("Journal").length > 0 ? (
                 filterByType("Journal").map((pub, index) => (
-                  <p key={index}>{pub.ieeeCitation}</p>
+                  <p key={index}>
+                    {pub.ieeeCitation}{' '}
+                    {pub.doiLink && (
+                      <>
+                        DOI:{''}
+                        <a href={pub.doiLink} target="_blank" rel="noopener noreferrer">
+                          {pub.doiLink}
+                        </a>
+                      </>
+                    )}
+                  </p>
                 ))
               ) : (
                 <p className="no-records">No records found.</p>

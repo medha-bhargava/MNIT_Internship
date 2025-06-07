@@ -7,9 +7,10 @@ const eventSchema = new mongoose.Schema({
     institute: { type: String },
     city: { type: String },
     country: { type: String },
+    participationType: { type: String },
     dateFrom: { type: Date, required: true },
     dateTo: { type: Date, required: true },
-    designation: { type: String },
+    designation: { type: String, required: false },
     sponsoredBy: { type: String },
 });
 

@@ -30,9 +30,14 @@
     border-left: 5px solid #8d49e4;
 }
 
+.organized .eventItem,
+.dropdown-title-organized+.dropdown-content .eventItem {
+    border-left: 5px solid #b67be6;
+}
+
 .past .eventItem,
 .dropdown-title-past+.dropdown-content .eventItem {
-    border-left: 5px solid #b67be6;
+    border-left: 5px solid #ce85f5;
 }
 
 .eventItem {
@@ -59,9 +64,14 @@
     border-left: 5px solid #8d49e4;
 }
 
+.organized .no-event-records,
+.dropdown-title-organized+.dropdown-content .no-event-records {
+    border-left: 5px solid #b67be6;
+}
+
 .past .no-event-records,
 .dropdown-title-past+.dropdown-content .no-event-records {
-    border-left: 5px solid #b67be6;
+    border-left: 5px solid #ce85f5;
 }
 
 .no-event-records {

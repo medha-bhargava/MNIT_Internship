@@ -130,8 +130,13 @@
   background-color: rgba(255, 255, 255, 0.4)
 }
 
+.dropdown-organized {
+  /* background-color: #ddf4ec; */
+  background-color: rgba(255, 255, 255, 0.4)
+}
+
 .dropdown-ongoing .dropdown-content,
-.dropdown-completed .dropdown-content {
+.dropdown-completed .dropdown-content{
   /* background-color: #fdf4ff; */
   background-color: white;
 }

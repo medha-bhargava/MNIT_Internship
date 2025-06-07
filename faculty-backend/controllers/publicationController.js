@@ -9,7 +9,7 @@ export const addPublication = async (req, res) => {
       pType, pTitle, pAuthors,
       journalType, journalName, volume, doiLink, impactFactor, page, isbn,
       conferenceType, conferenceName, place, dateFrom, dateTo,
-      year, pPublisher, issn, pubType
+      year, pPublisher, issn, pubType, bookPublisher
     } = req.body;
     const pId = uuidv4();
 
@@ -39,8 +39,8 @@ export const addPublication = async (req, res) => {
         journalType,
         journalName,
         volume,
-        doiLink,
-        impactFactor,
+        // doiLink,
+        // impactFactor,
         // page,
         // isbn,
         ...(page && { page }),
@@ -64,6 +64,7 @@ export const addPublication = async (req, res) => {
       Object.assign(base, {
         issn,
         pubType,
+        bookPublisher,
       });
     }
 
@@ -79,7 +80,11 @@ export const addPublication = async (req, res) => {
 
 export const getAllPublications = async (req, res) => {
   try {
-    const publications = await Publication.find({});
+    // const publications = await Publication.find({});
+    const publications = await Publication.find({}).sort({
+      pYear: -1,
+      createdAt: -1
+    });
     const formatted = convertToIEEEFormat(publications);
     res.status(200).json(formatted);
   } catch (error) {

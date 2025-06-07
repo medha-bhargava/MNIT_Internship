@@ -16,8 +16,8 @@ const publicationSchema = new Schema({
     journalType: { type: String },
     journalName: { type: String },
     volume: { type: String },
-    doiLink: { type: String },
-    impactFactor: { type: String },
+    doiLink: { type: String, required: false },
+    // impactFactor: { type: String },
     page: { type: String, required: false },
     isbn: { type: String, required: false },
 
@@ -30,7 +30,8 @@ const publicationSchema = new Schema({
 
     // Book-Chapter-specific
     issn: { type: String },
-    pubType: { type: String }, // Type of Publication
-});
+    pubType: { type: String },
+    bookPublisher: { type: String },
+}, { timestamps: true });
 
 export default model("Publication", publicationSchema);

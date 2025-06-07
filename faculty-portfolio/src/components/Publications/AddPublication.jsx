@@ -26,7 +26,7 @@ function AddPublicationForm() {
         // Book Chapter fields
         title: '',
         bookPublisher: '',
-        isbnIssn: '',
+        issn: '',
         publicationType: '',
     });
 
@@ -60,8 +60,8 @@ function AddPublicationForm() {
                 'journalName',
                 'volume',
                 'paperTitle',
-                'doiLink',
-                'impactFactor',
+                // 'doiLink',
+                // 'impactFactor',
                 // 'page',
                 // 'isbn',
                 'authors',
@@ -85,7 +85,7 @@ function AddPublicationForm() {
                 'title',
                 'bookPublisher',
                 'authors',
-                'isbnIssn',
+                'issn',
                 'year',
                 'publicationType',
             ];
@@ -106,7 +106,7 @@ function AddPublicationForm() {
             pAuthors: formData.authors
                 .split(',')
                 .map((author) => author.trim())
-                .filter((a) => a.length > 0), // optional: removes empty entries
+                .filter((a) => a.length > 0),
         };
         // delete payload.authors; // optional: remove old key to avoid confusion
         try {
@@ -140,7 +140,7 @@ function AddPublicationForm() {
                     dateTo: '',
                     title: '',
                     bookPublisher: '',
-                    isbnIssn: '',
+                    issn: '',
                     publicationType: '',
                 });
             } else {
@@ -436,7 +436,7 @@ function AddPublicationForm() {
                             <input
                                 name="bookPublisher"
                                 type="text"
-                                placeholder="Publisher"
+                                placeholder="Book Publisher"
                                 value={formData.bookPublisher}
                                 onChange={handleChange}
                             />
@@ -455,10 +455,10 @@ function AddPublicationForm() {
                         </div>
                         <div className="input-group">
                             <input
-                                name="isbnIssn"
+                                name="issn"
                                 type="text"
                                 placeholder="ISBN/ISSN No."
-                                value={formData.isbnIssn}
+                                value={formData.issn}
                                 onChange={handleChange}
                             />
                         </div>

@@ -9,6 +9,7 @@ function AddEvent() {
         institute: '',
         city: '',
         country: '',
+        participationType: '',
         dateFrom: '',
         dateTo: '',
         designation: '',
@@ -23,13 +24,12 @@ function AddEvent() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            // console.log(formData);
             const response = await fetch('http://localhost:8083/api/events/add', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData),
             });
-            
+
             if (response.ok) {
                 alert('Event added successfully!');
                 setFormData({
@@ -39,6 +39,7 @@ function AddEvent() {
                     institute: '',
                     city: '',
                     country: '',
+                    participationType: '',
                     dateFrom: '',
                     dateTo: '',
                     designation: '',
@@ -61,6 +62,7 @@ function AddEvent() {
                     <div className="input-group">
                         <select className="select" name="category" value={formData.category} onChange={handleChange}>
                             <option value="">--Category of Event--</option>
+                            <option value="Short Term Course">Short Term Course</option>
                             <option value="Conference">Conference</option>
                             <option value="Workshop">Workshop</option>
                             <option value="FDP">FDP</option>
@@ -126,6 +128,8 @@ function AddEvent() {
                             onChange={handleChange}
                         />
                     </div>
+                </div>
+                <div className="row">
                     <div className="input-group">
                         <input
                             type="text"
@@ -136,8 +140,19 @@ function AddEvent() {
                             onChange={handleChange}
                         />
                     </div>
+                    <div className="input-group">
+                        <select
+                            name="participationType"
+                            className="input"
+                            value={formData.participationType}
+                            onChange={handleChange}
+                        >
+                            <option value="">--Participation Type--</option>
+                            <option value="Organized">Organized</option>
+                            <option value="Attended">Attended</option>
+                        </select>
+                    </div>
                 </div>
-
                 <div className="row">
                     <div className="input-group">
                         <label>Date From</label>
