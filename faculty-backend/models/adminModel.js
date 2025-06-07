@@ -7,6 +7,7 @@ const adminSchema = new Schema({
   about: String,
   news: String,
   profilePhoto: String,
+  detailedCV: String,
 });
 
 export default model('Admin', adminSchema);

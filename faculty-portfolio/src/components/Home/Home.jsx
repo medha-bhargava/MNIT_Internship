@@ -81,7 +81,18 @@ function Home() {
           </div>
           <div className="detailedCV">
             <span>
-              <IoIosDocument className="cv-icon"/><a href="#">Detailed CV</a>
+              <IoIosDocument className="cv-icon" />
+              {profile && profile.detailedCV ? (
+                <a
+                  href={`http://localhost:8083/${profile.detailedCV}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Detailed CV
+                </a>
+              ) : (
+                <span style={{ color: 'gray' }}>CV not uploaded</span>
+              )}
             </span>
           </div>
         </div>

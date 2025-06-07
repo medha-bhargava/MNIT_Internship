@@ -22,9 +22,10 @@ function EditProfile() {
   const [loading, setLoading] = useState(true);
   // const [message, setMessage] = useState('');
   const [selectedPhoto, setSelectedPhoto] = useState(null);
+  const [selectedCV, setSelectedCV] = useState(null);
 
   const subOptions = {
-    home: ['about', 'news', 'changePhoto'],
+    home: ['about', 'news', 'changePhoto', 'cv'],
     publications: ['addPublication'],
     // publications: ['add', 'update', 'remove'],
     courses: ['addCourse'],
@@ -39,6 +40,7 @@ function EditProfile() {
       about: 'About Me',
       news: 'News',
       changePhoto: 'Change Profile Photo',
+      cv: 'Upload Detailed CV',
       addPublication: 'Add Publication',
       addCourse: 'Add Course',
       addResource: 'Add Resource',
@@ -136,6 +138,31 @@ function EditProfile() {
       alert(`Error: ${err.message}`);
     }
   };
+
+  const handleCVUpload = async () => {
+    if (!selectedCV) {
+      alert('Please select a PDF to upload.');
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('cv', selectedCV);
+
+    try {
+      const res = await fetch('http://localhost:8083/api/profile/upload-cv', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!res.ok) throw new Error('CV upload failed');
+
+      alert('Detailed CV uploaded successfully!');
+      setSelectedCV(null);
+    } catch (err) {
+      alert(`Error: ${err.message}`);
+    }
+  };
+
 
   return (
     <>
@@ -257,6 +284,19 @@ function EditProfile() {
               </div>
             )}
 
+            {section === 'home' && subField === 'cv' && (
+              <div className="row">
+                <div className="input-group">
+                  <label>Upload Detailed CV (PDF)</label>
+                  <input
+                    type="file"
+                    accept="application/pdf"
+                    onChange={(e) => setSelectedPhoto(e.target.files[0])} // We'll rename this in a sec
+                  />
+                </div>
+              </div>
+            )}
+
             {section === 'home' && subField === 'changePhoto' && (
               <div className="row">
                 <button className="update-photo-button" onClick={handlePhotoUpdate}>
@@ -264,6 +304,15 @@ function EditProfile() {
                 </button>
               </div>
             )}
+
+            {section === 'home' && subField === 'cv' && (
+              <div className="row">
+                <button className="update-button" onClick={handleCVUpload}>
+                  Upload CV
+                </button>
+              </div>
+            )}
+
 
             {section === 'publications' && subField === 'addPublication' && (
               <div className="row">
@@ -301,8 +350,7 @@ function EditProfile() {
               </div>
             )}
 
-
-            {section === 'home' && subField !== 'changePhoto' && (
+            {section === 'home' && subField !== 'changePhoto' && subField !== 'cv' &&(
               <div className="row">
                 <button className="update-button" onClick={handleUpdate}>
                   Update Profile

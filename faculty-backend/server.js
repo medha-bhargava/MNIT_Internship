@@ -1,4 +1,5 @@
 import express, { json } from "express";
+import path from 'path';
 import mongoose from "mongoose";
 import { connect } from "mongoose";
 import cors from "cors";
@@ -51,6 +52,7 @@ app.use('/api/events', eventRoutes);
 app.use("/api/resources", resourceRoutes);
 app.use('/api', adminRoutes);
 app.use('/uploads', express.static('uploads'));
+app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
 app.use("/api/students", studentRoutes);
 
 

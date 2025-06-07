@@ -35,14 +35,6 @@ const updateProfile = async (req, res) => {
 };
 
 const uploadProfilePhoto = async (req, res) => {
-    //   try {
-    //     // For example, save filename in DB or process file
-    //     console.log('Uploaded file:', req.file);
-    //     // Save req.file.filename to user profile in DB if needed
-    //     res.status(200).json({ message: 'Photo uploaded successfully' });
-    //   } catch (error) {
-    //     res.status(500).json({ message: 'Failed to upload photo', error });
-    //   }
     try {
         const file = req.file;
         if (!file) return res.status(400).json({ message: 'No file uploaded' });
@@ -61,4 +53,14 @@ const uploadProfilePhoto = async (req, res) => {
         res.status(500).json({ message: 'Failed to upload photo', error });
     }
 };
-export { getProfile, updateProfile, uploadProfilePhoto };
+
+const uploadCV = async (req, res) => {
+  try {
+    const filePath = req.file.path; // Or customize storage path
+    await Admin.updateOne({}, { detailedCV: filePath });
+    res.status(200).json({ message: 'CV uploaded successfully', path: filePath });
+  } catch (error) {
+    res.status(500).json({ message: 'Failed to upload CV', error });
+  }
+};
+export { getProfile, updateProfile, uploadProfilePhoto, uploadCV };
