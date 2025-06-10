@@ -1,0 +1,118 @@
+.add-lecture-plan-wrapper {
+    margin: 50px auto;
+    padding: 40px;
+    background-color: #f9f9f9;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 850px;
+}
+
+.headingL {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #333;
+    text-align: center;
+    font-weight: 700;
+}
+
+.h3 {
+    color: #333;
+    margin-left: 17px;
+}
+
+.input-groupL {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 30px;
+    justify-content: space-between;
+}
+
+.selectL,
+.inputL {
+    font-size: 1rem;
+    padding: 12px 14px;
+    border-radius: 10px;
+    /* border: 1px solid #ccc; */
+    /* background-color: #fff; */
+    transition: border-color 0.3s ease;
+    flex: 1;
+    min-width: 250px;
+}
+
+.inputL.medium {
+    min-width: 250px;
+}
+
+.inputL.mediumL {
+    min-width: 300px;
+}
+
+.inputL.smallL {
+    min-width: 120px;
+}
+
+.lecture-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+    align-items: center;
+    /* background-color: #f1f1f1; */
+    padding: 15px;
+    border-radius: 12px;
+    /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05); */
+}
+
+.remove-lecture-btnL {
+    background-color: #fd8282;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: 0.5s;
+}
+
+.remove-lecture-btnL:hover {
+    opacity: 0.8;
+    transform: scale(1.1);
+}
+
+.addBtn {
+    display: flex;
+    gap: 20px;
+    margin-top: 30px;
+    justify-content: center;
+}
+
+.add-buttonL {
+    padding: 10px 20px;
+    background: linear-gradient(to right, #8d49e4, #ce85f5);
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px 3px rgba(141, 73, 228, 0.3);
+    transition: all 0.4s ease;
+}
+
+.submit-buttonL {
+    padding: 12px 45px;
+    background: linear-gradient(to right, #8d49e4, #ce85f5);
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px 3px rgba(141, 73, 228, 0.3);
+    transition: all 0.4s ease;
+}
+
+.add-buttonL:hover, .submit-buttonL:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}

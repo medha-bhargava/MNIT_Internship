@@ -148,6 +148,7 @@ function AddEvent() {
                             onChange={handleChange}
                         >
                             <option value="">--Participation Type--</option>
+                            <option value="Upcoming">Upcoming</option>
                             <option value="Organized">Organized</option>
                             <option value="Attended">Attended</option>
                         </select>

@@ -25,14 +25,9 @@
     gap: 5px;
 }
 
-.upcoming .eventItem,
+/* .upcoming .eventItem,
 .dropdown-title-upcoming+.dropdown-content .eventItem {
     border-left: 5px solid #8d49e4;
-}
-
-.organized .eventItem,
-.dropdown-title-organized+.dropdown-content .eventItem {
-    border-left: 5px solid #b67be6;
 }
 
 .past .eventItem,
@@ -53,7 +48,11 @@
     box-shadow: 0 2px 8px rgba(141, 73, 228, 0.07);
 }
 
-.eventItem:hover,
+.eventItem:hover {
+    box-shadow: 0 4px 20px rgba(141, 73, 228, 0.2);
+    transform: translateX(4px);
+} */
+
 .no-event-records:hover {
     box-shadow: 0 4px 20px rgba(141, 73, 228, 0.2);
     transform: translateX(4px);
@@ -83,11 +82,19 @@
     transition: all 0.25s ease;
 }
 
+.upcoming-table th {
+    border-top: 5px solid #8d49e4 !important;
+}
+
+.past-table th {
+    border-top: 5px solid #b67be6 !important;
+}
+
 .events-table {
     width: 100%;
     border-collapse: separate;
     border-spacing: 0;
-    margin-top: 12px;
+    margin-top: 15px;
     background-color: #fff;
     font-size: 15px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
@@ -112,7 +119,6 @@
     border: 0.2px solid #b67be6;
     padding: 10px 14px;
     text-align: left;
-
 }
 
 .events-table thead tr:first-child th:first-child {

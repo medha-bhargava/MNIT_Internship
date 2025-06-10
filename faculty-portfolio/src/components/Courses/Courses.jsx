@@ -36,6 +36,58 @@ function Courses() {
   const currentlyTeaching = courses.filter(c => c.courseType === 'Currently Teaching');
   const previouslyTaught = courses.filter(c => c.courseType === 'Previously Taught');
 
+  const renderYearsTaught = (course) => {
+    if (!course.yearsTaught || course.yearsTaught.length === 0) {
+      return <p>No year-wise info available.</p>;
+    }
+
+    return course.yearsTaught
+      .filter(entry => entry && entry.year && entry.session)
+      .map((entry, idx) => (
+        <div key={idx} className="course-year-entry" style={{ marginBottom: '6px' }}>
+          <Link
+            to={`/syllabus/${course.courseId}/${entry.year}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ fontWeight: 'bold', color: 'rgb(101, 101, 255)', textDecoration: 'underline' }}
+          >
+            {entry.year} ({entry.session})
+          </Link>
+
+          {entry.classroomLink && (
+            isLoggedIn ? (
+              <a
+                href={entry.classroomLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  marginLeft: '10px',
+                  color: 'rgb(101, 101, 255)',
+                  fontWeight: 'bold',
+                  textDecoration: 'underline'
+                }}
+              >
+                Classroom
+              </a>
+            ) : (
+              <a
+                href="/login"
+                style={{
+                  marginLeft: '10px',
+                  color: 'rgb(101, 101, 255)',
+                  fontWeight: 'bold',
+                  textDecoration: 'underline'
+                }}
+              >
+                Classroom
+              </a>
+            )
+          )}
+        </div>
+      ));
+  };
+
+
   return (
     <>
       <Navbar />
@@ -51,13 +103,8 @@ function Courses() {
               <Dropdown title="Currently Teaching" className="dropdown-currently">
                 {currentlyTeaching.length > 0 ? (
                   currentlyTeaching.map(course => (
-                    // <p key={course.courseId}>
-                    //   <Link to={`/courses/${encodeURIComponent(course.courseName)}`} className="course-link">
-                    //     {`${course.courseId}: ${course.courseName} (${course.institute})`}
-                    //   </Link>
-                    // </p>
                     <div key={course.courseId} className="course-item">
-                      <p
+                      <div
                         className="course-link"
                         style={{ cursor: 'pointer', marginBottom: '7px' }}
                         onClick={() =>
@@ -68,34 +115,12 @@ function Courses() {
                       >
                         {`${course.courseId}: ${course.courseName} (${course.institute})`}
                         {expandedCourseName === course.courseName && (
-                          <div className="course-details-inline" style={{ marginLeft: '15px' }}>
-                            <button
-                              className="syllabus-button"
-                              onClick={() => {
-                                if (course.syllabusLink) window.open(course.syllabusLink, '_blank');
-                                else alert('Syllabus not available');
-                              }}
-                            >
-                              View Syllabus
-                            </button>
-                            <button
-                              className="classroom-button"
-                              onClick={() => {
-                                const role = localStorage.getItem('role');
-                                if (course.classroomLink && (role === 'student' || role === 'admin')) {
-                                  window.open(course.classroomLink, '_blank');
-                                } else if (!course.classroomLink) {
-                                  alert('Classroom link not available.');
-                                } else {
-                                  alert('You need to login as student or admin to access classroom.');
-                                }
-                              }}
-                            >
-                              Go to Classroom
-                            </button>
+                          <div className="course-details-inline" style={{ marginLeft: '20px', marginTop: '8px' }}>
+                            {renderYearsTaught(course)}
                           </div>
                         )}
-                      </p>
+
+                      </div>
                     </div>
                   ))
                 ) : (
@@ -108,13 +133,8 @@ function Courses() {
               <Dropdown title="Previously Taught" className="dropdown-previously">
                 {previouslyTaught.length > 0 ? (
                   previouslyTaught.map(course => (
-                    // <p key={course.courseId}>
-                    //   <Link to={`/courses/${encodeURIComponent(course.courseName)}`} className="course-link">
-                    //     {`${course.courseId}: ${course.courseName} (${course.institute})`}
-                    //   </Link>
-                    // </p>
                     <div key={course.courseId} className="course-item">
-                      <p
+                      <div
                         className="course-link"
                         style={{ cursor: 'pointer', marginBottom: '5px' }}
                         onClick={() =>
@@ -125,34 +145,11 @@ function Courses() {
                       >
                         {`${course.courseId}: ${course.courseName} (${course.institute})`}
                         {expandedCourseName === course.courseName && (
-                          <div className="course-details-inline" style={{ marginLeft: '15px' }}>
-                            <button
-                              className="syllabus-button"
-                              onClick={() => {
-                                if (course.syllabusLink) window.open(course.syllabusLink, '_blank');
-                                else alert('Syllabus not available');
-                              }}
-                            >
-                              View Syllabus
-                            </button>
-                            <button
-                              className="classroom-button"
-                              onClick={() => {
-                                const role = localStorage.getItem('role');
-                                if (course.classroomLink && (role === 'student' || role === 'admin')) {
-                                  window.open(course.classroomLink, '_blank');
-                                } else if (!course.classroomLink) {
-                                  alert('Classroom link not available.');
-                                } else {
-                                  alert('You need to login as student or admin to access classroom.');
-                                }
-                              }}
-                            >
-                              Go to Classroom
-                            </button>
+                          <div className="course-details-inline" style={{ marginLeft: '20px', marginTop: '8px' }}>
+                            {renderYearsTaught(course)}
                           </div>
                         )}
-                      </p>
+                      </div>
                     </div>
 
                   ))

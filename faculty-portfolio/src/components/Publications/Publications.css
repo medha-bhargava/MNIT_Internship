@@ -61,6 +61,15 @@
   transform: translateX(4px);
 }
 
+.doiLink {
+  text-decoration: underline;
+  color: rgb(101, 101, 255);
+}
+
+.doiLink:hover{
+  text-decoration: underline;
+}
+
 .no-records {
   /* border-left: 5px solid #ce85f5; */
   border-radius: 12px;

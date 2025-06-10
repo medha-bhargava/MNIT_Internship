@@ -7,6 +7,7 @@ import AddProjectForm from '../Projects/AddProject';
 import AddEventForm from '../Events/AddEvent';
 import AddStudentForm from '../Students/AddStudent';
 import AddResourceForm from '../Resources/AddResource';
+import AddLecturePlan from '../Courses/AddLecturePlan';
 
 function EditProfile() {
   const [section, setSection] = useState('');
@@ -28,7 +29,7 @@ function EditProfile() {
     home: ['about', 'news', 'changePhoto', 'cv'],
     publications: ['addPublication'],
     // publications: ['add', 'update', 'remove'],
-    courses: ['addCourse'],
+    courses: ['addCourse', 'addLecturePlan'],
     resources: ['addResource'],
     projects: ['addProject'],
     events: ['addEvent'],
@@ -43,6 +44,7 @@ function EditProfile() {
       cv: 'Upload Detailed CV',
       addPublication: 'Add Publication',
       addCourse: 'Add Course',
+      addLecturePlan: 'Add Lecture Plan to Existing Course',
       addResource: 'Add Resource',
       addProject: 'Add Project',
       addEvent: 'Add Event',
@@ -326,6 +328,12 @@ function EditProfile() {
               </div>
             )}
 
+            {section === 'courses' && subField === 'addLecturePlan' && (
+              <div className="row">
+                <AddLecturePlan />
+              </div>
+            )}
+
             {section === 'projects' && subField === 'addProject' && (
               <div className="row">
                 <AddProjectForm />
@@ -350,7 +358,7 @@ function EditProfile() {
               </div>
             )}
 
-            {section === 'home' && subField !== 'changePhoto' && subField !== 'cv' &&(
+            {section === 'home' && subField !== 'changePhoto' && subField !== 'cv' && (
               <div className="row">
                 <button className="update-button" onClick={handleUpdate}>
                   Update Profile

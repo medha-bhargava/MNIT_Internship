@@ -17,6 +17,8 @@ import Students from "./components/Students/Students.jsx";
 import EditProfile from './components/EditProfile/EditProfile.jsx';
 import AccessDenied from "./components/AccessDenied/AccessDenied.jsx";
 // import CourseDetails from './components/Courses/CourseDetails.jsx';
+import SyllabusView from './components/Courses/SyllabusView';
+import AddLecturePlan from './components/Courses/AddLecturePlan.jsx';
 
 import './index.css'
 
@@ -32,6 +34,8 @@ createRoot(document.getElementById('root')).render(
         <Route path="/courses" element={<CoursesPage />} />
         <Route path="/add-course" element={<AddCourse/>} />
         {/* <Route path="/courses/:courseName" element={<CourseDetails />} /> */}
+        <Route path="/syllabus/:courseId/:year" element={<SyllabusView />} />
+        <Route path="/add-lecture-plan" element={<AddLecturePlan />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/add-projects" element={<AddProjects />} />
         <Route path="/events" element={<Events />} />

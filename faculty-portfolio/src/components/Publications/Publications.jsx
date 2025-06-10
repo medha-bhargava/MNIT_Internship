@@ -41,7 +41,7 @@ function Publications() {
                     {pub.doiLink && (
                       <>
                         DOI:{''}
-                        <a href={pub.doiLink} target="_blank" rel="noopener noreferrer">
+                        <a href={pub.doiLink} target="_blank" rel="noopener noreferrer" className="doiLink">
                           {pub.doiLink}
                         </a>
                       </>

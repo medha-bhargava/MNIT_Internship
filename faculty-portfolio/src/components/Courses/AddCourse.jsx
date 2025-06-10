@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FaPlus } from "react-icons/fa6";
 import './AddCourse.css';
 
 function AddCourse() {
@@ -6,31 +7,88 @@ function AddCourse() {
     const [courseName, setCourseName] = useState('');
     const [courseType, setCourseType] = useState('');
     const [institute, setInstitute] = useState('');
-    const [syllabusLink, setSyllabusLink] = useState('');
-    const [classroomLink, setClassroomLink] = useState('');
+    const [description, setDescription] = useState('');
+    const [yearsTaught, setYearsTaught] = useState([
+        { year: '', session: '', syllabusLink: '', classroomLink: '' }
+    ]);
+    const [lecturePlan, setLecturePlan] = useState([
+        { lectureNo: '', date: '', title: '', pdfLink: '', pptLink: '' }
+    ]);
+
+    const handleYearChange = (index, field, value) => {
+        const updatedYears = [...yearsTaught];
+        updatedYears[index][field] = value;
+        setYearsTaught(updatedYears);
+    };
+
+    const addYearField = () => {
+        setYearsTaught([
+            ...yearsTaught,
+            { year: '', session: '', syllabusLink: '', classroomLink: '' }
+        ]);
+    };
+
+    const removeYearField = (index) => {
+        const updatedYears = [...yearsTaught];
+        updatedYears.splice(index, 1);
+        setYearsTaught(updatedYears);
+    };
+
+    const updateLecture = (index, field, value) => {
+        const updated = [...lecturePlan];
+        updated[index][field] = value;
+        setLecturePlan(updated);
+    };
+
+    const addLecture = () => {
+        setLecturePlan([...lecturePlan, { lectureNo: '', date: '', title: '', pdfLink: '', pptLink: '' }]);
+    };
+
+    const removeLecture = (index) => {
+        const updated = [...lecturePlan];
+        updated.splice(index, 1);
+        setLecturePlan(updated);
+    };
+
 
     const handleAdd = async () => {
-        if (!courseId || !courseName || !courseType || !institute || !syllabusLink ||!classroomLink) {
+        if (!courseId || !courseName || !courseType || !institute || !description) {
             alert('Please fill all course fields.');
             return;
+        }
+
+        for (const yearEntry of yearsTaught) {
+            if (!yearEntry.year || !yearEntry.session || !yearEntry.syllabusLink || !yearEntry.classroomLink) {
+                alert('Please fill all year-wise fields.');
+                return;
+            }
         }
 
         try {
             const response = await fetch('http://localhost:8083/api/courses/add', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ courseId, courseName, courseType, institute, syllabusLink, classroomLink }),
+                body: JSON.stringify({
+                    courseId,
+                    courseName,
+                    courseType,
+                    institute,
+                    description,
+                    yearsTaught,
+                    lecturePlan,
+                }),
             });
 
             const data = await response.json();
             if (response.ok) {
                 alert('Course added successfully!');
+                // Clear form
                 setCourseId('');
                 setCourseName('');
                 setCourseType('');
                 setInstitute('');
-                setClassroomLink('');
-                setSyllabusLink('');
+                setDescription('');
+                setYearsTaught([{ year: '', session: '', syllabusLink: '', classroomLink: '' }]);
             } else {
                 alert(data.message || 'Something went wrong.');
             }
@@ -88,24 +146,64 @@ function AddCourse() {
                 </div>
             </div>
             <div className="row">
-                <div className="input-group">
-                    <input
-                        className='input'
-                        type="text"
-                        placeholder="Google Classroom Link"
-                        value={classroomLink}
-                        onChange={(e) => setClassroomLink(e.target.value)}
+                <div className="input-group full-width">
+                    <textarea
+                        className="textarea"
+                        placeholder="Course Description"
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                        rows={4}
                     />
                 </div>
-                <div className="input-group">
-                    <input
-                        className='input'
-                        type="text"
-                        placeholder="Syllabus Link"
-                        value={syllabusLink}
-                        onChange={(e) => setSyllabusLink(e.target.value)}
-                    />
-                </div>
+            </div>
+
+            <div className="years-taught-wrapper">
+                <h3>Year-wise Course Details</h3>
+                {yearsTaught.map((entry, index) => (
+                    <div className="year-block" key={index}>
+                        <div className="year-row">
+                            <input
+                                className="inputN small"
+                                type="text"
+                                placeholder="Year (e.g. 2023)"
+                                value={entry.year}
+                                onChange={(e) => handleYearChange(index, 'year', e.target.value)}
+                            />
+                            <input
+                                className="inputN small"
+                                type="text"
+                                placeholder="Session (e.g. Jan-Apr)"
+                                value={entry.session}
+                                onChange={(e) => handleYearChange(index, 'session', e.target.value)}
+                            />
+                        </div>
+                        <div className="year-row">
+                            <input
+                                className="inputN"
+                                type="text"
+                                placeholder="Syllabus Link"
+                                value={entry.syllabusLink}
+                                onChange={(e) => handleYearChange(index, 'syllabusLink', e.target.value)}
+                            />
+                            <input
+                                className="inputN"
+                                type="text"
+                                placeholder="Classroom Link"
+                                value={entry.classroomLink}
+                                onChange={(e) => handleYearChange(index, 'classroomLink', e.target.value)}
+                            />
+                        </div>
+                        {index > 0 && (
+                            <button className="remove-button" onClick={() => removeYearField(index)}>
+                                ❌
+                            </button>
+                        )}
+                    </div>
+                ))}
+
+                <button className="add-year-button" onClick={addYearField}>
+                    <FaPlus className="plusIcon" /> Add Another Year
+                </button>
             </div>
 
             <div className="row">
