@@ -18,23 +18,6 @@ const AddLecturePlan = () => {
         fetchCourses();
     }, []);
 
-    // Fetch lecture plan when a course is selected
-    useEffect(() => {
-        const fetchLecturePlan = async () => {
-            try {
-                const response = await fetch(`http://localhost:8083/api/courses/get-lecture-plan/${selectedCourseId}`);
-                const data = await response.json();
-                console.log("Fetched Lecture Plan:", data); // Debugging
-                setLecturePlan(data.lecturePlan || []);
-            } catch (err) {
-                console.error("Error fetching lecture plan:", err);
-            }
-        };
-
-        if (selectedCourseId) {
-            fetchLecturePlan();
-        }
-    }, [selectedCourseId]);
     
     const handleLectureChange = (index, field, value) => {
         const updated = [...lecturePlan];

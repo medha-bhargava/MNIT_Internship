@@ -26,84 +26,6 @@ export const addCourse = async (req, res) => {
   }
 };
 
-// export const addLecturePlan = async (req, res) => {
-//   const { courseId, year } = req.params;
-//   const { courseId: bodyCourseId, year: bodyYear, yearEntry } = req.body;
-
-//   try {
-//     const course = await Course.findOne({ courseId: courseId });
-
-//     if (!course) return res.status(404).json({ message: 'Course not found' });
-
-//     // Check if year entry already exists
-//     // const existing = course.yearsTaught.find(y => y.year === year);
-//     // if (existing) return res.status(400).json({ message: 'Lecture plan already exists for this year' });
-//     const yearBlock = course.yearsTaught.find((entry) => entry.year === year);
-
-//     if (!yearBlock) {
-//       return res.status(404).json({ message: 'Year not found for this course' });
-//     }
-
-//     yearBlock.lecturePlan.push(...yearEntry.lecturePlan);
-//     await course.save();
-
-//     res.status(200).json({ message: 'Lecture plan added successfully!' });
-
-
-//     course.yearsTaught.push({
-//       year,
-//       session: yearEntry.session,
-//       syllabusLink: yearEntry.syllabusLink,
-//       classroomLink: yearEntry.classroomLink,
-//       lecturePlan: yearEntry.lecturePlan
-//     });
-
-//     await course.save();
-
-//     res.status(200).json({ message: 'Lecture plan added successfully!' });
-
-//   } catch (err) {
-//     console.error('❌ Server Error:', err);
-//     res.status(500).json({ message: 'Server error while adding lecture plan' });
-//   }
-// };
-
-
-// export const addLecturePlan = async (req, res) => {
-//   const { courseId } = req.params;
-//   const { yearEntry } = req.body;
-
-//   try {
-//     const existingPlan = await LecturePlan.findOne({ courseId });
-
-//     if (existingPlan) {
-//       // Update lecture plan (overwrite)
-//       // existingPlan.session = yearEntry.session;
-//       existingPlan.syllabusLink = yearEntry.syllabusLink;
-//       existingPlan.classroomLink = yearEntry.classroomLink;
-//       existingPlan.lecturePlan = yearEntry.lecturePlan;
-//       await existingPlan.save();
-//       return res.status(200).json({ message: "Lecture plan updated successfully!" });
-//     }
-
-//     // Create new entry
-//     const newPlan = new LecturePlan({
-//       courseId,
-//       // session: yearEntry.session,
-//       syllabusLink: yearEntry.syllabusLink,
-//       classroomLink: yearEntry.classroomLink,
-//       lecturePlan: yearEntry.lecturePlan
-//     });
-
-//     await newPlan.save();
-//     res.status(200).json({ message: "Lecture plan added successfully!" });
-
-//   } catch (err) {
-//     console.error("❌ Server Error:", err);
-//     res.status(500).json({ message: "Server error while adding lecture plan" });
-//   }
-// };
-
 export const addLecturePlan = async (req, res) => {
   const { courseId } = req.params;
   const { yearEntry } = req.body;
@@ -139,38 +61,6 @@ export const addLecturePlan = async (req, res) => {
   }
 };
 
-
-
-// export const addLecturePlan = async (req, res) => {
-//   const { courseId, year } = req.params;
-//   const { yearEntry } = req.body;
-
-//   try {
-//     const course = await Course.findOne({ courseId });
-
-//     if (!course) {
-//       return res.status(404).json({ message: 'Course not found' });
-//     }
-
-//     const yearBlock = course.yearsTaught.find((entry) => entry.year === year);
-
-//     if (!yearBlock) {
-//       return res.status(404).json({ message: 'Year not found for this course' });
-//     }
-
-//     // Append new lecturePlan entries
-//     yearBlock.lecturePlan.push(...yearEntry.lecturePlan);
-
-//     await course.save();
-//     res.status(200).json({ message: 'Lecture plan added successfully!' });
-
-//   } catch (err) {
-//     console.error('❌ Server Error:', err);
-//     res.status(500).json({ message: 'Server error while adding lecture plan' });
-//   }
-// };
-
-
 export const addYearToCourse = async (req, res) => {
   try {
     const { courseId, yearEntry } = req.body;
@@ -188,7 +78,6 @@ export const addYearToCourse = async (req, res) => {
     res.status(500).json({ message: 'Error adding year to course', error: err.message });
   }
 };
-
 
 export const getAllCourses = async (req, res) => {
   try {

@@ -19,12 +19,15 @@ const SyllabusView = () => {
     const [loading, setLoading] = useState(true);
     const [lecturePlan, setLecturePlan] = useState([]);
     const [showSyllabus, setShowSyllabus] = useState(false);
+    const [selectedCourseId, setSelectedCourseId] = useState('');
 
     useEffect(() => {
         const fetchSyllabus = async () => {
             try {
                 const res = await fetch(`http://localhost:8083/api/courses/${courseId}`);
+                const lecPlanRes = await fetch(`http://localhost:8083/api/courses/get-lecture-plan/${courseId}`)
                 const data = await res.json();
+                const lecPlanData = await lecPlanRes.json();
 
                 if (res.ok) {
                     setCourseName(data.courseName);
@@ -33,7 +36,7 @@ const SyllabusView = () => {
                     const yearDetails = data.yearsTaught.find((y) => y.year === year);
                     if (yearDetails) {
                         setSession(yearDetails.session || '');
-                        setLecturePlan(yearDetails.lecturePlan || []);
+                        setLecturePlan(lecPlanData.lecturePlan || []);
 
                         if (yearDetails.syllabusLink) {
                             const preview = convertToPreviewLink(yearDetails.syllabusLink);

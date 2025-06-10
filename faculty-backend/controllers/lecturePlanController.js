@@ -1,6 +1,6 @@
 import LecturePlan from '../models/lecturePlanModel.js';
 
-export const getLecturePlanByCourseAndYear = async (req, res) => {
+export const getLecturePlanByCourse = async (req, res) => {
   const { courseId } = req.params;
 
   try {
