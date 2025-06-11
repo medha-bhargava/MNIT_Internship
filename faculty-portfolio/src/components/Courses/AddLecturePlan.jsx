@@ -7,6 +7,8 @@ const AddLecturePlan = () => {
     const [lecturePlan, setLecturePlan] = useState([
         { lectureNo: '', date: '', title: '', pdfLink: '', pptLink: '' }
     ]);
+    const [year, setYear] = useState('');
+    const [session, setSession] = useState('');
 
     useEffect(() => {
         // Fetch courses for dropdown
@@ -18,7 +20,7 @@ const AddLecturePlan = () => {
         fetchCourses();
     }, []);
 
-    
+
     const handleLectureChange = (index, field, value) => {
         const updated = [...lecturePlan];
         updated[index][field] = value;
@@ -41,6 +43,11 @@ const AddLecturePlan = () => {
             return;
         }
 
+        if (!year || !session) {
+            alert('Please enter year and select session');
+            return;
+        }
+
         for (const lec of lecturePlan) {
             if (!lec.lectureNo || !lec.date || !lec.title) {
                 alert('Please fill all lecture details');
@@ -52,11 +59,22 @@ const AddLecturePlan = () => {
             const response = await fetch(`http://localhost:8083/api/courses/add-lecture-plan/${selectedCourseId}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
+                // body: JSON.stringify({
+                //     // courseId: selectedCourseId,
+                //     // year,
+                //     // session,
+                //     // lecturePlan
+                // })
                 body: JSON.stringify({
-                    courseId: selectedCourseId,
-                    yearEntry: {
-                        lecturePlan
-                    }
+                    // courseId: selectedCourseId,
+                    // yearEntry: {
+                    //     year,
+                    //     session,
+                    //     lecturePlan
+                    // }
+                    year,
+                    session,
+                    lecturePlan
                 })
             });
 
@@ -65,8 +83,14 @@ const AddLecturePlan = () => {
                 alert('Lecture Plan added successfully!');
                 setLecturePlan([{ lectureNo: '', date: '', title: '', pdfLink: '', pptLink: '' }]);
                 setSelectedCourseId('');
+                setYear('');
+                setSession('');
             } else {
-                alert(data.message || 'Failed to add lecture plan');
+                if (data.message.includes("already exists")) {
+                    alert("A lecture plan for this Course + Session + Year already exists.");
+                } else {
+                    alert(data.message || 'Failed to add lecture plan');
+                }
             }
         } catch (err) {
             alert('Server error');
@@ -88,6 +112,24 @@ const AddLecturePlan = () => {
                         <option key={idx} value={c.courseId}>{c.courseName} ({c.courseId})</option>
                     ))}
                 </select>
+                <input
+                    className="inputL smallL"
+                    type="text"
+                    placeholder="Year (e.g. 2025)"
+                    value={year}
+                    onChange={(e) => setYear(e.target.value)}
+                />
+
+                <select
+                    className="selectL"
+                    value={session}
+                    onChange={(e) => setSession(e.target.value)}
+                >
+                    <option value="">-- Select Session --</option>
+                    <option value="Spring">Spring (Jan–May)</option>
+                    <option value="Fall">Fall (Aug–Dec)</option>
+                </select>
+
             </div>
             <h3 className="h3">Add Lecture</h3>
             {lecturePlan.map((lec, idx) => (
@@ -133,7 +175,13 @@ const AddLecturePlan = () => {
             ))}
             <button className="add-buttonL" onClick={addLecture}>+ Add Lecture</button>
             <div className="addBtn">
-                <button className="submit-buttonL" onClick={handleSubmit}>Submit</button>
+                <button
+                    className="submit-buttonL"
+                    onClick={handleSubmit}
+                // disabled={!selectedCourseId || !year || !session || lecturePlan.some(l => !l.lectureNo || !l.date || !l.title)}
+                >
+                    Submit
+                </button>
             </div>
         </div>
     );

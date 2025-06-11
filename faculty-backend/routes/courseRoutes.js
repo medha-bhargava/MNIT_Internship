@@ -13,7 +13,7 @@ import { getLecturePlanByCourse } from '../controllers/lecturePlanController.js'
 router.post('/add', addCourse);
 router.get('/all', getAllCourses);
 router.get('/:courseId', getCourseById);
-router.post('/add-year', addYearToCourse);
+router.put('/add-year/:courseId', addYearToCourse);
 router.post('/add-lecture-plan/:courseId/', addLecturePlan);
 router.get('/get-lecture-plan/:courseId', getLecturePlanByCourse);
 

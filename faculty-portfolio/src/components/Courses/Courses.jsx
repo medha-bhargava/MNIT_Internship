@@ -8,12 +8,10 @@ function Courses() {
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const isLoggedIn = !!localStorage.getItem("userId");
   const role = localStorage.getItem('role');
-  const isLoggedIn = !!localStorage.getItem('token');
   const canAccessClassroom = (role === 'student' || role === 'admin') && isLoggedIn;
   const [expandedCourseName, setExpandedCourseName] = useState(null);
-
-
 
   useEffect(() => {
     const fetchCourses = async () => {
@@ -55,7 +53,7 @@ function Courses() {
           </Link>
 
           {entry.classroomLink && (
-            isLoggedIn ? (
+            canAccessClassroom ? (
               <a
                 href={entry.classroomLink}
                 target="_blank"
@@ -70,8 +68,8 @@ function Courses() {
                 Classroom
               </a>
             ) : (
-              <a
-                href="/login"
+              <Link
+                to="/login"
                 style={{
                   marginLeft: '10px',
                   color: 'rgb(101, 101, 255)',
@@ -80,13 +78,12 @@ function Courses() {
                 }}
               >
                 Classroom
-              </a>
+              </Link>
             )
           )}
         </div>
       ));
   };
-
 
   return (
     <>

@@ -25,9 +25,9 @@ const SyllabusView = () => {
         const fetchSyllabus = async () => {
             try {
                 const res = await fetch(`http://localhost:8083/api/courses/${courseId}`);
-                const lecPlanRes = await fetch(`http://localhost:8083/api/courses/get-lecture-plan/${courseId}`)
+                console.log(res);
                 const data = await res.json();
-                const lecPlanData = await lecPlanRes.json();
+                console.log(data);
 
                 if (res.ok) {
                     setCourseName(data.courseName);
@@ -36,7 +36,12 @@ const SyllabusView = () => {
                     const yearDetails = data.yearsTaught.find((y) => y.year === year);
                     if (yearDetails) {
                         setSession(yearDetails.session || '');
-                        setLecturePlan(lecPlanData.lecturePlan || []);
+
+                        const lecPlanRes = await fetch(
+                            `http://localhost:8083/api/courses/get-lecture-plan/${courseId}?year=${year}&session=${yearDetails.session}`
+                        );
+                        const lecPlanData = await lecPlanRes.json();
+                        setLecturePlan(lecPlanData || []);
 
                         if (yearDetails.syllabusLink) {
                             const preview = convertToPreviewLink(yearDetails.syllabusLink);

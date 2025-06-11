@@ -50,6 +50,16 @@ function AddCourse() {
         setLecturePlan(updated);
     };
 
+    const addYearSession = () => {
+        setYearsTaught([...yearsTaught, { year: '', session: '' }]);
+    };
+
+    const handleYearSessionChange = (index, field, value) => {
+        const updated = [...yearsTaught];
+        updated[index][field] = value;
+        setYearsTaught(updated);
+    };
+
 
     const handleAdd = async () => {
         if (!courseId || !courseName || !courseType || !institute || !description) {
@@ -58,7 +68,11 @@ function AddCourse() {
         }
 
         for (const yearEntry of yearsTaught) {
-            if (!yearEntry.year || !yearEntry.session || !yearEntry.syllabusLink || !yearEntry.classroomLink) {
+            // if (!yearEntry.year || !yearEntry.session || !yearEntry.syllabusLink || !yearEntry.classroomLink) {
+            //     alert('Please fill all year-wise fields.');
+            //     return;
+            // }
+            if (!yearEntry.year || !yearEntry.session) {
                 alert('Please fill all year-wise fields.');
                 return;
             }
@@ -75,7 +89,7 @@ function AddCourse() {
                     institute,
                     description,
                     yearsTaught,
-                    lecturePlan,
+                    // lecturePlan,
                 }),
             });
 
@@ -165,17 +179,19 @@ function AddCourse() {
                             <input
                                 className="inputN small"
                                 type="text"
-                                placeholder="Year (e.g. 2023)"
+                                placeholder="Year (e.g. 2025)"
                                 value={entry.year}
                                 onChange={(e) => handleYearChange(index, 'year', e.target.value)}
                             />
-                            <input
-                                className="inputN small"
-                                type="text"
-                                placeholder="Session (e.g. Jan-Apr)"
+                            <select
+                                className="select small"
                                 value={entry.session}
                                 onChange={(e) => handleYearChange(index, 'session', e.target.value)}
-                            />
+                            >
+                                <option value="">Select Session</option>
+                                <option value="Spring">Spring</option>
+                                <option value="Fall">Fall</option>
+                            </select>
                         </div>
                         <div className="year-row">
                             <input
@@ -200,18 +216,15 @@ function AddCourse() {
                         )}
                     </div>
                 ))}
-
                 <button className="add-year-button" onClick={addYearField}>
                     <FaPlus className="plusIcon" /> Add Another Year
                 </button>
             </div>
 
             <div className="row">
-                <div className="input-group">
-                    <button className="add-course-button" onClick={handleAdd}>
-                        Add Course
-                    </button>
-                </div>
+                <button className="add-course-button" onClick={handleAdd}>
+                    Add Course
+                </button>
             </div>
         </div>
     );

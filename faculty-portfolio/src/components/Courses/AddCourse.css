@@ -84,10 +84,10 @@
 
 .year-row {
     display: flex;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     gap: 10px;
     margin-bottom: 12px;
-    align-items: center;
+    /* align-items: center; */
 }
 
 .inputN {
@@ -96,9 +96,16 @@
     min-width: 200px;
 }
 
-.inputN.small {
+/* .inputN.small {
     flex: 1;
     min-width: 250px;
+} */
+.inputN.small,
+.select.small {
+    flex: 1;
+    padding: 10px 12px;
+    border-radius: 10px;
+    width: 100%;
 }
 
 .remove-button {

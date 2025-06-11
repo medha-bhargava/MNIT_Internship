@@ -1,4 +1,3 @@
-
 import User from "../models/User.js";
 
 export async function mylogin(req, res) {
@@ -18,7 +17,6 @@ export async function mylogin(req, res) {
 
         console.log("Login successful");
 
-        // Ideally, you'd return a JWT token. For now, send back user details.
         res.json({
             userId: user.userId,
             userName: user.userName,

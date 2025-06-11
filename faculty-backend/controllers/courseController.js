@@ -2,14 +2,31 @@ import Course from "../models/courseModel.js";
 import LecturePlan from "../models/lecturePlanModel.js";
 
 export const addCourse = async (req, res) => {
-  try {
-    const { courseId, courseName, courseType, institute, yearsTaught, description } = req.body;
+  const { courseId, courseName, courseType, institute, description, yearsTaught } = req.body;
 
-    const existingCourse = await Course.findOne({ courseId });
-    if (existingCourse) {
-      return res.status(400).json({ message: "Course with this ID already exists" });
+  try {
+    // Check if course already exists
+    let course = await Course.findOne({ courseId });
+
+    if (course) {
+      // Prevent duplicate year+session
+      for (const newYearEntry of yearsTaught) {
+        const duplicate = course.yearsTaught.find(
+          (existing) => existing.year === newYearEntry.year && existing.session === newYearEntry.session
+        );
+
+        if (duplicate) {
+          return res.status(400).json({ message: `Course with year ${newYearEntry.year} and session ${newYearEntry.session} already exists.` });
+        }
+      }
+
+      // If not duplicate, add new years
+      course.yearsTaught.push(...yearsTaught);
+      await course.save();
+      return res.status(200).json({ message: 'Year-session added to existing course.' });
     }
 
+    // If course doesn't exist, create it
     const newCourse = new Course({
       courseId,
       courseName,
@@ -20,64 +37,85 @@ export const addCourse = async (req, res) => {
     });
 
     await newCourse.save();
-    res.status(201).json({ message: "Course added successfully", course: newCourse });
+    res.status(200).json({ message: 'Course added successfully.' });
   } catch (err) {
-    res.status(500).json({ message: 'Error adding course', error: err.message });
+    console.error(err);
+    res.status(500).json({ message: 'Server error while adding course.' });
   }
 };
 
+
 export const addLecturePlan = async (req, res) => {
   const { courseId } = req.params;
-  const { yearEntry } = req.body;
+  const { year, session, lecturePlan } = req.body;
 
-  if (!yearEntry || !yearEntry.lecturePlan) {
-    return res.status(400).json({ message: "Missing lecturePlan data in request body" });
+  if (!year || !session || !lecturePlan) {
+    return res.status(400).json({ message: "Missing data" });
   }
 
-  const { lecturePlan } = yearEntry;
-
   try {
-    // Check if lecture plan already exists for the course
-    const existingPlan = await LecturePlan.findOne({ courseId });
+    // Check if lecture plan already exists for course + year + session
+    const existingPlan = await LecturePlan.findOne({
+      courseId,
+      year,
+      session
+    });
 
     if (existingPlan) {
-      // Append new lectures to the existing lecture plan
       existingPlan.lecturePlan.push(...lecturePlan);
       await existingPlan.save();
       return res.status(200).json({ message: "Lecture plan updated successfully!" });
     }
 
-    // Create a new lecture plan if none exists
+    // Create new lecture plan document
     const newPlan = new LecturePlan({
       courseId,
+      year,
+      session,
       lecturePlan
     });
 
     await newPlan.save();
     res.status(201).json({ message: "Lecture plan added successfully!" });
   } catch (err) {
-    console.error("❌ Server Error:", err.stack);
-    res.status(500).json({ message: "Server error while adding lecture plan", error: err.message });
+    if (err.code === 11000) {
+      return res.status(400).json({
+        message: "Lecture plan for this course, session, and year already exists."
+      });
+    }
+    res.status(500).json({ message: "Server error", error: err.message });
   }
 };
 
 export const addYearToCourse = async (req, res) => {
-  try {
-    const { courseId, yearEntry } = req.body;
+  const { courseId } = req.params;
+  const { year, session } = req.body;
 
+  try {
     const course = await Course.findOne({ courseId });
-    if (!course) {
-      return res.status(404).json({ message: "Course not found" });
+
+    if (!course) return res.status(404).json({ message: "Course not found" });
+
+    // Check for duplicates
+    const alreadyExists = course.yearsTaught.some(
+      (entry) => entry.year === year && entry.session === session
+    );
+
+    if (alreadyExists) {
+      return res.status(400).json({ message: "Year and session already exist for this course." });
     }
 
-    course.yearsTaught.push(yearEntry);
+    // Push new year+session
+    course.yearsTaught.push({ year, session });
     await course.save();
 
-    res.status(200).json({ message: "Year added successfully", course });
+    res.status(200).json({ message: "Year added successfully", updatedCourse: course });
   } catch (err) {
-    res.status(500).json({ message: 'Error adding year to course', error: err.message });
+    res.status(500).json({ message: "Server error", error: err.message });
   }
 };
+
+
 
 export const getAllCourses = async (req, res) => {
   try {
