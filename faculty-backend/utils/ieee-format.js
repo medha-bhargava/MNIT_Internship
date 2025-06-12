@@ -1,37 +1,3 @@
-// function formatAuthors(authorsList = []) {
-//   return authorsList.map(author => {
-//     const parts = author.trim().split(' ');
-//     const lastName = parts.pop();
-//     const firstInitial = parts.length > 0 ? parts[0][0] + '.' : '';
-//     return `${firstInitial} ${lastName}`;
-//   }).join(', ');
-// }
-
-// function formatIEEEDate(dateStr) {
-//   if (!dateStr) return '';
-//   const months = ["Jan.", "Feb.", "Mar.", "Apr.", "May", "Jun.", "Jul.", "Aug.", "Sep.", "Oct.", "Nov.", "Dec."];
-//   const date = new Date(dateStr);
-//   if (isNaN(date)) return '';
-//   return `${months[date.getMonth()]} ${date.getFullYear()}`;
-// }
-
-// function convertToIEEEFormat(publications = []) {
-//   return publications.map(pub => {
-//     const formattedAuthors = formatAuthors(pub.pAuthors || []);
-//     const formattedDate = formatIEEEDate(pub.pDate || pub.dateFrom); // try pDate else fallback
-//     // Use pVenue or fallbacks (e.g. journalName, conferenceName) to form citation venue
-//     const venue = pub.pVenue || pub.journalName || pub.conferenceName || '';
-//     const citation = `${formattedAuthors}, “${pub.pTitle}”, ${venue ? venue + ', ': ''}${formattedDate ? formattedDate : pub.pYear}.`;
-//     return {
-//       pType: pub.pType,
-//       pYear: pub.pYear,
-//       // createdAt: pub.createdAt,
-//       ieeeCitation: citation
-//     };
-//   });
-// }
-
-// export { convertToIEEEFormat };
 function formatAuthors(authorsList = []) {
   return authorsList.map(author => {
     const parts = author.trim().split(' ');
@@ -97,4 +63,3 @@ function convertToIEEEFormat(publications = []) {
 }
 
 export { convertToIEEEFormat };
-

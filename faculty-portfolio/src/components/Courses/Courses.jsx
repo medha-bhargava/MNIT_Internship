@@ -34,56 +34,107 @@ function Courses() {
   const currentlyTeaching = courses.filter(c => c.courseType === 'Currently Teaching');
   const previouslyTaught = courses.filter(c => c.courseType === 'Previously Taught');
 
+  // const renderYearsTaught = (course) => {
+  //   if (!course.yearsTaught || course.yearsTaught.length === 0) {
+  //     return <p>No year-wise info available.</p>;
+  //   }
+
+  //   return course.yearsTaught
+  //     .filter(entry => entry && entry.year && entry.session)
+  //     .map((entry, idx) => (
+  //       <div key={idx} className="course-year-entry" style={{ marginBottom: '6px' }}>
+  //         <Link
+  //           to={`/syllabus/${course.courseId}/${entry.year}`}
+  //           target="_blank"
+  //           rel="noopener noreferrer"
+  //           style={{ fontWeight: 'bold', color: 'rgb(101, 101, 255)', textDecoration: 'underline' }}
+  //         >
+  //           {entry.year} ({entry.session})
+  //         </Link>
+
+  //         {entry.classroomLink && (
+  //           canAccessClassroom ? (
+  //             <a
+  //               href={entry.classroomLink}
+  //               target="_blank"
+  //               rel="noopener noreferrer"
+  //               style={{
+  //                 marginLeft: '10px',
+  //                 color: 'rgb(101, 101, 255)',
+  //                 fontWeight: 'bold',
+  //                 textDecoration: 'underline'
+  //               }}
+  //             >
+  //               Classroom
+  //             </a>
+  //           ) : (
+  //             <Link
+  //               to="/login"
+  //               style={{
+  //                 marginLeft: '10px',
+  //                 color: 'rgb(101, 101, 255)',
+  //                 fontWeight: 'bold',
+  //                 textDecoration: 'underline'
+  //               }}
+  //             >
+  //               Classroom
+  //             </Link>
+  //           )
+  //         )}
+  //       </div>
+  //     ));
+  // };
   const renderYearsTaught = (course) => {
     if (!course.yearsTaught || course.yearsTaught.length === 0) {
       return <p>No year-wise info available.</p>;
     }
 
-    return course.yearsTaught
-      .filter(entry => entry && entry.year && entry.session)
-      .map((entry, idx) => (
-        <div key={idx} className="course-year-entry" style={{ marginBottom: '6px' }}>
-          <Link
-            to={`/syllabus/${course.courseId}/${entry.year}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ fontWeight: 'bold', color: 'rgb(101, 101, 255)', textDecoration: 'underline' }}
-          >
-            {entry.year} ({entry.session})
-          </Link>
-
-          {entry.classroomLink && (
-            canAccessClassroom ? (
-              <a
-                href={entry.classroomLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  marginLeft: '10px',
-                  color: 'rgb(101, 101, 255)',
-                  fontWeight: 'bold',
-                  textDecoration: 'underline'
-                }}
-              >
-                Classroom
-              </a>
-            ) : (
-              <Link
-                to="/login"
-                style={{
-                  marginLeft: '10px',
-                  color: 'rgb(101, 101, 255)',
-                  fontWeight: 'bold',
-                  textDecoration: 'underline'
-                }}
-              >
-                Classroom
-              </Link>
-            )
-          )}
-        </div>
-      ));
+    return (
+      <table className="teaching-table">
+        <thead>
+          <tr>
+            <th>Year (Session)</th>
+            <th>Classroom</th>
+          </tr>
+        </thead>
+        <tbody>
+          {course.yearsTaught
+            .filter(entry => entry && entry.year && entry.session)
+            .map((entry, idx) => (
+              <tr key={idx}>
+                <td>
+                  <Link
+                    to={`/syllabus/${course.courseId}/${entry.year}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {entry.year} ({entry.session})
+                  </Link>
+                </td>
+                <td>
+                  {entry.classroomLink ? (
+                    canAccessClassroom ? (
+                      <a
+                        href={entry.classroomLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Classroom
+                      </a>
+                    ) : (
+                      <Link to="/login">Classroom</Link>
+                    )
+                  ) : (
+                    '—'
+                  )}
+                </td>
+              </tr>
+            ))}
+        </tbody>
+      </table>
+    );
   };
+
 
   return (
     <>
