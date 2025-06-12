@@ -17,7 +17,7 @@ const publicationSchema = new Schema({
     journalName: { type: String },
     volume: { type: String },
     doiLink: { type: String, required: false },
-    // impactFactor: { type: String },
+    impactFactor: { type: String },
     page: { type: String, required: false },
     isbn: { type: String, required: false },
 
