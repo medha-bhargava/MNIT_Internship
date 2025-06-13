@@ -43,6 +43,7 @@ const Navbar = () => {
                     <li><Link to="/events">Events</Link></li>
                     {/* <li><Link to="/phd">PhD Supervised</Link></li> */}
                     <li><Link to="/students">Students</Link></li>
+                    <li><Link to="/gallery">Gallery</Link></li>
 
                     {/* Only show after login based on role */}
                     {isLoggedIn && (role === "student" || role === "admin") && (

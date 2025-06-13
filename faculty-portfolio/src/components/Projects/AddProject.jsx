@@ -100,10 +100,11 @@ function AddProject() {
                     amount: '',
                     status: '',
                     erpId: '',
-                    coInvestigators: ['', '', '', '', ''],  // <-- reset to 5 empty strings here
+                    coInvestigators: ['', '', '', '', ''],
                 });
             } else {
-                alert('Error adding project.');
+                const errorData = await response.json();
+                alert(errorData.message || 'Error adding project.');
             }
         } catch (err) {
             console.error('Submit error:', err);

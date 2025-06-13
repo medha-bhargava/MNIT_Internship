@@ -6,7 +6,10 @@ export const addStudent = async (req, res) => {
     const student = new Student(req.body);
     await student.save();
     res.status(201).json(student);
-  } catch (err) {
+  } catch (error) {
+    if (error.code === 11000) {
+      return res.status(400).json({ error: 'Student with this name and topic already exists.' });
+    }
     res.status(400).json({ error: err.message });
   }
 };

@@ -49,7 +49,18 @@ function AddStudent() {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload),
             });
-            if (!res.ok) throw new Error('Failed to add student');
+            // if (!res.ok) throw new Error('Failed to add student');
+
+            const result = await res.json();
+
+            if (!res.ok) {
+                if (result.error && result.error.includes('E11000')) {
+                    alert('A student with this name already exists!');
+                } else {
+                    alert(`Error: ${result.error}`);
+                }
+                return;
+            }
             alert('Student added successfully!');
             setStudent({
                 name: '',

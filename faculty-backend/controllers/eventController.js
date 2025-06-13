@@ -7,6 +7,9 @@ export const addEvent = async (req, res) => {
         res.status(201).json({ message: 'Event added successfully', event });
     } catch (error) {
         console.error('Error adding event:', error);
+        if (error.code === 11000) {
+            return res.status(400).json({ message: 'Event with this title already exists.' });
+        }
         res.status(500).json({ message: 'Failed to add event', error });
     }
 };

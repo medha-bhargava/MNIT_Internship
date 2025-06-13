@@ -67,6 +67,9 @@ const addProject = async (req, res) => {
         res.status(201).json({ message: 'Project added successfully' });
     } catch (err) {
         console.error('Error adding project:', err);
+        if (err.code === 11000) {
+            return res.status(400).json({ message: 'Project with this title already exists.' });
+        }
         res.status(500).json({ message: 'Failed to add project' });
     }
 };

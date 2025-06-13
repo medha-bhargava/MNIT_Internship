@@ -19,6 +19,7 @@ import AccessDenied from "./components/AccessDenied/AccessDenied.jsx";
 // import CourseDetails from './components/Courses/CourseDetails.jsx';
 import SyllabusView from './components/Courses/SyllabusView';
 import AddLecturePlan from './components/Courses/AddLecturePlan.jsx';
+import Gallery from './components/Gallery/Gallery';
 
 import './index.css'
 
@@ -40,6 +41,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/add-projects" element={<AddProjects />} />
         <Route path="/events" element={<Events />} />
         <Route path="/students" element={<Students />} />
+        <Route path="/gallery" element={<Gallery />} />
 
 
         {/* ✅ Protected: only student and admin */}

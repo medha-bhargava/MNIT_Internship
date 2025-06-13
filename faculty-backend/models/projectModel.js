@@ -4,7 +4,7 @@ const projectSchema = new Schema({
   role: { type: String, required: true },
   projectLevel: { type: String, required: true },
   projectType: { type: String, required: true },
-  projectTitle: { type: String, required: true },
+  projectTitle: { type: String, required: true, unique: true },
   fundingAgency: { type: String, required: true },
   yearFrom: { type: Number, required: true },
   yearTo: { type: Number, required: true },
@@ -14,7 +14,7 @@ const projectSchema = new Schema({
   coInvestigators: { type: [String], default: [] },
 });
 
-
+projectSchema.index({ projectTitle: 1, erpId: 1 }, { unique: true });
 const Project = model('Project', projectSchema);
 
 export default Project;

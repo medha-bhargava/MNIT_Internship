@@ -46,7 +46,12 @@ function AddEvent() {
                     sponsoredBy: '',
                 });
             } else {
-                alert('Failed to add event.');
+                const errorData = await response.json();
+                if (errorData.message === "Event with this title already exists.") {
+                    alert("An event with this title already exists!");
+                } else {
+                    alert('Failed to add event.');
+                }
             }
         } catch (err) {
             console.error('Submission error:', err);
