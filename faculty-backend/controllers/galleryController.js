@@ -1,43 +1,30 @@
 import Gallery from '../models/galleryModel.js';
 
-// Add a new gallery item
-// export const addGalleryItem = async (req, res) => {
-//   try {
-//     const existing = await Gallery.findOne({ imageUrl: req.body.imageUrl });
-//     if (existing) {
-//       return res.status(400).json({ message: 'Image with this URL already exists.' });
-//     }
-
-//     const galleryItem = new Gallery(req.body);
-//     await galleryItem.save();
-//     res.status(201).json({ message: 'Gallery item added successfully', galleryItem });
-//   } catch (error) {
-//     console.error('Error adding gallery item:', error);
-//     res.status(500).json({ message: 'Failed to add gallery item', error: error.message });
-//   }
-// };
 export const addGalleryItem = async (req, res) => {
-    console.log("Received data:", req.body); // 🔍 ADD THIS LINE
+    console.log("Received data:", req.body);
 
     const { imageUrl, caption, category, date } = req.body;
 
-    if (!imageUrl || !caption || !category || !date) {
-        console.log("Missing field(s)"); // 🔍 ADD THIS TOO
+    // if (!imageUrl || !caption || !category || !date) {
+    //     console.log("Missing field(s)");
+    //     return res.status(400).json({ message: 'All fields are required' });
+    // }
+
+    if (!imageUrl || !date) {
+        console.log("Missing field(s)");
         return res.status(400).json({ message: 'All fields are required' });
     }
 
     try {
         const newEntry = new Gallery({ imageUrl, caption, category, date });
         await newEntry.save();
-        console.log("Saved successfully"); // ✅ Success logging
+        console.log("Saved successfully");
         res.status(201).json({ message: 'Gallery item added successfully' });
     } catch (err) {
-        console.error('Error:', err.message); // 🔍 Log actual error
+        console.error('Error:', err.message);
         res.status(500).json({ message: err.message });
     }
 };
-
-
 
 // Get all gallery items
 export const getAllGalleryItems = async (req, res) => {

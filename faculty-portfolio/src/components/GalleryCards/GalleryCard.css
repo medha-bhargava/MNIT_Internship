@@ -9,6 +9,8 @@
 
 .gallery-card:hover {
     transform: scale(1.02);
+    box-shadow: 0 4px 15px 3px rgba(141, 73, 228, 0.3);
+    transition: all 0.7s ease;
 }
 
 .gallery-image {
@@ -45,7 +47,8 @@
 }
 
 .caption {
-    margin-top: 6px;
+    margin-bottom: 6px;
+    margin-top: 9px;
     font-size: 1.3rem;
     font-weight: 500;
 }
