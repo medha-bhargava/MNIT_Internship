@@ -44,10 +44,11 @@ const Navbar = () => {
                     {/* <li><Link to="/phd">PhD Supervised</Link></li> */}
                     <li><Link to="/students">Students</Link></li>
                     <li><Link to="/gallery">Gallery</Link></li>
+                    <li><Link to="/trips">Trips & Travels</Link></li>
 
                     {/* Only show after login based on role */}
                     {isLoggedIn && (role === "student" || role === "admin") && (
-                        <li><Link to="/resources">Resources for Students</Link></li>
+                        <li><Link to="/resources">Resources</Link></li>
                     )}
 
                     {isLoggedIn && role === "admin" && (
