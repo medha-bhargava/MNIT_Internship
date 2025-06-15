@@ -3,18 +3,6 @@ import fetch from 'node-fetch';
 
 const GEOCODING_API_KEY = '09242258db45441b87a67d64f9f668a4';
 
-// const getCoordinatesFromLocation = async (locationName) => {
-//   const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(locationName)}`);
-//   const data = await response.json();
-//   if (data.length > 0) {
-//     return {
-//       latitude: parseFloat(data[0].lat),
-//       longitude: parseFloat(data[0].lon)
-//     };
-//   }
-//   return null;
-// };
-
 export const addTrip = async (req, res) => {
   const { location, year, purpose, description, photoUrl } = req.body;
 
@@ -48,16 +36,6 @@ export const addTrip = async (req, res) => {
     res.status(500).json({ message: 'Failed to add trip' });
   }
 };
-
-// export const addTrip = async (req, res) => {
-//   try {
-//     const newTrip = new Trip(req.body);
-//     await newTrip.save();
-//     res.status(201).json(newTrip);
-//   } catch (err) {
-//     res.status(500).json({ error: err.message });
-//   }
-// };
 
 export const getAllTrips = async (req, res) => {
   try {
