@@ -7,5 +7,4 @@ export default defineConfig({
   build: {
     outDir: 'build',
   },
-  base: '/MNIT_Internship/faculty-portfolio',
 })
