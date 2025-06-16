@@ -9,7 +9,7 @@ const Gallery = () => {
     useEffect(() => {
         const fetchGallery = async () => {
             try {
-                const res = await fetch('http://localhost:8083/api/gallery/all');
+                const res = await fetch('https://faculty-backend-koz0.onrender.com/api/gallery/all');
                 const data = await res.json();
                 setImages(data);
             } catch (err) {

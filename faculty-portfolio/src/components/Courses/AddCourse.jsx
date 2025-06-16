@@ -79,7 +79,7 @@ function AddCourse() {
         }
 
         try {
-            const response = await fetch('http://localhost:8083/api/courses/add', {
+            const response = await fetch('https://faculty-backend-koz0.onrender.com/api/courses/add', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

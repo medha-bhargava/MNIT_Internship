@@ -63,7 +63,7 @@ function EditProfile() {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const res = await fetch('http://localhost:8083/api/profile');
+        const res = await fetch('https://faculty-backend-koz0.onrender.com/api/profile');
         const data = await res.json();
         setProfile({
           name: data.name || '',
@@ -92,7 +92,7 @@ function EditProfile() {
         resources: true,
       };
       try {
-        const res = await fetch('http://localhost:8083/api/tab-visibility/all');
+        const res = await fetch('https://faculty-backend-koz0.onrender.com/api/tab-visibility/all');
         const responseData = await res.json();
 
         const finalTabs = Object.keys(defaultTabs).reduce((acc, key) => {
@@ -142,7 +142,7 @@ function EditProfile() {
       // console.log('📦 Payload being sent to backend:', payload);
 
       try {
-        const res = await fetch('http://localhost:8083/api/profile/update', {
+        const res = await fetch('https://faculty-backend-koz0.onrender.com/api/profile/update', {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload),
@@ -167,7 +167,7 @@ function EditProfile() {
     formData.append('photo', selectedPhoto);
 
     try {
-      const res = await fetch('http://localhost:8083/api/profile/photo', {
+      const res = await fetch('https://faculty-backend-koz0.onrender.com/api/profile/photo', {
         method: 'POST',
         body: formData,
       });
@@ -190,7 +190,7 @@ function EditProfile() {
     formData.append('cv', selectedCV);
 
     try {
-      const res = await fetch('http://localhost:8083/api/profile/upload-cv', {
+      const res = await fetch('https://faculty-backend-koz0.onrender.com/api/profile/upload-cv', {
         method: 'POST',
         body: formData,
       });
@@ -210,7 +210,7 @@ function EditProfile() {
         fieldName,
         enabled,
       }));
-      const res = await fetch('http://localhost:8083/api/tab-visibility/update', {
+      const res = await fetch('https://faculty-backend-koz0.onrender.com/api/tab-visibility/update', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),

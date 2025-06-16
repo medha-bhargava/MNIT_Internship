@@ -110,7 +110,7 @@ function AddPublicationForm() {
         };
         // delete payload.authors; // optional: remove old key to avoid confusion
         try {
-            const response = await fetch('http://localhost:8083/api/publications/add', {
+            const response = await fetch('https://faculty-backend-koz0.onrender.com/api/publications/add', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload),
@@ -526,7 +526,7 @@ export default AddPublicationForm;
 //         }
 
 //         try {
-//             const response = await fetch('http://localhost:8083/api/publications/add', {
+//             const response = await fetch('https://faculty-backend-koz0.onrender.com/api/publications/add', {
 //                 method: 'POST',
 //                 headers: { 'Content-Type': 'application/json' },
 //                 body: JSON.stringify({ pId, pType, pTitle, pAuthors, pVenue, pDate }),

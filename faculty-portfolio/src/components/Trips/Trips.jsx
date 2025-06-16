@@ -9,7 +9,7 @@ function Trips() {
     useEffect(() => {
         const fetchTrips = async () => {
             try {
-                const res = await fetch('http://localhost:8083/api/trips/all');
+                const res = await fetch('https://faculty-backend-koz0.onrender.com/api/trips/all');
                 const data = await res.json();
                 setTrips(data);
             } catch (err) {

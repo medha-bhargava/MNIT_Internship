@@ -29,7 +29,7 @@ const Navbar = () => {
 
         // const fetchVisibleTabs = async () => {
         //     try {
-        //         const res = await fetch('http://localhost:8083/api/tab-visibility/all');
+        //         const res = await fetch('https://faculty-backend-koz0.onrender.com/api/tab-visibility/all');
         //         const data = await res.json();
 
         //         if (!Array.isArray(data)) {
@@ -46,7 +46,7 @@ const Navbar = () => {
         // };
         const fetchVisibleTabs = async () => {
             try {
-                const res = await fetch("http://localhost:8083/api/tab-visibility/all");
+                const res = await fetch("https://faculty-backend-koz0.onrender.com/api/tab-visibility/all");
                 const data = await res.json();
                 const formatted = {};
                 data.forEach(item => {

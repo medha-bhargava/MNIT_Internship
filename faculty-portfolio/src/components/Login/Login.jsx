@@ -32,7 +32,7 @@ const Login = () => {
                 password,
                 role,
             });
-            const response = await fetch("http://localhost:8083/api/auth/login", {
+            const response = await fetch("https://faculty-backend-koz0.onrender.com/api/auth/login", {
                 method: "POST",
                 headers: { 
                     "Content-Type": "application/json" 

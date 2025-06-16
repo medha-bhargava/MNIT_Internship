@@ -9,7 +9,7 @@ function Publications() {
   useEffect(() => {
     const fetchPublications = async () => {
       try {
-        const response = await fetch('http://localhost:8083/api/publications/all');
+        const response = await fetch('https://faculty-backend-koz0.onrender.com/api/publications/all');
         const data = await response.json();
         // console.log("Fetched publications:", data);
         setPublications(data);

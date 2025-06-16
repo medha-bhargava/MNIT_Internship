@@ -9,7 +9,7 @@ function Events() {
     useEffect(() => {
         const fetchEvents = async () => {
             try {
-                const response = await fetch('http://localhost:8083/api/events/all');
+                const response = await fetch('https://faculty-backend-koz0.onrender.com/api/events/all');
                 const data = await response.json();
                 setEvents(data);
             } catch (err) {

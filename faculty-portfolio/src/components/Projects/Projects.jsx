@@ -9,7 +9,7 @@ function Projects() {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await fetch('http://localhost:8083/api/projects/all');
+        const response = await fetch('https://faculty-backend-koz0.onrender.com/api/projects/all');
         const data = await response.json();
         setProjects(data);
       } catch (err) {

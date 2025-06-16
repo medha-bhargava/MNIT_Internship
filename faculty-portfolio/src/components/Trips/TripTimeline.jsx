@@ -5,7 +5,7 @@ function TripTimeline() {
   const [trips, setTrips] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:8083/api/trips/all')
+    fetch('https://faculty-backend-koz0.onrender.com/api/trips/all')
       .then(res => res.json())
       .then(data => setTrips(data))
       .catch(console.error);

@@ -13,7 +13,7 @@ function AddResource() {
         }
 
         try {
-            const response = await fetch('http://localhost:8083/api/resources/add', {
+            const response = await fetch('https://faculty-backend-koz0.onrender.com/api/resources/add', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ title, link, category }),

@@ -26,7 +26,7 @@ function AddTrip() {
         }
 
         try {
-            const res = await fetch('http://localhost:8083/api/trips/add', {
+            const res = await fetch('https://faculty-backend-koz0.onrender.com/api/trips/add', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData)

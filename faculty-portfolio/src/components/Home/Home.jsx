@@ -14,7 +14,7 @@ function Home() {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const res = await fetch('http://localhost:8083/api/profile');
+        const res = await fetch('https://faculty-backend-koz0.onrender.com/api/profile');
         if (!res.ok) throw new Error('Failed to load profile');
 
         const data = await res.json();
@@ -59,7 +59,7 @@ function Home() {
             <img
               src={
                 profile.profilePhoto
-                  ? `http://localhost:8083/uploads/${profile.profilePhoto}`
+                  ? `https://faculty-backend-koz0.onrender.com/uploads/${profile.profilePhoto}`
                   : profilepic
               }
               alt="Profile"
@@ -84,7 +84,7 @@ function Home() {
               <IoIosDocument className="cv-icon" />
               {profile && profile.detailedCV ? (
                 <a
-                  href={`http://localhost:8083/${profile.detailedCV}`}
+                  href={`https://faculty-backend-koz0.onrender.com/${profile.detailedCV}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >

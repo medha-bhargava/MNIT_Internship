@@ -16,7 +16,7 @@ function Resources() {
   useEffect(() => {
     const fetchResources = async () => {
       try {
-        const res = await fetch('http://localhost:8083/api/resources/all');
+        const res = await fetch('https://faculty-backend-koz0.onrender.com/api/resources/all');
         if (!res.ok) throw new Error('Failed to fetch resources');
 
         const data = await res.json();

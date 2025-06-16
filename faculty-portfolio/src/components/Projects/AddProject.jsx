@@ -26,7 +26,7 @@ function AddProject() {
     useEffect(() => {
         async function fetchFaculty() {
             try {
-                const res = await fetch('http://localhost:8083/api/faculty/all'); // example URL
+                const res = await fetch('https://faculty-backend-koz0.onrender.com/api/faculty/all'); // example URL
                 const data = await res.json();
                 setFacultyList(data);
             } catch (error) {
@@ -66,7 +66,7 @@ function AddProject() {
             }
         }
         try {
-            const response = await fetch('http://localhost:8083/api/projects/add', {
+            const response = await fetch('https://faculty-backend-koz0.onrender.com/api/projects/add', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
