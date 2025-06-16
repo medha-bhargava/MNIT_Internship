@@ -15,6 +15,7 @@ import adminRoutes from './routes/adminRoutes.js';
 import studentRoutes from "./routes/studentRoutes.js";
 import galleryRoutes from './routes/galleryRoutes.js';
 import tripRoutes from "./routes/tripRoutes.js";
+import tabVisibilityRoutes from './routes/tabVisibilityRoutes.js';
 
 dotenv.config();
 
@@ -58,6 +59,7 @@ app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
 app.use("/api/students", studentRoutes);
 app.use('/api/gallery', galleryRoutes);
 app.use("/api/trips", tripRoutes);
+app.use('/api/tab-visibility', tabVisibilityRoutes);
 
 
 // ✅ Step 6: MongoDB + Server start

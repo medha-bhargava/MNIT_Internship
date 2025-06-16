@@ -15,6 +15,7 @@ function EditProfile() {
   const [section, setSection] = useState('');
   const [subField, setSubField] = useState('');
   const [info, setInfo] = useState('');
+  const [tabVisibility, setTabVisibility] = useState({});
 
   // Profile fields state
   const [profile, setProfile] = useState({
@@ -68,6 +69,7 @@ function EditProfile() {
           name: data.name || '',
           contactNumber: data.contactNumber || '',
           email: data.email || '',
+          role: data.role || '',
         });
         if (subField) setInfo(data[subField] || '');
       } catch (err) {
@@ -77,7 +79,65 @@ function EditProfile() {
       }
     };
 
+    // const fetchTabVisibility = async () => {
+    //   try {
+    //     const res = await fetch('http://localhost:8083/api/tab-visibility/all');
+    //     const data = await res.json();
+    //     const formatted = {};
+    //     data.forEach(item => (formatted[item.fieldName] = item.enabled));
+    //     setTabVisibility(formatted);
+    //   } catch (err) {
+    //     console.error('Failed to fetch tab visibility:', err);
+    //   }
+    // };
+    const fetchTabVisibility = async () => {
+      // try {
+      //   const res = await fetch("http://localhost:8083/api/tab-visibility/enabled-tabs");
+      //   const data = await res.json(); // Expects: { tabs: ['Publications', 'Projects', ...] }
+
+      //   if (Array.isArray(data.tabs)) {
+      //     const visibilityMap = {};
+      //     data.tabs.forEach(tab => {
+      //       visibilityMap[tab] = true;
+      //     });
+      //     setTabVisibility(visibilityMap);
+      //   } else {
+      //     console.error("Tab visibility response is not an array:", data);
+      //   }
+      // } catch (err) {
+      //   console.error("Failed to fetch visible tabs", err);
+      // }
+      const defaultTabs = {
+        home: true,
+        publications: true,
+        courses: true,
+        projects: true,
+        events: true,
+        students: true,
+        trips: true,
+        gallery: true,
+        resources: true,
+      };
+      try {
+        const res = await fetch('http://localhost:8083/api/tab-visibility/all');
+        const responseData = await res.json();
+
+        const finalTabs = Object.keys(defaultTabs).reduce((acc, key) => {
+          acc[key] = responseData?.[key] ?? true;
+          return acc;
+        }, {});
+
+        setTabVisibility(finalTabs);
+      } catch (err) {
+        console.error("Error fetching tabs", err);
+        setTabVisibility(defaultTabs); // fallback
+      }
+    };
+
+
     fetchProfile();
+    fetchTabVisibility();
+
   }, [subField]);
 
   const handleInputChange = (e) => {
@@ -171,6 +231,24 @@ function EditProfile() {
     }
   };
 
+  const handleTabVisibilityUpdate = async () => {
+    try {
+      const payload = Object.entries(tabVisibility).map(([fieldName, enabled]) => ({
+        fieldName,
+        enabled,
+      }));
+      const res = await fetch('http://localhost:8083/api/tab-visibility/update', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error('Update failed');
+      alert('Tab visibility updated successfully!');
+      window.location.reload();
+    } catch (err) {
+      alert(`Error: ${err.message}`);
+    }
+  };
 
   return (
     <>
@@ -219,6 +297,28 @@ function EditProfile() {
                   placeholder="Enter email"
                 />
               </div>
+            </div>
+
+            <div className="tab-visibility-control">
+              <label className="subheading">Control Tab Visibility for Students</label>
+              <div className="checkbox-grid">
+                {["Home", "Publications", "Courses", "Projects", "Events", "Gallery", "Trips", "Students", "Resources"].map(tab => (
+                  <div key={tab} className="checkbox-item">
+                    <input
+                      type="checkbox"
+                      id={`tab-${tab}`}
+                      checked={tabVisibility[tab] ?? true}
+                      onChange={(e) =>
+                        setTabVisibility({ ...tabVisibility, [tab]: e.target.checked })
+                      }
+                    />
+                    <label htmlFor={`tab-${tab}`}>{tab}</label>
+                  </div>
+                ))}
+              </div>
+              <button className="visibility-button" onClick={handleTabVisibilityUpdate}>
+                Save Tab Visibility
+              </button>
             </div>
 
             <div className="row">

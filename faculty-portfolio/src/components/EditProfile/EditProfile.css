@@ -3,6 +3,7 @@
   margin: 3rem auto;
   padding: 0 2rem;
 }
+
 .headingEdit {
   text-align: center;
   font-size: 2.4rem;
@@ -10,6 +11,7 @@
   font-weight: bold;
   margin-top: -0.6px;
 }
+
 .edit-profile-box {
   background-color: #f0f0f0;
   padding: 2.6rem 2.6rem 2rem;
@@ -21,6 +23,7 @@
   transition: all 0.4s ease;
   margin-bottom: 9px;
 }
+
 .row {
   display: flex;
   justify-content: space-between;
@@ -28,6 +31,7 @@
   flex-wrap: wrap;
   margin-bottom: 1.2rem;
 }
+
 .input-group {
   flex: 1;
   display: flex;
@@ -39,13 +43,15 @@
   margin-left: 3px;
   margin-bottom: 0.3rem;
 }
-input{
+
+input {
   padding: 0.7rem;
   border-radius: 10px;
   border: none;
   font-size: 1rem;
 }
-textarea{
+
+textarea {
   font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
   /* resize: vertical; */
   /* transition: all 0.3s ease; */
@@ -56,16 +62,20 @@ textarea{
   border: none;
   font-size: 1rem;
 }
-select{
+
+select {
   padding: 0.6rem;
   border-radius: 10px;
   border: none;
   font-size: 1rem;
 }
+
 textarea {
   resize: vertical;
 }
-.update-button, .update-photo-button{
+
+.update-button,
+.update-photo-button {
   width: 25%;
   display: block;
   margin: 20px auto 0 auto;
@@ -81,22 +91,75 @@ textarea {
   cursor: pointer;
   transition: 0.5s;
 }
-.update-button:hover, .update-photo-button:hover{
+
+.update-button:hover,
+.update-photo-button:hover, .visibility-button:hover {
   transform: scale(1.05);
   opacity: 0.9;
 }
+
 input[type="file"] {
   padding: 0.4rem;
   font-size: 1rem;
-  
 }
+
+.tab-visibility-control {
+  margin-top: 30px;
+}
+
+.subheading {
+  /* display: block; */
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #444;
+}
+
+/* .checkbox-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 35px;
+} */
+
+.checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.visibility-button {
+  width: 22%;
+  display: block;
+  margin: 20px auto 0 auto;
+  margin-top: 20px;
+  padding: 12px;
+  border: none;
+  border-radius: 20px;
+  color: rgb(255, 255, 255);
+  background: linear-gradient(to right, #8d49e4, #ce85f5);
+  box-shadow: 0 4px 15px 3px rgba(141, 73, 228, 0.3);
+  font-size: medium;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
 @media (max-width: 768px) {
   .edit-profile-wrapper {
     padding: 0 1rem;
   }
+
   .row {
     flex-direction: column;
   }
+
   .update-button,
   .update-photo-button {
     width: 100%;
