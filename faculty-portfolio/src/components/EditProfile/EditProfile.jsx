@@ -79,34 +79,7 @@ function EditProfile() {
       }
     };
 
-    // const fetchTabVisibility = async () => {
-    //   try {
-    //     const res = await fetch('http://localhost:8083/api/tab-visibility/all');
-    //     const data = await res.json();
-    //     const formatted = {};
-    //     data.forEach(item => (formatted[item.fieldName] = item.enabled));
-    //     setTabVisibility(formatted);
-    //   } catch (err) {
-    //     console.error('Failed to fetch tab visibility:', err);
-    //   }
-    // };
     const fetchTabVisibility = async () => {
-      // try {
-      //   const res = await fetch("http://localhost:8083/api/tab-visibility/enabled-tabs");
-      //   const data = await res.json(); // Expects: { tabs: ['Publications', 'Projects', ...] }
-
-      //   if (Array.isArray(data.tabs)) {
-      //     const visibilityMap = {};
-      //     data.tabs.forEach(tab => {
-      //       visibilityMap[tab] = true;
-      //     });
-      //     setTabVisibility(visibilityMap);
-      //   } else {
-      //     console.error("Tab visibility response is not an array:", data);
-      //   }
-      // } catch (err) {
-      //   console.error("Failed to fetch visible tabs", err);
-      // }
       const defaultTabs = {
         home: true,
         publications: true,
@@ -130,7 +103,7 @@ function EditProfile() {
         setTabVisibility(finalTabs);
       } catch (err) {
         console.error("Error fetching tabs", err);
-        setTabVisibility(defaultTabs); // fallback
+        setTabVisibility(defaultTabs);
       }
     };
 
