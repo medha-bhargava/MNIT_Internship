@@ -93,6 +93,7 @@ function EditProfile() {
         trips: true,
         gallery: true,
         resources: true,
+        achievements: true,
       };
       try {
         const res = await fetch('https://faculty-backend-koz0.onrender.com/api/tab-visibility/all');
@@ -278,7 +279,7 @@ function EditProfile() {
             <div className="tab-visibility-control">
               <label className="subheading">Control Tab Visibility for Students</label>
               <div className="checkbox-grid">
-                {["Home", "Publications", "Courses", "Projects", "Events", "Gallery", "Trips", "Students", "Resources"].map(tab => (
+                {["Home", "Publications", "Courses", "Projects", "Events", "Gallery", "Trips", "Students", "Achievements", "Resources"].map(tab => (
                   <div key={tab} className="checkbox-item">
                     <input
                       type="checkbox"
