@@ -23,7 +23,7 @@ const app = express();
 
 // ✅ Step 1: CORS options
 const corsOptions = {
-  origin: "http://localhost:5173",
+  origin: ["http://localhost:5173", "https://medha-bhargava.github.io"],
   // methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   credentials: true,
 };
@@ -34,13 +34,27 @@ app.options("/", cors(corsOptions));
 
 
 // ✅ Step 3: Manual fallback (ensures CORS headers are added)
+// app.use((req, res, next) => {
+//   res.header("Access-Control-Allow-Origin", "http://localhost:5173");
+//   res.header("Access-Control-Allow-Credentials", "true");
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,HEAD,PATCH");
+//   next();
+// });
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "http://localhost:5173");
+  const allowedOrigins = ["http://localhost:5173", "https://medha-bhargava.github.io"];
+  const origin = req.headers.origin;
+
+  if (allowedOrigins.includes(origin)) {
+    res.header("Access-Control-Allow-Origin", origin);
+  }
+
   res.header("Access-Control-Allow-Credentials", "true");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,HEAD,PATCH");
   next();
 });
+
 
 // ✅ Step 4: Parse JSON
 app.use(express.json());
