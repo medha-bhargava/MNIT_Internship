@@ -32,11 +32,13 @@ function Achievements() {
                     <div className="award">
                         <Dropdown title="Awards and Honours" className="dropdown-award">
                             {filterByType("Award").length > 0 ? (
-                                filterByType("Award").map((item, index) => (
-                                    <p key={index}>
-                                        {item.description} – {item.year}
-                                    </p>
-                                ))
+                                filterByType("Award")
+                                    .sort((a, b) => b.year - a.year)
+                                    .map((item, index) => (
+                                        <p key={index}>
+                                            {item.description} – {item.year}
+                                        </p>
+                                    ))
                             ) : (
                                 <p className="no-records">No records found.</p>
                             )}
@@ -47,7 +49,7 @@ function Achievements() {
                             {filterByType("Patent").length > 0 ? (
                                 filterByType("Patent").map((item, index) => (
                                     <p key={index}>
-                                        "{item.title}", {item.authors} Reg.No. {item.patentNumber} [{item.grantedBy}] Dt. {item.date}
+                                        <strong>"{item.title}"</strong>, {item.authors} Reg.No. {item.patentNumber} [{item.grantedBy}] Dt. {item.date}
                                     </p>
                                 ))
                             ) : (
