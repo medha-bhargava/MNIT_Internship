@@ -27,6 +27,12 @@ import AddAchievement from './components/Achievements/AddAchievement.jsx';
 
 import './index.css'
 
+const redirect = new URLSearchParams(window.location.search).get("redirect");
+if (redirect) {
+  window.history.replaceState(null, "", redirect);
+}
+
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter basename="/MNIT_Internship">
