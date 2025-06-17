@@ -10,6 +10,7 @@ import AddResourceForm from '../Resources/AddResource';
 import AddLecturePlan from '../Courses/AddLecturePlan';
 import AddGalleryForm from '../Gallery/AddGallery';
 import AddTripForm from '../Trips/AddTrip';
+import AddAchievement from '../Achievements/AddAchievement';
 
 function EditProfile() {
   const [section, setSection] = useState('');
@@ -39,6 +40,7 @@ function EditProfile() {
     students: ['addStudentSupervised'],
     gallery: ['addGallery'],
     trips: ['addTrip'],
+    achievements: ['addAchievement'],
   };
 
   const getSubFieldLabel = (value) => {
@@ -56,6 +58,7 @@ function EditProfile() {
       addStudentSupervised: 'Add Student Supervised',
       addGallery: 'Add Gallery Item',
       addTrip: 'Add Trip Location',
+      addAchievement: 'Add Achievement',
     };
     return labels[value] || '';
   };
@@ -314,6 +317,7 @@ function EditProfile() {
                   <option value="trips">Trips and Travels</option>
                   <option value="students">Student Supervised</option>
                   <option value="resources">Resources</option>
+                  <option value="achievements">Achievements</option>
                 </select>
               </div>
             </div>
@@ -448,6 +452,12 @@ function EditProfile() {
             {section === 'resources' && subField === 'addResource' && (
               <div className="row">
                 <AddResourceForm />
+              </div>
+            )}
+
+            {section === 'achievements' && subField === 'addAchievement' && (
+              <div className="row">
+                <AddAchievement />
               </div>
             )}
 

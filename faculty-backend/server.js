@@ -16,6 +16,7 @@ import studentRoutes from "./routes/studentRoutes.js";
 import galleryRoutes from './routes/galleryRoutes.js';
 import tripRoutes from "./routes/tripRoutes.js";
 import tabVisibilityRoutes from './routes/tabVisibilityRoutes.js';
+import achievementRoutes from "./routes/achievementRoutes.js";
 
 dotenv.config();
 
@@ -74,6 +75,7 @@ app.use("/api/students", studentRoutes);
 app.use('/api/gallery', galleryRoutes);
 app.use("/api/trips", tripRoutes);
 app.use('/api/tab-visibility', tabVisibilityRoutes);
+app.use("/api/achievements", achievementRoutes);
 
 
 // ✅ Step 6: MongoDB + Server start

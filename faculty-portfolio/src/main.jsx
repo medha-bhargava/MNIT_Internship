@@ -22,6 +22,8 @@ import AddLecturePlan from './components/Courses/AddLecturePlan.jsx';
 import Gallery from './components/Gallery/Gallery';
 import AddTrip from './components/Trips/AddTrip';
 import Trips from './components/Trips/Trips';
+import Achievements from './components/Achievements/Achievements.jsx';
+import AddAchievement from './components/Achievements/AddAchievement.jsx';
 
 import './index.css'
 
@@ -35,7 +37,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/publications" element={<PublicationPage />} />
         <Route path="/add-publication" element={<AddPublication />} />
         <Route path="/courses" element={<CoursesPage />} />
-        <Route path="/add-course" element={<AddCourse/>} />
+        <Route path="/add-course" element={<AddCourse />} />
         {/* <Route path="/courses/:courseName" element={<CourseDetails />} /> */}
         <Route path="/syllabus/:courseId/:year" element={<SyllabusView />} />
         <Route path="/add-lecture-plan" element={<AddLecturePlan />} />
@@ -46,6 +48,8 @@ createRoot(document.getElementById('root')).render(
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/trips" element={<Trips />} />
         <Route path="/add-trip" element={<AddTrip />} />
+        <Route path="/achievements" element={<Achievements />} />
+        <Route path="/add-achievement" element={<AddAchievement />} />
 
 
         {/* ✅ Protected: only student and admin */}

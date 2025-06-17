@@ -19,6 +19,7 @@ const Navbar = () => {
         trips: true,
         students: true,
         resources: true,
+        achievements: true,
     });
 
     useEffect(() => {
@@ -119,6 +120,7 @@ const Navbar = () => {
                     {shouldShow("Students") && <li><Link to="/students">Students</Link></li>}
                     {shouldShow("Gallery") && <li><Link to="/gallery">Gallery</Link></li>}
                     {shouldShow("Trips") && <li><Link to="/trips">Trips & Travels</Link></li>}
+                    {shouldShow("Achievements") && <li><Link to="/achievements">Achievements</Link></li>}
                     {shouldShow("Resources") && isLoggedIn && isStudentOrAdmin && <li><Link to="/resources">Resources</Link></li>}
                     {isLoggedIn && role === "admin" && <li><Link to="/editProfile">Edit Profile</Link></li>}
 

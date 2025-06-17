@@ -1,0 +1,68 @@
+.achievementBox {
+  padding: 70px 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.achievementBox h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 24px;
+  color: #222222;
+  border-left: 4px solid #b67be6;
+  padding-left: 12px;
+}
+
+.achievements {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.award p,
+.patent p,
+.affiliation p {
+  padding: 12px 18px;
+  border-left: 5px solid transparent;
+  margin-bottom: 14px;
+  border-radius: 12px;
+  font-size: 17px;
+  line-height: 1.6;
+  color: #4a4a4a;
+  cursor: default;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 8px rgba(141, 73, 228, 0.07);
+}
+
+.award p {
+  border-left-color: #8d49e4;
+}
+
+.patent p {
+  border-left-color: #b67be6;
+}
+
+.affiliation p {
+  border-left-color: #ce85f5;
+}
+
+.award p:hover,
+.patent p:hover,
+.affiliation p:hover {
+  box-shadow: 0 4px 20px rgba(141, 73, 228, 0.2);
+  transform: translateX(4px);
+}
+
+.dropdown-award, .dropdown-patent, .dropdown-affiliation{
+    background: rgba(255, 255, 255, 0.399);
+}
+
+.no-records {
+  border-radius: 12px;
+  padding: 14px 20px;
+  font-style: italic;
+}
