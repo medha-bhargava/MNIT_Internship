@@ -2,7 +2,6 @@ import express from 'express';
 import {
   addGalleryItem,
   getAllGalleryItems,
-  deleteGalleryItem,
 } from '../controllers/galleryController.js';
 
 const router = express.Router();
@@ -14,6 +13,6 @@ router.post('/add', addGalleryItem);
 router.get('/all', getAllGalleryItems);
 
 // Route to delete a gallery item by ID (optional)
-router.delete('/:id', deleteGalleryItem);
+// router.delete('/:id', deleteGalleryItem);
 
 export default router;

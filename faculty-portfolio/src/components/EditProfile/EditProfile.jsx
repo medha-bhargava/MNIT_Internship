@@ -205,7 +205,7 @@ function EditProfile() {
 
       const data = await res.json();
       alert('Profile photo uploaded!');
-      console.log("🌐 Cloudinary URL:", data.imageUrl);
+      console.log("🌐 Cloudinary URL:", data.image);
     } catch (err) {
       alert('Error uploading photo');
       console.error(err);

@@ -4,10 +4,10 @@ import { FaHeart, FaRegComment, FaRegBookmark } from 'react-icons/fa';
 // import { LiaTelegramPlane } from 'react-icons/lia';
 import { FaTelegramPlane } from 'react-icons/fa';
 
-const GalleryCard = ({ imageUrl, caption, date }) => {
+const GalleryCard = ({ image, caption, date }) => {
     return (
         <div className="gallery-card">
-            <img className="gallery-image" src={imageUrl} alt={caption || 'Gallery'} />
+            <img className="gallery-image" src={image} alt={caption || 'Gallery'} />
             <div className="gallery-card-icons">
                 <div className="icons-left">
                     <FaHeart className="heart-icon"/>

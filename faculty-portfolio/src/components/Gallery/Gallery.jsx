@@ -29,7 +29,7 @@ const Gallery = () => {
                     {images.map((img) => (
                         <GalleryCard
                             key={img._id}
-                            imageUrl={img.imageUrl}
+                            image={img.image}
                             caption={img.caption}
                             date={img.date}
                         />

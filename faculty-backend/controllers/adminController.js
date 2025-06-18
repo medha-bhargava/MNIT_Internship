@@ -59,17 +59,17 @@ const uploadProfilePhoto = async (req, res) => {
         const file = req.file;
         if (!file) return res.status(400).json({ message: 'No file uploaded' });
 
-        const imageUrl = file.path; // ✅ Cloudinary public URL
+        const image = file.path; // ✅ Cloudinary public URL
 
         // Save to the Admin schema (use your actual schema name)
         const updated = await Admin.findOneAndUpdate(
             {}, // if you use userId, change this to { _id: req.user.id } or similar
-            { profilePhoto: imageUrl },
+            { profilePhoto: image },
             { new: true, upsert: true }
         );
 
-        console.log('Photo saved at URL:', imageUrl);
-        res.status(200).json({ message: 'Photo uploaded successfully', imageUrl });
+        console.log('Photo saved at URL:', image);
+        res.status(200).json({ message: 'Photo uploaded successfully', image });
     } catch (error) {
         console.error('Upload error:', error.message);
         res.status(500).json({ message: 'Failed to upload photo', error });

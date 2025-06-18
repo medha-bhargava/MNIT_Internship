@@ -3,19 +3,12 @@ import './AddGallery.css';
 
 const AddGallery = () => {
     const [formData, setFormData] = useState({
-        imageUrl: '',
+        image: '',
         caption: '',
         category: '',
         date: '',
     });
-    const [image, setImage] = useState(null);
-
-    const handleImageUpload = (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            setImage(file);
-        }
-    };
+    const [uploading, setUploading] = useState(false);
 
     const handleChange = (e) => {
         setFormData((prev) => ({
@@ -24,32 +17,57 @@ const AddGallery = () => {
         }));
     };
 
-    const handleSubmit = async () => {
-        const { imageUrl, caption, category, date } = formData;
+    const handleImageUpload = async (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
 
-        // Ensure .jpg/.png/.jpeg URL
-        // if (!imageUrl.endsWith('.jpg') || !imageUrl.endsWith('.png') || !imageUrl.endsWith('.jpeg')) {
-        //     alert('Please enter a valid image URL that ends with .jpg/.png/.jpeg');
-        //     return;
-        // }
-        if (!imageUrl.endsWith('.jpg')) {
-            alert('Please enter a valid image URL that ends with .jpg');
-            return;
-        }
+        setUploading(true);
+
+        const data = new FormData();
+        data.append('file', file);
+        data.append('upload_preset', 'facultyGalleryUpload');
+
 
         try {
-            const res = await fetch('https://faculty-backend-koz0.onrender.com/api/gallery/add', {
+            const res = await fetch('https://api.cloudinary.com/v1_1/dr5imgpgf/image/upload', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ imageUrl, caption, category, date }),
+                body: data,
+            });
+
+            const cloudData = await res.json();
+            setFormData((prev) => ({ ...prev, image: cloudData.secure_url }));
+            console.log("Uploaded Image URL:", cloudData.secure_url);
+            setUploading(false);
+        } catch (err) {
+            console.error('Upload error:', err);
+            setUploading(false);
+        }
+    };
+
+    const handleSubmit = async () => {
+        const { image, caption, category, date } = formData;
+
+        if (!image || !date) {
+            alert('Image and Date are required');
+            return;
+        }
+        console.log("Submitting:", { image, caption, category, date });
+        try {
+            // const res = await fetch('https://faculty-backend-koz0.onrender.com/api/gallery/add', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify({ image, caption, category, date }),
+            // });
+
+            const res = await fetch('http://localhost:8083/api/gallery/add', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ image, caption, category, date }),
             });
 
             if (!res.ok) throw new Error('Upload failed');
-
             alert('Gallery item added!');
-            setFormData({ imageUrl: '', caption: '', category: '', date: '' });
+            setFormData({ image: '', caption: '', category: '', date: '' });
         } catch (err) {
             alert(`Error: ${err.message}`);
         }
@@ -61,29 +79,19 @@ const AddGallery = () => {
 
             <div className="gallery-form-row">
                 <div className="gallery-input-group">
-                    {/* <label>Image</label> */}
-                    {/* <input type="file" accept="image/*" onChange={handleImageUpload} /> */}
-                    <input placeholder="ImageUrl" type="text" name="imageUrl" value={formData.imageUrl} onChange={handleChange} />
+                    <input type="file" accept="image/*" onChange={handleImageUpload} />
+                    {uploading && <p>Uploading...</p>}
                 </div>
                 <div className="gallery-input-group">
-                    {/* <label>Caption</label> */}
                     <input placeholder="Caption" type="text" name="caption" value={formData.caption} onChange={handleChange} />
                 </div>
             </div>
 
             <div className="gallery-form-row">
                 <div className="gallery-input-group">
-                    {/* <label>Category</label> */}
-                    {/* <select name="category" value={formData.category} onChange={handleChange}>
-                        <option value="">--Select Category--</option>
-                        <option value="Photography">Photography</option>
-                        <option value="Music">Music Jam</option>
-                        <option value="Trip">Trip</option>
-                    </select> */}
-                    <input placeholder="Categogy" type="text" name="category" value={formData.category} onChange={handleChange} />
+                    <input placeholder="Category" type="text" name="category" value={formData.category} onChange={handleChange} />
                 </div>
                 <div className="gallery-input-group">
-                    {/* <label>Date</label> */}
                     <input type="date" name="date" value={formData.date} onChange={handleChange} />
                 </div>
             </div>
