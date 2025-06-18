@@ -164,7 +164,7 @@ function EditProfile() {
       }
     }
   };
-
+  // test
   // const handlePhotoUpdate = async () => {
   //   if (!selectedPhoto) {
   //     alert('Please select a photo to upload.');

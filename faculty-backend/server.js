@@ -69,7 +69,7 @@ app.use('/api/faculty', facultyRoutes);
 app.use('/api/events', eventRoutes);
 app.use("/api/resources", resourceRoutes);
 app.use('/api', adminRoutes);
-// app.use('/uploads', express.static('uploads'));
+app.use('/uploads', express.static('uploads'));
 app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
 app.use("/api/students", studentRoutes);
 app.use('/api/gallery', galleryRoutes);
