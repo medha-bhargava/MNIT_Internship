@@ -34,20 +34,42 @@ const updateProfile = async (req, res) => {
     }
 };
 
+// const uploadProfilePhoto = async (req, res) => {
+//     try {
+//         const file = req.file;
+//         if (!file) return res.status(400).json({ message: 'No file uploaded' });
+
+//         // Save the filename to the profile (optional, but usually needed)
+//         const updated = await Admin.findOneAndUpdate(
+//             {},
+//             { profilePhoto: req.file.filename },
+//             { new: true, upsert: true }
+//         );
+
+//         console.log('Photo saved as:', file.filename);
+//         res.status(200).json({ message: 'Photo uploaded successfully', filename: file.filename });
+//     } catch (error) {
+//         console.error('Upload error:', error.message);
+//         res.status(500).json({ message: 'Failed to upload photo', error });
+//     }
+// };
+
 const uploadProfilePhoto = async (req, res) => {
     try {
         const file = req.file;
         if (!file) return res.status(400).json({ message: 'No file uploaded' });
 
-        // Save the filename to the profile (optional, but usually needed)
+        const imageUrl = file.path; // ✅ Cloudinary public URL
+
+        // Save to the Admin schema (use your actual schema name)
         const updated = await Admin.findOneAndUpdate(
-            {},
-            { profilePhoto: req.file.filename },
+            {}, // if you use userId, change this to { _id: req.user.id } or similar
+            { profilePhoto: imageUrl },
             { new: true, upsert: true }
         );
 
-        console.log('Photo saved as:', file.filename);
-        res.status(200).json({ message: 'Photo uploaded successfully', filename: file.filename });
+        console.log('Photo saved at URL:', imageUrl);
+        res.status(200).json({ message: 'Photo uploaded successfully', imageUrl });
     } catch (error) {
         console.error('Upload error:', error.message);
         res.status(500).json({ message: 'Failed to upload photo', error });
@@ -55,12 +77,12 @@ const uploadProfilePhoto = async (req, res) => {
 };
 
 const uploadCV = async (req, res) => {
-  try {
-    const filePath = req.file.path; // Or customize storage path
-    await Admin.updateOne({}, { detailedCV: filePath });
-    res.status(200).json({ message: 'CV uploaded successfully', path: filePath });
-  } catch (error) {
-    res.status(500).json({ message: 'Failed to upload CV', error });
-  }
+    try {
+        const filePath = req.file.path; // Or customize storage path
+        await Admin.updateOne({}, { detailedCV: filePath });
+        res.status(200).json({ message: 'CV uploaded successfully', path: filePath });
+    } catch (error) {
+        res.status(500).json({ message: 'Failed to upload CV', error });
+    }
 };
 export { getProfile, updateProfile, uploadProfilePhoto, uploadCV };

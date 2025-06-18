@@ -59,7 +59,7 @@ function Home() {
             <img
               src={
                 profile.profilePhoto
-                  ? `https://faculty-backend-koz0.onrender.com/uploads/${profile.profilePhoto}`
+                  ? profile.profilePhoto
                   : profilepic
               }
               alt="Profile"

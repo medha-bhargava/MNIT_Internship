@@ -63,6 +63,40 @@ function EditProfile() {
     return labels[value] || '';
   };
 
+  const fetchTabVisibility = async () => {
+    const defaultTabs = {
+      home: true,
+      publications: true,
+      courses: true,
+      projects: true,
+      events: true,
+      students: true,
+      trips: true,
+      gallery: true,
+      resources: true,
+      achievements: true,
+    };
+    try {
+      const res = await fetch('https://faculty-backend-koz0.onrender.com/api/tab-visibility/all');
+      const responseData = await res.json();
+
+      const updatedTabs = responseData.reduce((acc, item) => {
+        acc[item.fieldName.toLowerCase()] = item.enabled;
+        return acc;
+      }, {});
+
+      const finalTabs = Object.keys(defaultTabs).reduce((acc, key) => {
+        acc[key] = updatedTabs[key] ?? true;
+        return acc;
+      }, {});
+
+      setTabVisibility(finalTabs);
+    } catch (err) {
+      console.error("Error fetching tabs", err);
+      setTabVisibility(defaultTabs);
+    }
+  };
+
   useEffect(() => {
     const fetchProfile = async () => {
       try {
@@ -81,36 +115,6 @@ function EditProfile() {
         setLoading(false);
       }
     };
-
-    const fetchTabVisibility = async () => {
-      const defaultTabs = {
-        home: true,
-        publications: true,
-        courses: true,
-        projects: true,
-        events: true,
-        students: true,
-        trips: true,
-        gallery: true,
-        resources: true,
-        achievements: true,
-      };
-      try {
-        const res = await fetch('https://faculty-backend-koz0.onrender.com/api/tab-visibility/all');
-        const responseData = await res.json();
-
-        const finalTabs = Object.keys(defaultTabs).reduce((acc, key) => {
-          acc[key] = responseData?.[key] ?? true;
-          return acc;
-        }, {});
-
-        setTabVisibility(finalTabs);
-      } catch (err) {
-        console.error("Error fetching tabs", err);
-        setTabVisibility(defaultTabs);
-      }
-    };
-
 
     fetchProfile();
     fetchTabVisibility();
@@ -161,6 +165,29 @@ function EditProfile() {
     }
   };
 
+  // const handlePhotoUpdate = async () => {
+  //   if (!selectedPhoto) {
+  //     alert('Please select a photo to upload.');
+  //     return;
+  //   }
+
+  //   const formData = new FormData();
+  //   formData.append('photo', selectedPhoto);
+
+  //   try {
+  //     const res = await fetch('https://faculty-backend-koz0.onrender.com/api/profile/photo', {
+  //       method: 'POST',
+  //       body: formData,
+  //     });
+
+  //     if (!res.ok) throw new Error('Photo upload failed');
+  //     alert('Profile photo updated!');
+  //     setSelectedPhoto(null);
+  //   } catch (err) {
+  //     alert(`Error: ${err.message}`);
+  //   }
+  // };
+
   const handlePhotoUpdate = async () => {
     if (!selectedPhoto) {
       alert('Please select a photo to upload.');
@@ -173,14 +200,15 @@ function EditProfile() {
     try {
       const res = await fetch('https://faculty-backend-koz0.onrender.com/api/profile/photo', {
         method: 'POST',
-        body: formData,
+        body: formData
       });
 
-      if (!res.ok) throw new Error('Photo upload failed');
-      alert('Profile photo updated!');
-      setSelectedPhoto(null);
+      const data = await res.json();
+      alert('Profile photo uploaded!');
+      console.log("🌐 Cloudinary URL:", data.imageUrl);
     } catch (err) {
-      alert(`Error: ${err.message}`);
+      alert('Error uploading photo');
+      console.error(err);
     }
   };
 
@@ -220,8 +248,8 @@ function EditProfile() {
         body: JSON.stringify(payload),
       });
       if (!res.ok) throw new Error('Update failed');
+      await fetchTabVisibility();
       alert('Tab visibility updated successfully!');
-      window.location.reload();
     } catch (err) {
       alert(`Error: ${err.message}`);
     }
@@ -284,9 +312,12 @@ function EditProfile() {
                     <input
                       type="checkbox"
                       id={`tab-${tab}`}
-                      checked={tabVisibility[tab] ?? true}
+                      checked={tabVisibility[tab.toLowerCase()] ?? true}
                       onChange={(e) =>
-                        setTabVisibility({ ...tabVisibility, [tab]: e.target.checked })
+                        setTabVisibility({
+                          ...tabVisibility,
+                          [tab.toLowerCase()]: e.target.checked
+                        })
                       }
                     />
                     <label htmlFor={`tab-${tab}`}>{tab}</label>
