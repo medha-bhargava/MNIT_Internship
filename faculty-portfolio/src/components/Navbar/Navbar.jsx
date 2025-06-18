@@ -1,9 +1,11 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { FaBars, FaTimes } from 'react-icons/fa'; // For hamburger and close icons
 import logo from './logo.png';
 import './Navbar.css';
 
 const Navbar = () => {
+    const [menuOpen, setMenuOpen] = useState(false);
     const [role, setRole] = useState(null);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [isLoggingOut, setIsLoggingOut] = useState(false);
@@ -93,7 +95,12 @@ const Navbar = () => {
                 <div className="logo">
                     <img src={logo} alt="logo" />
                 </div>
-                <ul>
+
+                <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
+                    {menuOpen ? <FaTimes /> : <FaBars />}
+                </div>
+
+                <ul className={menuOpen ? 'nav-links open' : 'nav-links'}>
                     {/* <li><Link to="/home">Home</Link></li>
                     <li><Link to="/publications">Publications</Link></li>
                     <li><Link to="/courses">Courses</Link></li>
@@ -112,7 +119,7 @@ const Navbar = () => {
                         <li><Link to="/editProfile">Edit Profile</Link></li>
                     )} */}
 
-                    {shouldShow("Home") && <li><Link to="/home">Home</Link></li>}
+                    {shouldShow("Home") && <li onClick={() => setMenuOpen(false)}><Link to="/home">Home</Link></li>}
                     {shouldShow("Publications") && <li><Link to="/publications">Publications</Link></li>}
                     {shouldShow("Courses") && <li><Link to="/courses">Courses</Link></li>}
                     {shouldShow("Projects") && <li><Link to="/projects">Projects</Link></li>}
