@@ -17,8 +17,9 @@
     "leaflet": "^1.9.4",
     "mongoose": "^8.15.0",
     "multer": "^2.0.0",
+    "multer-storage-cloudinary": "^4.0.0",
+    "node-fetch": "^3.3.2",
     "react-leaflet": "^5.0.0",
-    "uuid": "^11.1.0",
-    "node-fetch": "^3.3.2"
+    "uuid": "^11.1.0"
   }
 }
