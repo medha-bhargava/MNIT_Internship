@@ -165,7 +165,7 @@ function AddEvent() {
                         <input
                             type="date"
                             name="dateFrom"
-                            className="date input"
+                            className="dateE input"
                             value={formData.dateFrom}
                             onChange={handleChange}
                         />
@@ -175,7 +175,7 @@ function AddEvent() {
                         <input
                             type="date"
                             name="dateTo"
-                            className="date input"
+                            className="dateE input"
                             value={formData.dateTo}
                             onChange={handleChange}
                         />

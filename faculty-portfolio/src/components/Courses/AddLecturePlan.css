@@ -88,6 +88,8 @@
 }
 
 .add-buttonL {
+    margin-top: -9px;
+    margin-left: 14px;
     padding: 10px 20px;
     background: linear-gradient(to right, #8d49e4, #ce85f5);
     border: none;

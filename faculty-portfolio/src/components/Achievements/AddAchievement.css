@@ -5,6 +5,7 @@
     border-radius: 16px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 550px;
 }
 
 .add-achievement-wrapper h2 {
@@ -36,7 +37,7 @@
     border-radius: 10px;
     background-color: #fff;
     transition: border-color 0.3s;
-    width: 100%;
+    /* width: 100%; */
 }
 
 .input-groupA label {

@@ -20,7 +20,7 @@ const GalleryCard = ({ imageUrl, caption, date }) => {
             </div>
             <div className="gallery-card-footer">
                 <span className="caption">{caption}</span>
-                <span className="date">{new Date(date).toLocaleDateString('en-IN')}</span>
+                <span className="dateG">{new Date(date).toLocaleDateString('en-IN')}</span>
             </div>
         </div>
     );

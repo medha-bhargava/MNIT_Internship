@@ -32,7 +32,6 @@ if (redirect) {
   window.history.replaceState(null, "", redirect);
 }
 
-
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter basename="/MNIT_Internship">

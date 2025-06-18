@@ -16,6 +16,10 @@
     font-weight: 700;
 }
 
+.dateE {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 .input-group {
     display: flex;
     flex-direction: column;
