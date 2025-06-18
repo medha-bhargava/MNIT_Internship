@@ -1,6 +1,5 @@
 import './Home.css';
 import Navbar from '../Navbar/Navbar';
-import Footer from '../Footer/Footer';
 import profilepic from './profilepic.png';
 // import myphoto from './myphoto.png';
 import { useEffect, useState } from 'react';
@@ -116,7 +115,6 @@ function Home() {
 
         </div>
       </div>
-      <Footer />
     </>
   );
 }
