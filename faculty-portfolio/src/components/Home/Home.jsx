@@ -1,5 +1,6 @@
 import './Home.css';
 import Navbar from '../Navbar/Navbar';
+import Footer from '../Footer/Footer';
 import profilepic from './profilepic.png';
 // import myphoto from './myphoto.png';
 import { useEffect, useState } from 'react';
@@ -32,23 +33,6 @@ function Home() {
   return (
     <>
       <Navbar />
-      {/* <div className="ball-container">
-        <div className="ball ball1"></div>
-        <div className="ball ball2"></div>
-        <div className="ball ball3"></div>
-        <div className="ball ball4"></div>
-        <div className="ball ball5"></div>
-        <div className="ball ball6"></div>
-        <div className="ball ball7"></div>
-        <div className="ball ball8"></div>
-        <div className="ball ball9"></div>
-        <div className="ball ball10"></div>
-        <div className="ball ball11"></div>
-        <div className="ball ball12"></div>
-        <div className="ball ball13"></div>
-        <div className="ball ball14"></div>
-        <div className="ball ball15"></div>
-      </div> */}
       <div className="container">
         <div className="left">
           {loading ? (
@@ -132,6 +116,7 @@ function Home() {
 
         </div>
       </div>
+      <Footer />
     </>
   );
 }
