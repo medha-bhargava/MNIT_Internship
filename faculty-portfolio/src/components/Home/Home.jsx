@@ -76,6 +76,8 @@ function Home() {
                 <p>{profile.name}</p>
                 <p>{profile.contactNumber}</p>
                 <p>{profile.email}</p>
+                <p>Last updated at: {new Date().toLocaleString()}</p> 
+                {/* will remove later */}
               </>
             )}
           </div>
