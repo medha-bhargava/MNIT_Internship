@@ -88,12 +88,12 @@
   .affiliation p {
     font-size: 15px;
     padding: 10px 14px;
-    width: 93%;
+    width: 90%;
   }
 
   .no-records {
     font-size: 14px;
-    width: 100%;
+    width: 90%;
   }
 }
 
@@ -107,6 +107,7 @@
   .affiliation p {
     font-size: 13.5px;
     padding: 8px 12px;
+    width: 90%;
   }
 
   .no-records {
