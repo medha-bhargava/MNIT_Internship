@@ -3,7 +3,6 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  /* background-color: #ffffff; */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #222222;
 }
@@ -46,7 +45,8 @@
   border-left-color: #b67be6;
 }
 
-.student-item:hover, .no-students:hover {
+.student-item:hover,
+.no-students:hover {
   box-shadow: 0 4px 20px rgba(141, 73, 228, 0.2);
   transform: translateX(4px);
 }
@@ -93,4 +93,80 @@
 
 details > summary {
   transition: color 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .students-container {
+    padding: 60px 6% 40px;
+    align-items: center;
+  }
+
+  .students-title {
+    font-size: 1.6rem;
+    text-align: center;
+    padding-left: 0;
+    border-left: none;
+    border-bottom: 3px solid #b67be6;
+    padding-bottom: 8px;
+    width: 100%;
+  }
+
+  .student-item {
+    font-size: 14.5px;
+    width: 90%;
+  }
+
+  .no-students {
+    font-size: 14.5px;
+    width: 90%;
+  }
+
+  .degree-section,
+  .status-section {
+    width: 90%;
+  }
+
+  .degree-section > summary {
+    font-size: 1.2rem;
+  }
+
+  .status-section > summary {
+    font-size: 1.05rem;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .degree-section > summary,
+  .status-section > summary {
+    font-size: 1rem;
+  }
+
+  .student-item {
+    font-size: 14px;
+  }
+
+  .no-students {
+    font-size: 14px;
+    width: 85%;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .status-section {
+    margin-left: 16px;
+  }
+
+  .status-section > summary,
+  .degree-section > summary {
+    font-size: 1.2rem;
+  }
+
+  .student-item {
+    font-size: 15px;
+  }
+
+  .no-students {
+    font-size: 14px;
+  }
 }
