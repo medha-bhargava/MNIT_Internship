@@ -66,3 +66,72 @@
   padding: 14px 20px;
   font-style: italic;
 }
+
+@media (max-width: 768px) {
+  .achievementBox {
+    padding: 60px 6% 40px;
+    align-items: center;
+  }
+
+  .achievementBox h1 {
+    font-size: 1.6rem;
+    text-align: center;
+    padding-left: 0;
+    border-left: none;
+    border-bottom: 3px solid #b67be6;
+    padding-bottom: 8px;
+    width: 100%;
+  }
+
+  .award p,
+  .patent p,
+  .affiliation p {
+    font-size: 15px;
+    padding: 10px 14px;
+    width: 93%;
+  }
+
+  .no-records {
+    font-size: 14px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .achievementBox h1 {
+    font-size: 1.4rem;
+  }
+
+  .award p,
+  .patent p,
+  .affiliation p {
+    font-size: 13.5px;
+    padding: 8px 12px;
+  }
+
+  .no-records {
+    font-size: 13px;
+    padding: 10px 14px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .achievementBox {
+    padding: 70px 8%;
+  }
+
+  .achievementBox h1 {
+    font-size: 1.8rem;
+    padding-left: 10px;
+  }
+
+  .award p,
+  .patent p,
+  .affiliation p {
+    font-size: 16px;
+  }
+
+  .no-records {
+    font-size: 14px;
+  }
+}

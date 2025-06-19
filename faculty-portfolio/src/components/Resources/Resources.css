@@ -24,14 +24,12 @@
 }
 
 .alink {
-  text-decoration: none;
-  color: #343434;
-  font-size: 1rem;
-  transition: color 0.3s ease;
+  text-decoration: underline;
+  color: rgb(101, 101, 255);
 }
 
 .alink:hover {
-  color: #8d49e4;
+  text-decoration: underline;
 }
 
 .pyqs p:last-child,
@@ -43,6 +41,7 @@
   padding-left: 16px;
   margin-bottom: 0;
 }
+
 /* Also for the last-child p in each category (the "no items" messages): */
 .pyqs p:last-child {
   border-left-color: #8d49e4;
@@ -65,12 +64,13 @@
   padding: 18px 24px;
   background-color: #fafafa;
   border-radius: 12px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
 }
 
 .dropdown-content p {
   margin: 6px 0;
 }
+
 .resources p {
   padding: 12px 18px;
   border-left: 5px solid transparent;
@@ -113,7 +113,8 @@
   color: #666;
   -webkit-user-select: none;
   user-select: none;
-  border-left: 5px solid transparent; /* fallback */
+  border-left: 5px solid transparent;
+  /* fallback */
 }
 
 .pyqs .no-resource-records {
@@ -130,4 +131,78 @@
 
 .notes .no-resource-records {
   border-left-color: #e7d8fa;
+}
+
+@media (max-width: 768px) {
+  .resourcesBox {
+    padding: 60px 6% 40px;
+    align-items: center;
+  }
+
+  .resourcesBox h1 {
+    font-size: 1.6rem;
+    text-align: center;
+    padding-left: 0;
+    border-left: none;
+    border-bottom: 3px solid #b67be6;
+    padding-bottom: 8px;
+    width: 100%;
+  }
+
+  .resources p {
+    font-size: 15px;
+    padding: 10px 14px;
+    width: 92%;
+  }
+
+  .alink {
+    word-break: break-all;
+  }
+
+  .no-resource-records {
+    font-size: 14px;
+    width: 90%;
+    /* padding: 12px 16px; */
+  }
+}
+
+@media (max-width: 480px) {
+  .resourcesBox h1 {
+    font-size: 1.4rem;
+  }
+
+  .resources p {
+    font-size: 13.5px;
+    width: 88%;
+    /* padding: 8px 12px; */
+  }
+
+  .no-resource-records {
+    font-size: 13px;
+    padding: 10px 14px;
+    width: 90%;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .resourcesBox {
+    padding: 70px 8%;
+  }
+
+  .resourcesBox h1 {
+    font-size: 1.8rem;
+    padding-left: 10px;
+  }
+
+  .resources p {
+    font-size: 15px;
+  }
+
+  .alink {
+    word-break: break-all;
+  }
+
+  .no-resource-records {
+    font-size: 14px;
+  }
 }

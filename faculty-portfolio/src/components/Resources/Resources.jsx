@@ -64,7 +64,7 @@ function Resources() {
                 {resources['Previous Year Papers'].length > 0 ? (
                   resources['Previous Year Papers'].map((item, index) => (
                     <p key={index}>
-                      <strong>{item.title}:</strong>{' '}
+                      <strong>{item.title}:</strong>{''}
                       <a className="alink" href={item.link} target="_blank" rel="noopener noreferrer">
                         {item.link}
                       </a>
@@ -81,7 +81,7 @@ function Resources() {
                 {resources['Important Questions'].length > 0 ? (
                   resources['Important Questions'].map((item, index) => (
                     <p key={index}>
-                      <strong>{item.title}:</strong>{' '}
+                      <strong>{item.title}:</strong>{''}
                       <a className="alink" href={item.link} target="_blank" rel="noopener noreferrer">
                         {item.link}
                       </a>
@@ -98,7 +98,7 @@ function Resources() {
                 {resources['Video Links'].length > 0 ? (
                   resources['Video Links'].map((item, index) => (
                     <p key={index}>
-                      <strong>{item.title}:</strong>{' '}
+                      <strong>{item.title}:</strong>{''}
                       <a className="alink" href={item.link} target="_blank" rel="noopener noreferrer">
                         {item.link}
                       </a>
@@ -115,7 +115,7 @@ function Resources() {
                 {resources['Notes'].length > 0 ? (
                   resources['Notes'].map((item, index) => (
                     <p key={index}>
-                      <strong>{item.title}:</strong>{' '}
+                      <strong>{item.title}:</strong>{''}
                       <a className="alink" href={item.link} target="_blank" rel="noopener noreferrer">
                         {item.link}
                       </a>
