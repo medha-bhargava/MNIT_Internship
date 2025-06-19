@@ -105,38 +105,40 @@ const SyllabusView = () => {
                     {lecturePlan.length > 0 && (
                         <>
                             <h3 className="lecture-plan-heading">Lecture Plan</h3>
-                            <table className="lecture-table">
-                                <thead>
-                                    <tr>
-                                        <th style={{ textAlign: "center" }}>Lecture No.</th>
-                                        <th style={{ textAlign: "center" }}>Date</th>
-                                        <th style={{ textAlign: "center" }}>Lecture Title</th>
-                                        <th style={{ textAlign: "center" }}>Study Material</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {lecturePlan.map((lec, index) => (
-                                        <tr key={index}>
-                                            <td style={{ textAlign: "center" }}>{lec.lectureNo}</td>
-                                            <td style={{ textAlign: "center" }}>{lec.date}</td>
-                                            <td>{lec.title}</td>
-                                            <td style={{ textAlign: "center" }}>
-                                                {lec.pdfLink && (
-                                                    <a href={lec.pdfLink} target="_blank" rel="noopener noreferrer" className="material-link">
-                                                        [PDF]
-                                                    </a>
-                                                )}
-                                                {lec.pptLink && (
-                                                    <a href={lec.pptLink} target="_blank" rel="noopener noreferrer" className="material-link">
-                                                        [PPT]
-                                                    </a>
-                                                )}
-                                                {!lec.pdfLink && !lec.pptLink && '—'}
-                                            </td>
+                            <div className="lecture-table-wrapper">
+                                <table className="lecture-table">
+                                    <thead>
+                                        <tr>
+                                            <th style={{ textAlign: "center" }}>Lecture No.</th>
+                                            <th style={{ textAlign: "center" }}>Date</th>
+                                            <th style={{ textAlign: "center" }}>Lecture Title</th>
+                                            <th style={{ textAlign: "center" }}>Study Material</th>
                                         </tr>
-                                    ))}
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        {lecturePlan.map((lec, index) => (
+                                            <tr key={index}>
+                                                <td style={{ textAlign: "center" }}>{lec.lectureNo}</td>
+                                                <td style={{ textAlign: "center" }}>{lec.date}</td>
+                                                <td>{lec.title}</td>
+                                                <td style={{ textAlign: "center" }}>
+                                                    {lec.pdfLink && (
+                                                        <a href={lec.pdfLink} target="_blank" rel="noopener noreferrer" className="material-link">
+                                                            [PDF]
+                                                        </a>
+                                                    )}
+                                                    {lec.pptLink && (
+                                                        <a href={lec.pptLink} target="_blank" rel="noopener noreferrer" className="material-link">
+                                                            [PPT]
+                                                        </a>
+                                                    )}
+                                                    {!lec.pdfLink && !lec.pptLink && '—'}
+                                                </td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
                         </>
                     )}
 

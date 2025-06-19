@@ -90,48 +90,50 @@ function Courses() {
     }
 
     return (
-      <table className="teaching-table">
-        <thead>
-          <tr>
-            <th>Year (Session)</th>
-            <th>Classroom</th>
-          </tr>
-        </thead>
-        <tbody>
-          {course.yearsTaught
-            .filter(entry => entry && entry.year && entry.session)
-            .map((entry, idx) => (
-              <tr key={idx}>
-                <td>
-                  <Link
-                    to={`/syllabus/${course.courseId}/${entry.year}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {entry.year} ({entry.session})
-                  </Link>
-                </td>
-                <td>
-                  {entry.classroomLink ? (
-                    canAccessClassroom ? (
-                      <a
-                        href={entry.classroomLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Classroom
-                      </a>
+      <div className="table-scroll-wrapper">
+        <table className="teaching-table">
+          <thead>
+            <tr>
+              <th>Year (Session)</th>
+              <th>Classroom</th>
+            </tr>
+          </thead>
+          <tbody>
+            {course.yearsTaught
+              .filter(entry => entry && entry.year && entry.session)
+              .map((entry, idx) => (
+                <tr key={idx}>
+                  <td>
+                    <Link
+                      to={`/syllabus/${course.courseId}/${entry.year}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {entry.year} ({entry.session})
+                    </Link>
+                  </td>
+                  <td>
+                    {entry.classroomLink ? (
+                      canAccessClassroom ? (
+                        <a
+                          href={entry.classroomLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Classroom
+                        </a>
+                      ) : (
+                        <Link to="/login">Classroom</Link>
+                      )
                     ) : (
-                      <Link to="/login">Classroom</Link>
-                    )
-                  ) : (
-                    '—'
-                  )}
-                </td>
-              </tr>
-            ))}
-        </tbody>
-      </table>
+                      '—'
+                    )}
+                  </td>
+                </tr>
+              ))}
+          </tbody>
+        </table>
+      </div>
     );
   };
 

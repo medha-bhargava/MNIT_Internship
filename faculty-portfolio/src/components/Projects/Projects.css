@@ -81,3 +81,61 @@
   transition: all 0.25s ease;
 }
 
+@media (max-width: 768px) {
+  .projectsBox {
+    padding: 60px 6% 40px;
+    align-items: center;
+  }
+
+  .projectsBox h1 {
+    font-size: 1.6rem;
+    text-align: center;
+    padding-left: 0;
+    border-left: none;
+    border-bottom: 3px solid #b67be6;
+    padding-bottom: 8px;
+    width: 100%;
+  }
+
+  .projects {
+    width: 100%;
+  }
+
+  .project-entry {
+    font-size: 16px;
+    padding: 10px 14px;
+    margin-bottom: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .projectsBox h1 {
+    font-size: 1.4rem;
+  }
+
+  .project-entry {
+    font-size: 15px;
+    padding: 10px 12px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .projectsBox {
+    padding: 70px 8%;
+  }
+
+  .projectsBox h1 {
+    font-size: 1.8rem;
+    padding-left: 10px;
+  }
+
+  .projects {
+    width: 100%;
+  }
+
+  .project-entry {
+    font-size: 16.5px;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+  }
+}

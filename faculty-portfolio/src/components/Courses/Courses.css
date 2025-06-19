@@ -124,16 +124,21 @@
   width: 40%;
   margin-top: 10px;
   overflow: hidden;
-  background: white;
+  /* background: white; */
   border-collapse: separate;
   border-spacing: 0;
   margin-top: 15px;
-  background-color: #fff;
+  /* background-color: #fff; */
   font-size: 15px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); */
   border-radius: 16px;
-  overflow: hidden;
   transition: box-shadow 0.3s ease;
+  min-width: 300px;
+}
+
+.table-scroll-wrapper {
+  width: 100%;
+  overflow-x: auto;
 }
 
 .teaching-table:hover {
@@ -189,4 +194,117 @@
 
 .teaching-table a:hover {
   text-decoration: underline;
+}
+
+.course-year-card {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .coursesBox {
+    padding: 60px 6% 40px;
+    align-items: center;
+  }
+
+  .coursesBox h1 {
+    font-size: 1.6rem;
+    text-align: center;
+    padding-left: 0;
+    border-left: none;
+    border-bottom: 3px solid #b67be6;
+    padding-bottom: 8px;
+    width: 100%;
+  }
+
+  .courses {
+    width: 100%;
+  }
+
+  .course-link {
+    font-size: 16px;
+    padding: 10px 14px;
+  }
+
+  .course-details-inline {
+    margin-left: 0 !important;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .teaching-table {
+    display: block;
+    overflow-x: auto;
+    width: 100%;
+    font-size: 14px;
+    margin-top: 10px;
+    border: none;
+  }
+
+  .teaching-table thead,
+  .teaching-table tbody,
+  .teaching-table tr,
+  .teaching-table th,
+  .teaching-table td {
+    white-space: nowrap;
+  }
+
+  .table-scroll-wrapper {
+    overflow-x: auto;
+  }
+
+  .table-scroll-wrapper::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .table-scroll-wrapper::-webkit-scrollbar-thumb {
+    background: #c292e9;
+    border-radius: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .coursesBox h1 {
+    font-size: 1.4rem;
+  }
+
+  .course-link {
+    font-size: 15px;
+  }
+
+  .teaching-table th,
+  .teaching-table td {
+    font-size: 13px;
+    padding: 7px 8px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .coursesBox {
+    padding: 70px 8%;
+  }
+
+  .coursesBox h1 {
+    font-size: 1.8rem;
+    padding-left: 10px;
+  }
+
+  .courses {
+    width: 100%;
+  }
+
+  .course-link {
+    font-size: 16.5px;
+    padding: 12px 16px;
+  }
+
+  .teaching-table {
+    width: 100%;
+    font-size: 15px;
+  }
+
+  .teaching-table th,
+  .teaching-table td {
+    font-size: 15px;
+    padding: 10px 12px;
+  }
 }
