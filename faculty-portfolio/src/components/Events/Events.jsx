@@ -29,33 +29,14 @@ function Events() {
     };
 
     const filterByType = (type) => {
+        const sorted = [...events].sort((a, b) => new Date(a.dateFrom) - new Date(b.dateFrom));
         if (type === 'Upcoming') {
-            return events.filter(isUpcoming);
+            return sorted.filter(isUpcoming);
         } else if (type === 'Past') {
-            return events.filter((event) => !isUpcoming(event));
+            return sorted.filter((event) => !isUpcoming(event));
         }
         return [];
     };
-
-    // const renderEvent = (event) => {
-    //     const today = new Date();
-    //     today.setHours(0, 0, 0, 0);
-    //     const eventDate = new Date(event.dateFrom);
-    //     eventDate.setHours(0, 0, 0, 0);
-    //     const isPast = eventDate < today;
-
-    //     return (
-    //         <p key={event._id} className="eventItem">
-    //             <strong>{event.eventTitle}</strong>, {event.institute}, {event.city}, {event.country} <br />
-    //             <em>{new Date(event.dateFrom).toLocaleDateString()} - {new Date(event.dateTo).toLocaleDateString()}</em><br />
-    //             {event.designation && <span><strong>Designation:</strong> {event.designation} | </span>}
-    //             {event.sponsoredBy && <span><strong>Sponsored By:</strong> {event.sponsoredBy}</span>}
-    //             {isPast && event.participationType && (
-    //                 <div><em>{event.participationType}</em></div>
-    //             )}
-    //         </p>
-    //     );
-    // };
 
     return (
         <>
