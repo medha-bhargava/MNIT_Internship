@@ -43,7 +43,7 @@ function TripMap({ trips }) {
     const center = [20.5937, 78.9629]; // Default center: India
     return (
         <div className="tripMapBox">
-            <h2>Trips on Map</h2>
+            <h3 className="headingTrips">Trips on Map</h3>
 
             {trips.length === 0 ? (
                 <p style={{ textAlign: 'center', marginTop: '20px' }}>
