@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FaPlus } from "react-icons/fa6";
+import { toast } from 'react-toastify';
 import './AddCourse.css';
 
 function AddCourse() {
@@ -63,7 +64,7 @@ function AddCourse() {
 
     const handleAdd = async () => {
         if (!courseId || !courseName || !courseType || !institute || !description) {
-            alert('Please fill all course fields.');
+            toast.warning('Please fill all course fields.', { toastId: 'empty-course-fields' });
             return;
         }
 
@@ -73,7 +74,7 @@ function AddCourse() {
             //     return;
             // }
             if (!yearEntry.year || !yearEntry.session) {
-                alert('Please fill all year-wise fields.');
+                toast.warning('Please fill all year-wise fields.');
                 return;
             }
         }
@@ -95,7 +96,7 @@ function AddCourse() {
 
             const data = await response.json();
             if (response.ok) {
-                alert('Course added successfully!');
+                toast.success('Course added successfully!');
                 // Clear form
                 setCourseId('');
                 setCourseName('');
@@ -104,10 +105,10 @@ function AddCourse() {
                 setDescription('');
                 setYearsTaught([{ year: '', session: '', syllabusLink: '', classroomLink: '' }]);
             } else {
-                alert(data.message || 'Something went wrong.');
+                toast.error(data.message || 'Something went wrong.');
             }
         } catch (err) {
-            alert('Error connecting to server.');
+            toast.error('Error connecting to server.');
             console.error(err);
         }
     };

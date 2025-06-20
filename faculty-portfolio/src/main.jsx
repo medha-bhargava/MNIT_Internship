@@ -1,6 +1,8 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import ProtectedRoute from './components/ProtectedRoute.jsx';
 import LoginPage from './components/Login/Login.jsx';
 import HomePage from './components/Home/Home.jsx'
@@ -88,6 +90,18 @@ createRoot(document.getElementById('root')).render(
         />
         <Route path="/access-denied" element={<AccessDenied />} />
       </Routes>
+
+      {/* ✅ Global Toast Container */}
+      <ToastContainer
+        position="top-right"
+        autoClose={4000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        pauseOnHover
+        draggable
+        theme="light"
+      />
     </BrowserRouter>
   </StrictMode>,
 );

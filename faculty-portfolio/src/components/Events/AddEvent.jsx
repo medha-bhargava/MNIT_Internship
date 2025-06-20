@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { toast } from 'react-toastify'
 import './AddEvent.css';
 
 function AddEvent() {
@@ -31,7 +32,7 @@ function AddEvent() {
             });
 
             if (response.ok) {
-                alert('Event added successfully!');
+                toast.success('Event added successfully!');
                 setFormData({
                     category: '',
                     eventTitle: '',
@@ -48,14 +49,14 @@ function AddEvent() {
             } else {
                 const errorData = await response.json();
                 if (errorData.message === "Event with this title already exists.") {
-                    alert("An event with this title already exists!");
+                    toast.info("An event with this title already exists!");
                 } else {
-                    alert('Failed to add event.');
+                    toast.error('Failed to add event.');
                 }
             }
         } catch (err) {
             console.error('Submission error:', err);
-            alert('Error submitting event.');
+            toast.error('Error submitting event.');
         }
     };
 

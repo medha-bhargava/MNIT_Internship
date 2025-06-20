@@ -1,13 +1,14 @@
 import "./Login.css";
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { toast } from 'react-toastify';
 
 const Login = () => {
     const [role, setRole] = useState("student");
     const [userId, setUserId] = useState("");
     const [password, setPassword] = useState("");
     const [isLoggingIn, setIsLoggingIn] = useState(false);
-    const [error, setError] = useState("");
+    // const [error, setError] = useState("");
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -24,7 +25,7 @@ const Login = () => {
 
     const handleLogin = async () => {
         setIsLoggingIn(true);
-        setError("");
+        // setError("");
 
         try {
             console.log("Sending to backend:", {
@@ -54,10 +55,12 @@ const Login = () => {
             localStorage.setItem("userName", data.userName);
             localStorage.setItem("userId", userId);
             setIsLoggingIn(false);
+            toast.success("🎉 Login successful!");
             navigate(redirectPath || "/home");
         } catch (err) {
             setIsLoggingIn(false);
-            setError(err.message);
+            // setError(err.message);
+            toast.error(`🚫 ${err.message}`);
         }
     };
 
@@ -95,7 +98,7 @@ const Login = () => {
                 {isLoggingIn ? <div className="spinner"></div> : "Login"}
             </button>
 
-            {error && <p className="error">{error}</p>}
+            {/* {error && <p className="error">{error}</p>} */}
         </div>
     );
 };

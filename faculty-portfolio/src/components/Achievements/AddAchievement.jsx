@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { toast } from 'react-toastify'
 import './AddAchievement.css';
 
 const years = Array.from({ length: 30 }, (_, i) => 2025 - i);
@@ -37,7 +38,7 @@ const AddAchievement = () => {
             });
 
             if (res.ok) {
-                alert('Achievement added successfully!');
+                toast.success('Achievement added successfully!');
                 setFormData({
                     type: '',
                     description: '',
@@ -50,11 +51,11 @@ const AddAchievement = () => {
                 });
                 setAType('');
             } else {
-                alert('Failed to add achievement');
+                toast.error('Failed to add achievement');
             }
         } catch (err) {
             console.error(err);
-            alert('An error occurred');
+            toast.error('An error occurred');
         }
     };
 

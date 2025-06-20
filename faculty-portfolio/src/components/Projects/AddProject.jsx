@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { toast } from 'react-toastify'
 import './AddProject.css';
 
 function AddProject() {
@@ -61,7 +62,7 @@ function AddProject() {
 
         for (let field of requiredFields) {
             if (!formData[field]) {
-                alert("Please fill all the required fields.");
+                toast.warning("Please fill all the required fields.");
                 return;
             }
         }
@@ -88,7 +89,7 @@ function AddProject() {
             });
 
             if (response.ok) {
-                alert('Project added successfully!');
+                toast.success('Project added successfully!');
                 setFormData({
                     role: '',
                     projectLevel: '',
@@ -104,11 +105,11 @@ function AddProject() {
                 });
             } else {
                 const errorData = await response.json();
-                alert(errorData.message || 'Error adding project.');
+                toast.error(errorData.message || 'Error adding project.');
             }
         } catch (err) {
             console.error('Submit error:', err);
-            alert('Error connecting to server.');
+            toast.error('Error connecting to server.');
         }
     };
 

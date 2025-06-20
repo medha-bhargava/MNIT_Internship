@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
 import './AddPublication.css';
 
 function AddPublicationForm() {
@@ -46,7 +47,7 @@ function AddPublicationForm() {
     const handleAdd = async () => {
         // Validation depends on pType
         if (!pType) {
-            alert('Please select publication type');
+            toast.error('Please select publication type');
             return;
         }
 
@@ -93,7 +94,7 @@ function AddPublicationForm() {
 
         for (const field of requiredFields) {
             if (!formData[field] || formData[field].trim() === '') {
-                alert('Please fill all required fields.');
+                toast.warning('Please fill all required fields', { toastId: 'empty-publication-fields' });
                 return;
             }
         }
@@ -119,7 +120,7 @@ function AddPublicationForm() {
 
             const data = await response.json();
             if (response.ok) {
-                alert('Publication added successfully!');
+                toast.success('Publication added successfully!');
                 setPubType('');
                 setFormData({
                     typeOfJournal: '',
@@ -144,10 +145,10 @@ function AddPublicationForm() {
                     publicationType: '',
                 });
             } else {
-                alert(data.message || 'Something went wrong.');
+                toast.error(data.message || 'Something went wrong.');
             }
         } catch (err) {
-            alert('Error connecting to server.');
+            toast.error('Error connecting to server.');
             console.error(err);
         }
     };

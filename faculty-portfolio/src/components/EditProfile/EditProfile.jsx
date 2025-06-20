@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { toast } from 'react-toastify'
 import './EditProfile.css';
 import Navbar from '../Navbar/Navbar';
 import AddPublicationForm from '../Publications/AddPublication';
@@ -131,7 +132,7 @@ function EditProfile() {
 
   const handleUpdate = async () => {
     if (!section || !subField) {
-      alert('Please choose both section and sub-field');
+      toast.warning('Please choose both section and sub-field');
       return;
     }
     if (
@@ -157,10 +158,10 @@ function EditProfile() {
         });
         if (!res.ok) throw new Error('Update failed');
         // setMessage(`✅ ${getSubFieldLabel(subField)} updated!`);
-        alert(`${getSubFieldLabel(subField)} updated!`)
+        toast.success(`${getSubFieldLabel(subField)} updated!`)
       } catch (err) {
         // setMessage(`❌ Error: ${err.message}`);
-        alert(`Error: ${err.message}`)
+        toast.error(`Error: ${err.message}`)
       }
     }
   };
@@ -190,7 +191,7 @@ function EditProfile() {
 
   const handlePhotoUpdate = async () => {
     if (!selectedPhoto) {
-      alert('Please select a photo to upload.');
+      toast.warning('Please select a photo to upload.');
       return;
     }
 
@@ -204,17 +205,17 @@ function EditProfile() {
       });
 
       const data = await res.json();
-      alert('Profile photo uploaded!');
+      toast.success('Profile photo uploaded!');
       console.log("🌐 Cloudinary URL:", data.image);
     } catch (err) {
-      alert('Error uploading photo');
+      toast.error('Error uploading photo');
       console.error(err);
     }
   };
 
   const handleCVUpload = async () => {
     if (!selectedCV) {
-      alert('Please select a PDF to upload.');
+      toast.warning('Please select a PDF to upload.');
       return;
     }
 
@@ -229,10 +230,10 @@ function EditProfile() {
 
       if (!res.ok) throw new Error('CV upload failed');
 
-      alert('Detailed CV uploaded successfully!');
+      toast.success('Detailed CV uploaded successfully!');
       setSelectedCV(null);
     } catch (err) {
-      alert(`Error: ${err.message}`);
+      toast.error(`Error: ${err.message}`);
     }
   };
 
@@ -249,9 +250,9 @@ function EditProfile() {
       });
       if (!res.ok) throw new Error('Update failed');
       await fetchTabVisibility();
-      alert('Tab visibility updated successfully!');
+      toast.success('Tab visibility updated successfully!');
     } catch (err) {
-      alert(`Error: ${err.message}`);
+      toast.error(`Error: ${err.message}`);
     }
   };
 

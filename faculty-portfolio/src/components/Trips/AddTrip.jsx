@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { toast } from 'react-toastify'
 import './AddTrip.css';
 
 function AddTrip() {
@@ -20,7 +21,7 @@ function AddTrip() {
 
         for (let field of requiredFields) {
             if (!formData[field]) {
-                alert("Please fill all the required fields.");
+                toast.warning("Please fill all the required fields.");
                 return;
             }
         }
@@ -33,14 +34,14 @@ function AddTrip() {
             });
 
             if (res.ok) {
-                alert('Trip added successfully!');
+                toast.success('Trip added successfully!');
                 setFormData({ location: '', year: '', purpose: '', description: '', photoUrl: '' });
             } else {
-                alert('Failed to add trip.');
+                toast.error('Failed to add trip.');
             }
         } catch (err) {
             console.error(err);
-            alert('Server error');
+            toast.error('Server error');
         }
     };
 

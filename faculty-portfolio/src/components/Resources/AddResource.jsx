@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { toast } from 'react-toastify'
 import './AddResource.css';
 
 function AddResource() {
@@ -8,7 +9,7 @@ function AddResource() {
 
     const handleAdd = async () => {
         if (!title || !link || !category) {
-            alert('Please fill all fields.');
+            toast.warning('Please fill all fields.');
             return;
         }
 
@@ -22,15 +23,15 @@ function AddResource() {
             const data = await response.json();
 
             if (response.ok) {
-                alert('Resource added successfully!');
+                toast.success('Resource added successfully!');
                 setTitle('');
                 setLink('');
                 setCategory('');
             } else {
-                alert(data.message || 'Something went wrong.');
+                toast.error(data.message || 'Something went wrong.');
             }
         } catch (err) {
-            alert('Error connecting to server.');
+            toast.error('Error connecting to server.');
             console.error(err);
         }
     };

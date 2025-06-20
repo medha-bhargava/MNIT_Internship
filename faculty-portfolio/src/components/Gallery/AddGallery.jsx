@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { toast } from 'react-toastify'
 import './AddGallery.css';
 
 const AddGallery = () => {
@@ -22,6 +23,7 @@ const AddGallery = () => {
         if (!file) return;
 
         setUploading(true);
+        toast.info('Uploading image...');
 
         const data = new FormData();
         data.append('file', file);
@@ -37,9 +39,13 @@ const AddGallery = () => {
             const cloudData = await res.json();
             setFormData((prev) => ({ ...prev, image: cloudData.secure_url }));
             console.log("Uploaded Image URL:", cloudData.secure_url);
+            toast.dismiss('uploading');
+            toast.success('Image uploaded successfully!');
             setUploading(false);
         } catch (err) {
             console.error('Upload error:', err);
+            toast.dismiss('uploading');
+            toast.error('Failed to upload image.');
             setUploading(false);
         }
     };
@@ -48,7 +54,7 @@ const AddGallery = () => {
         const { image, caption, category, date } = formData;
 
         if (!image || !date) {
-            alert('Image and Date are required');
+            toast.warning('Image and Date are required');
             return;
         }
         console.log("Submitting:", { image, caption, category, date });
@@ -66,10 +72,10 @@ const AddGallery = () => {
             });
 
             if (!res.ok) throw new Error('Upload failed');
-            alert('Gallery item added!');
+            toast.success('Gallery item added!');
             setFormData({ image: '', caption: '', category: '', date: '' });
         } catch (err) {
-            alert(`Error: ${err.message}`);
+            toast.error(`Error: ${err.message}`);
         }
     };
 

@@ -73,3 +73,40 @@
     transform: rotate(360deg);
   }
 }
+
+/* Mobile Responsive Styles */
+@media (max-width: 480px) {
+  .loginBox {
+    width: 90%;
+    margin: 80px auto;
+    padding: 20px;
+  }
+
+  .loginBox h1 {
+    font-size: 1.5rem;
+  }
+
+  .button {
+    width: 100%;
+    font-size: 1rem;
+    padding: 10px;
+    height: 45px;
+  }
+
+  .error {
+    font-size: 1rem;
+  }
+}
+
+/* Tablet Portrait: 481–768px */
+@media (max-width: 768px) {
+  .loginBox {
+    width: 80%;
+    margin: 90px auto;
+    padding: 25px;
+  }
+
+  .button {
+    width: 100%;
+  }
+}

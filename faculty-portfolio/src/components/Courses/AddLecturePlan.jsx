@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { toast } from 'react-toastify'
 import './AddLecturePlan.css';
 
 const AddLecturePlan = () => {
@@ -39,18 +40,23 @@ const AddLecturePlan = () => {
 
     const handleSubmit = async () => {
         if (!selectedCourseId) {
-            alert('Please select a course');
+            toast.warning('Please select a course');
             return;
         }
 
-        if (!year || !session) {
-            alert('Please enter year and select session');
+        if (!year) {
+            toast.warning('Please enter year');
+            return;
+        }
+
+        if (!session) {
+            toast.warning('Please enter session');
             return;
         }
 
         for (const lec of lecturePlan) {
             if (!lec.lectureNo || !lec.date || !lec.title) {
-                alert('Please fill all lecture details');
+                toast.warning('Please fill all lecture details');
                 return;
             }
         }
@@ -80,20 +86,20 @@ const AddLecturePlan = () => {
 
             const data = await response.json();
             if (response.ok) {
-                alert('Lecture Plan added successfully!');
+                toast.success('Lecture Plan added successfully!');
                 setLecturePlan([{ lectureNo: '', date: '', title: '', pdfLink: '', pptLink: '' }]);
                 setSelectedCourseId('');
                 setYear('');
                 setSession('');
             } else {
                 if (data.message.includes("already exists")) {
-                    alert("A lecture plan for this Course + Session + Year already exists.");
+                    toast.info("A lecture plan for this Course + Session + Year already exists.");
                 } else {
-                    alert(data.message || 'Failed to add lecture plan');
+                    toast.error(data.message || 'Failed to add lecture plan');
                 }
             }
         } catch (err) {
-            alert('Server error');
+            toast.error('Server error');
             console.error(err);
         }
     };
@@ -132,48 +138,48 @@ const AddLecturePlan = () => {
 
             </div>
             <div className="addLecture">
-            <h3 className="h3">Add Lecture</h3>
-            {lecturePlan.map((lec, idx) => (
-                <div className="lecture-row" key={idx}>
-                    <input
-                        className="inputL smallL"
-                        type="text"
-                        placeholder="Lecture No."
-                        value={lec.lectureNo}
-                        onChange={(e) => handleLectureChange(idx, 'lectureNo', e.target.value)}
-                    />
-                    <input
-                        className="inputL smallL"
-                        type="date"
-                        value={lec.date}
-                        onChange={(e) => handleLectureChange(idx, 'date', e.target.value)}
-                    />
-                    <input
-                        className="inputL mediumL"
-                        type="text"
-                        placeholder="Title"
-                        value={lec.title}
-                        onChange={(e) => handleLectureChange(idx, 'title', e.target.value)}
-                    />
-                    <input
-                        className="inputL"
-                        type="text"
-                        placeholder="PDF Link"
-                        value={lec.pdfLink}
-                        onChange={(e) => handleLectureChange(idx, 'pdfLink', e.target.value)}
-                    />
-                    <input
-                        className="inputL"
-                        type="text"
-                        placeholder="PPT Link"
-                        value={lec.pptLink}
-                        onChange={(e) => handleLectureChange(idx, 'pptLink', e.target.value)}
-                    />
-                    {idx > 0 && (
-                        <button className="remove-lecture-btnL" onClick={() => removeLecture(idx)}>❌</button>
-                    )}
-                </div>
-            ))}
+                <h3 className="h3">Add Lecture</h3>
+                {lecturePlan.map((lec, idx) => (
+                    <div className="lecture-row" key={idx}>
+                        <input
+                            className="inputL smallL"
+                            type="text"
+                            placeholder="Lecture No."
+                            value={lec.lectureNo}
+                            onChange={(e) => handleLectureChange(idx, 'lectureNo', e.target.value)}
+                        />
+                        <input
+                            className="inputL smallL"
+                            type="date"
+                            value={lec.date}
+                            onChange={(e) => handleLectureChange(idx, 'date', e.target.value)}
+                        />
+                        <input
+                            className="inputL mediumL"
+                            type="text"
+                            placeholder="Title"
+                            value={lec.title}
+                            onChange={(e) => handleLectureChange(idx, 'title', e.target.value)}
+                        />
+                        <input
+                            className="inputL"
+                            type="text"
+                            placeholder="PDF Link"
+                            value={lec.pdfLink}
+                            onChange={(e) => handleLectureChange(idx, 'pdfLink', e.target.value)}
+                        />
+                        <input
+                            className="inputL"
+                            type="text"
+                            placeholder="PPT Link"
+                            value={lec.pptLink}
+                            onChange={(e) => handleLectureChange(idx, 'pptLink', e.target.value)}
+                        />
+                        {idx > 0 && (
+                            <button className="remove-lecture-btnL" onClick={() => removeLecture(idx)}>❌</button>
+                        )}
+                    </div>
+                ))}
             </div>
             <button className="add-buttonL" onClick={addLecture}>+ Add Lecture</button>
             <div className="addBtn">

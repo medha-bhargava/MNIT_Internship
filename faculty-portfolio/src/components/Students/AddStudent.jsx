@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { toast } from 'react-toastify'
 import './AddStudent.css';
 
 function AddStudent() {
@@ -26,7 +27,7 @@ function AddStudent() {
         const { name, section, topic, yearFrom, yearTo, status, institute } = student;
 
         if (!name || !topic || !yearFrom || !section || !status) {
-            alert('Please fill in all required fields.');
+            toast.warning('Please fill in all required fields.');
             return;
         }
 
@@ -55,13 +56,13 @@ function AddStudent() {
 
             if (!res.ok) {
                 if (result.error && result.error.includes('E11000')) {
-                    alert('A student with this name already exists!');
+                    toast.info('A student with this name already exists!');
                 } else {
-                    alert(`Error: ${result.error}`);
+                    toast.error(`Error: ${result.error}`);
                 }
                 return;
             }
-            alert('Student added successfully!');
+            toast.success('Student added successfully!');
             setStudent({
                 name: '',
                 section: '',
@@ -72,7 +73,7 @@ function AddStudent() {
                 institute: '',
             });
         } catch (error) {
-            alert(`Error: ${error.message}`);
+            toast.error(`Error: ${error.message}`);
         }
     };
 
