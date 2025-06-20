@@ -1,6 +1,6 @@
 .add-student-wrapper {
   margin: 45px auto;
-  padding: 30px;
+  padding: 37px;
   background-color: #f9f9f9;
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -107,7 +107,7 @@
 /* Tablet Portrait: 481–768px */
 @media (max-width: 768px) {
   .add-student-wrapper {
-    width: 83%;
+    width: 82%;
     padding: 30px;
   }
 
