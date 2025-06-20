@@ -195,14 +195,14 @@ function AddCourse() {
                         </div>
                         <div className="year-row">
                             <input
-                                className="inputN"
+                                className="inputN small"
                                 type="text"
                                 placeholder="Syllabus Link"
                                 value={entry.syllabusLink}
                                 onChange={(e) => handleYearChange(index, 'syllabusLink', e.target.value)}
                             />
                             <input
-                                className="inputN"
+                                className="inputN small"
                                 type="text"
                                 placeholder="Classroom Link"
                                 value={entry.classroomLink}

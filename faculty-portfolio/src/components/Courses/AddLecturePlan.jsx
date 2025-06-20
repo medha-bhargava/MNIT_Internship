@@ -113,7 +113,7 @@ const AddLecturePlan = () => {
                     ))}
                 </select>
                 <input
-                    className="inputL smallL"
+                    className="inputL smallL yearL"
                     type="text"
                     placeholder="Year (e.g. 2025)"
                     value={year}
@@ -131,6 +131,7 @@ const AddLecturePlan = () => {
                 </select>
 
             </div>
+            <div className="addLecture">
             <h3 className="h3">Add Lecture</h3>
             {lecturePlan.map((lec, idx) => (
                 <div className="lecture-row" key={idx}>
@@ -173,6 +174,7 @@ const AddLecturePlan = () => {
                     )}
                 </div>
             ))}
+            </div>
             <button className="add-buttonL" onClick={addLecture}>+ Add Lecture</button>
             <div className="addBtn">
                 <button

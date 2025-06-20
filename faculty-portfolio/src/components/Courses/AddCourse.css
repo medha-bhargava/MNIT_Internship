@@ -1,5 +1,6 @@
 .add-course-wrapper {
     /* max-width: 700px; */
+    width: 670px;
     margin: 45px auto;
     padding: 40px;
     background-color: #f9f9f9;
@@ -100,12 +101,13 @@
     flex: 1;
     min-width: 250px;
 } */
+
 .inputN.small,
 .select.small {
     flex: 1;
+    min-width: 0;
     padding: 10px 12px;
     border-radius: 10px;
-    width: 100%;
 }
 
 .remove-button {
@@ -232,4 +234,85 @@
 
 .add-lecture-button .plusIcon {
     font-size: 0.9rem;
+}
+
+/* Mobile: 0–480px */
+@media (max-width: 480px) {
+    .add-course-wrapper {
+        width: 92%;
+        padding: 25px;
+        margin: 30px auto;
+    }
+
+    .add-course-wrapper h2 {
+        font-size: 1.4rem;
+        margin-bottom: 20px;
+    }
+
+    .row,
+    .year-row,
+    .lecture-row {
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .add-course-button,
+    .add-year-button,
+    .add-lecture-button {
+        width: 100%;
+        margin-top: 16px;
+    }
+
+    .remove-button,
+    .remove-lecture-button {
+        width: 100%;
+        margin-top: 8px;
+    }
+}
+
+/* Tablet Portrait: 481–768px */
+@media (max-width: 768px) {
+    .add-course-wrapper {
+        width: 82%;
+        padding: 30px;
+    }
+
+    .add-course-wrapper h2 {
+        font-size: 1.6rem;
+    }
+
+    .row,
+    .year-row,
+    .lecture-row {
+        flex-direction: column;
+    }
+
+    .add-course-button,
+    .add-year-button,
+    .add-lecture-button {
+        width: 100%;
+    }
+
+    .remove-button,
+    .remove-lecture-button {
+        width: 15%;
+    }
+}
+
+/* Tablet Landscape: 769–1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .add-course-wrapper {
+        width: 85%;
+        padding: 35px;
+    }
+
+    .add-course-wrapper h2 {
+        font-size: 1.8rem;
+    }
+
+    .add-course-button,
+    .add-year-button,
+    .add-lecture-button {
+        width: 50%;
+    }
 }

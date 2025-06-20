@@ -67,3 +67,70 @@
     transform: scale(1.05);
     opacity: 0.9;
 }
+
+/* Mobile: 0–480px */
+@media (max-width: 480px) {
+  .add-achievement-wrapper {
+    width: 92%;
+    padding: 25px;
+    margin: 30px auto;
+  }
+
+  .add-achievement-wrapper h2 {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+  }
+
+  .row {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .input-groupA {
+    min-width: 100%;
+  }
+
+  .add-achievement-button {
+    width: 100%;
+  }
+}
+
+/* Tablet Portrait: 481–768px */
+@media (max-width: 768px) {
+  .add-achievement-wrapper {
+    width: 82%;
+    padding: 30px;
+  }
+
+  .add-achievement-wrapper h2 {
+    font-size: 1.6rem;
+  }
+
+  .row {
+    flex-direction: column;
+  }
+
+  .input-groupA {
+    min-width: 100%;
+  }
+
+  .add-achievement-button {
+    width: 100%;
+  }
+}
+
+/* Tablet Landscape: 769–1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .add-achievement-wrapper {
+    width: 80%;
+    padding: 35px;
+  }
+
+  .add-achievement-wrapper h2 {
+    font-size: 1.8rem;
+  }
+
+  .add-achievement-button {
+    width: 50%;
+  }
+}
