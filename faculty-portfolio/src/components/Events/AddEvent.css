@@ -1,5 +1,5 @@
 .add-event-wrapper {
-    margin: 50px auto;
+    margin: 45px auto;
     padding: 40px;
     background-color: #f9f9f9;
     border-radius: 16px;
@@ -63,4 +63,62 @@
 .add-event-button:hover {
     transform: scale(1.05);
     opacity: 0.9;
+}
+
+/* 📱 Mobile: 0–480px */
+@media (max-width: 480px) {
+  .add-event-wrapper {
+    width: 92%;
+    padding: 25px;
+    margin: 30px auto;
+  }
+
+  .h2Head {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+  }
+
+  .input-group {
+    min-width: 100%;
+  }
+
+  .add-event-button {
+    width: 100%;
+  }
+}
+
+/* 📱💻 Tablet Portrait: 481–768px */
+@media (max-width: 768px) {
+  .add-event-wrapper {
+    width: 82%;
+    padding: 30px;
+  }
+
+  .h2Head {
+    font-size: 1.6rem;
+  }
+
+  .input-group {
+    min-width: 100%;
+  }
+
+  .add-event-button {
+    width: 100%;
+  }
+}
+
+/* 💻 Tablet Landscape: 769–1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .add-event-wrapper {
+    width: 85%;
+    padding: 35px;
+  }
+
+  .h2Head {
+    font-size: 1.8rem;
+  }
+
+  .add-event-button {
+    width: 40%;
+  }
 }

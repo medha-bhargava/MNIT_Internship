@@ -1,11 +1,11 @@
 .add-project-wrapper {
-  margin: 50px auto;
+  margin: 45px auto;
   padding: 40px;
   background-color: #f9f9f9;
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  width: 670px;
+  width: 660px;
 }
 
 .h2Head {
@@ -79,4 +79,55 @@
 .add-project-button:hover {
   transform: scale(1.05);
   opacity: 0.9;
+}
+
+@media (max-width: 480px) {
+  .add-project-wrapper {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .h2Head {
+    font-size: 1.5rem;
+  }
+
+  .add-project-button {
+    width: 100%;
+  }
+
+  .input-group .input,
+  .input-group .select,
+  .input-group .inputOther {
+    font-size: 0.95rem;
+    padding: 9px 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .add-project-wrapper {
+    width: 80%;
+    padding: 30px;
+  }
+
+  .h2Head {
+    font-size: 1.7rem;
+  }
+
+  .add-project-button {
+    width: 90%;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .add-project-wrapper {
+    width: 90%;
+  }
+
+  .h2Head {
+    font-size: 1.8rem;
+  }
+
+  .add-project-button {
+    width: 40%;
+  }
 }

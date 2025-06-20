@@ -124,7 +124,7 @@ input[type="file"] {
 .checkbox-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 10px;
+  gap: 12px;
   margin-top: 10px;
 }
 
@@ -135,10 +135,9 @@ input[type="file"] {
 }
 
 .visibility-button {
-  width: 22%;
+  width: 25%;
   display: block;
-  margin: 20px auto 0 auto;
-  margin-top: 20px;
+  margin: 20px auto 15px auto;
   padding: 12px;
   border: none;
   border-radius: 20px;
@@ -161,7 +160,49 @@ input[type="file"] {
   }
 
   .update-button,
-  .update-photo-button {
-    width: 100%;
+  .update-photo-button,
+  .visibility-button {
+    width: 75%;
+  }
+
+  .visibility-button {
+    margin-bottom: 20px;
+  }
+
+  .headingEdit {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .edit-profile-box {
+    padding: 2rem 1.5rem;
+  }
+
+  input,
+  textarea,
+  select {
+    font-size: 0.95rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .edit-profile-wrapper {
+    padding: 0 1.5rem;
+  }
+
+  .headingEdit {
+    font-size: 2.2rem;
+  }
+
+  .update-button,
+  .update-photo-button,
+  .visibility-button {
+    width: 30%;
+  }
+
+  .visibility-button {
+    margin-top: 26px;
+    margin-bottom: 27px;
   }
 }
