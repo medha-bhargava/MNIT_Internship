@@ -10,6 +10,7 @@
   margin-bottom: 1.7rem;
   font-weight: bold;
   margin-top: -0.6px;
+  color: #222222;
 }
 
 .edit-profile-box {
@@ -93,7 +94,8 @@ textarea {
 }
 
 .update-button:hover,
-.update-photo-button:hover, .visibility-button:hover {
+.update-photo-button:hover,
+.visibility-button:hover {
   transform: scale(1.05);
   opacity: 0.9;
 }
@@ -155,6 +157,14 @@ input[type="file"] {
     padding: 0 1rem;
   }
 
+  .headingEdit {
+    font-size: 1.6rem;
+    text-align: center;
+    border-bottom: 3px solid #b67be6;
+    padding-bottom: 8px;
+    width: 100%;
+  }
+
   .row {
     flex-direction: column;
   }
@@ -177,6 +187,10 @@ input[type="file"] {
 @media (max-width: 480px) {
   .edit-profile-box {
     padding: 2rem 1.5rem;
+  }
+
+  .headingEdit {
+    font-size: 1.6rem;
   }
 
   input,
