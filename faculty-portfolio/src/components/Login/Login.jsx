@@ -55,12 +55,12 @@ const Login = () => {
             localStorage.setItem("userName", data.userName);
             localStorage.setItem("userId", userId);
             setIsLoggingIn(false);
-            toast.success("🎉 Login successful!");
+            toast.success("Login successful!");
             navigate(redirectPath || "/home");
         } catch (err) {
             setIsLoggingIn(false);
             // setError(err.message);
-            toast.error(`🚫 ${err.message}`);
+            toast.error(`${err.message}`);
         }
     };
 

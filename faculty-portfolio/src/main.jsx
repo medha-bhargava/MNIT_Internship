@@ -101,6 +101,7 @@ createRoot(document.getElementById('root')).render(
         pauseOnHover
         draggable
         theme="light"
+        toastClassName="custom-toast"
       />
     </BrowserRouter>
   </StrictMode>,
