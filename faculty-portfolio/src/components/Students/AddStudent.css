@@ -47,8 +47,8 @@
   transition: border-color 0.3s;
 }
 
-.date{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.date {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .add-student-button {
@@ -76,3 +76,70 @@
   color: red;
   margin-left: 4px;
 } */
+
+/* Mobile: 0–480px */
+@media (max-width: 480px) {
+  .add-student-wrapper {
+    width: 92%;
+    padding: 25px;
+    margin: 30px auto;
+  }
+
+  .heading {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+
+  .row {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .input-group {
+    min-width: 100%;
+  }
+
+  .add-student-button {
+    width: 100%;
+  }
+}
+
+/* Tablet Portrait: 481–768px */
+@media (max-width: 768px) {
+  .add-student-wrapper {
+    width: 83%;
+    padding: 30px;
+  }
+
+  .heading {
+    font-size: 1.6rem;
+  }
+
+  .row {
+    flex-direction: column;
+  }
+
+  .input-group {
+    min-width: 100%;
+  }
+
+  .add-student-button {
+    width: 100%;
+  }
+}
+
+/* Tablet Landscape: 769–1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .add-student-wrapper {
+    width: 85%;
+    padding: 35px;
+  }
+
+  .heading {
+    font-size: 1.8rem;
+  }
+
+  .add-student-button {
+    width: 50%;
+  }
+}

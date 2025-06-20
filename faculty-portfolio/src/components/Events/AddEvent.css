@@ -65,7 +65,7 @@
     opacity: 0.9;
 }
 
-/* 📱 Mobile: 0–480px */
+/* Mobile: 0–480px */
 @media (max-width: 480px) {
   .add-event-wrapper {
     width: 92%;
@@ -87,7 +87,7 @@
   }
 }
 
-/* 📱💻 Tablet Portrait: 481–768px */
+/* Tablet Portrait: 481–768px */
 @media (max-width: 768px) {
   .add-event-wrapper {
     width: 82%;
@@ -107,7 +107,7 @@
   }
 }
 
-/* 💻 Tablet Landscape: 769–1024px */
+/* Tablet Landscape: 769–1024px */
 @media (min-width: 769px) and (max-width: 1024px) {
   .add-event-wrapper {
     width: 85%;

@@ -76,27 +76,28 @@ const AddGallery = () => {
     return (
         <div className="add-gallery-wrapper">
             <h2 className="gallery-head">Add Gallery</h2>
+            <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
+                <div className="gallery-form-row">
+                    <div className="gallery-input-group">
+                        <input type="file" accept="image/*" onChange={handleImageUpload} />
+                        {uploading && <p>Uploading...</p>}
+                    </div>
+                    <div className="gallery-input-group">
+                        <input placeholder="Caption" type="text" name="caption" value={formData.caption} onChange={handleChange} />
+                    </div>
+                </div>
 
-            <div className="gallery-form-row">
-                <div className="gallery-input-group">
-                    <input type="file" accept="image/*" onChange={handleImageUpload} />
-                    {uploading && <p>Uploading...</p>}
+                <div className="gallery-form-row">
+                    <div className="gallery-input-group">
+                        <input placeholder="Category" type="text" name="category" value={formData.category} onChange={handleChange} />
+                    </div>
+                    <div className="gallery-input-group">
+                        <input type="date" name="date" className="date" value={formData.date} onChange={handleChange} />
+                    </div>
                 </div>
-                <div className="gallery-input-group">
-                    <input placeholder="Caption" type="text" name="caption" value={formData.caption} onChange={handleChange} />
-                </div>
-            </div>
 
-            <div className="gallery-form-row">
-                <div className="gallery-input-group">
-                    <input placeholder="Category" type="text" name="category" value={formData.category} onChange={handleChange} />
-                </div>
-                <div className="gallery-input-group">
-                    <input type="date" name="date" value={formData.date} onChange={handleChange} />
-                </div>
-            </div>
-
-            <button className="gallery-submit-button" onClick={handleSubmit}>Add to Gallery</button>
+                <button className="gallery-submit-button" onClick={handleSubmit}>Add to Gallery</button>
+            </form>
         </div>
     );
 };
