@@ -1,0 +1,70 @@
+.admin-dashboard {
+    padding: 70px 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #222222;
+}
+
+.admin-dashboard h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 24px;
+    color: #222222;
+    border-left: 4px solid #b67be6;
+    padding-left: 12px;
+}
+
+.pending-section {
+    margin-top: 2rem;
+    background: #fff7ff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(141, 73, 228, 0.1);
+}
+
+.pending-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.pending-table th,
+.pending-table td {
+    border: 1px solid #e5d9f2;
+    padding: 12px;
+    text-align: left;
+}
+
+.pending-table th {
+    background: #f1e3ff;
+}
+
+.approve-btn {
+    background: #a0d995;
+    border: none;
+    padding: 6px 12px;
+    margin-right: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.reject-btn {
+    background: #f5a9a9;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.approve-btn:hover {
+    background: #8bd884;
+}
+
+.reject-btn:hover {
+    background: #f18d8d;
+}

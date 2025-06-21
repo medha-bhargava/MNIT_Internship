@@ -35,6 +35,13 @@ export const approveStudent = async (req, res) => {
         const student = await NewStudent.findById(studentId);
         if (!student) return res.status(404).json({ message: "Student not found." });
 
+        const existingUser = await User.findOne({ userId: student.rollNumber });
+        if (existingUser) {
+            return res.status(400).json({
+                message: "A user with this roll number already exists."
+            });
+        }
+
         const generatedPassword = Math.random().toString(36).slice(-8);
 
         let newUser;
