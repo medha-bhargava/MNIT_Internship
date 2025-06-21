@@ -67,6 +67,8 @@ export const approveStudent = async (req, res) => {
 
         res.status(201).json({
             message: "Student approved and account created.",
+            userId: newUser.userId,
+            userName: newUser.userName,
             password: generatedPassword,
         });
     } catch (err) {
