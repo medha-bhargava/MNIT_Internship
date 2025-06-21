@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { FaBars, FaTimes } from 'react-icons/fa'; // For hamburger and close icons
+import { FaBars, FaTimes } from 'react-icons/fa';
 import logo from './logo.png';
 import './Navbar.css';
 
@@ -30,23 +30,6 @@ const Navbar = () => {
         setIsLoggedIn(!!storedUserId);
         setRole(storedRole);
 
-        // const fetchVisibleTabs = async () => {
-        //     try {
-        //         const res = await fetch('https://faculty-backend-koz0.onrender.com/api/tab-visibility/all');
-        //         const data = await res.json();
-
-        //         if (!Array.isArray(data)) {
-        //             console.error("Tab visibility response is not an array:", data);
-        //             return;
-        //         }
-
-        //         const formatted = {};
-        //         data.forEach(item => (formatted[item.fieldName] = item.enabled));
-        //         setVisibleTabs(formatted);
-        //     } catch (err) {
-        //         console.error('Failed to fetch tab visibility:', err);
-        //     }
-        // };
         const fetchVisibleTabs = async () => {
             try {
                 const res = await fetch("https://faculty-backend-koz0.onrender.com/api/tab-visibility/all");
@@ -55,17 +38,27 @@ const Navbar = () => {
                 data.forEach(item => {
                     formatted[item.fieldName] = item.enabled;
                 });
-                setVisibleTabs(formatted); // now it's an object
+                setVisibleTabs(formatted);
             } catch (err) {
                 console.error("Failed to fetch tab visibility", err);
             }
         };
 
-
         if (storedRole === "student") {
             fetchVisibleTabs();
         }
     }, []);
+
+    // useEffect(() => {
+    //     const handleClickOutside = (e) => {
+    //         if (!e.target.closest('.admin-profile-dropdown')) {
+    //             setMenuOpen(false);
+    //         }
+    //     };
+
+    //     document.addEventListener("mousedown", handleClickOutside);
+    //     return () => document.removeEventListener("mousedown", handleClickOutside);
+    // }, []);
 
     const handleLogout = () => {
         setIsLoggingOut(true);
@@ -80,11 +73,6 @@ const Navbar = () => {
         }, 1000);
     };
 
-    // const shouldShow = (tabName) => {
-    //     return role !== "student" || visibleTabs?.[tabName];
-    // };
-    // console.log("Role:", role);
-    // console.log("Visible Tabs:", visibleTabs);
     const shouldShow = (tabName) => {
         return role !== "student" || visibleTabs?.[tabName.toLowerCase()];
     };
@@ -101,24 +89,6 @@ const Navbar = () => {
                 </div>
 
                 <ul className={menuOpen ? 'nav-links open' : 'nav-links'}>
-                    {/* <li><Link to="/home">Home</Link></li>
-                    <li><Link to="/publications">Publications</Link></li>
-                    <li><Link to="/courses">Courses</Link></li>
-                    <li><Link to="/projects">Projects</Link></li>
-                    <li><Link to="/events">Events</Link></li>
-                    <li><Link to="/students">Students</Link></li>
-                    <li><Link to="/gallery">Gallery</Link></li>
-                    <li><Link to="/trips">Trips & Travels</Link></li> */}
-
-                    {/* Only show after login based on role */}
-                    {/* {isLoggedIn && (role === "student" || role === "admin") && (
-                        <li><Link to="/resources">Resources</Link></li>
-                    )}
-
-                    {isLoggedIn && role === "admin" && (
-                        <li><Link to="/editProfile">Edit Profile</Link></li>
-                    )} */}
-
                     {shouldShow("Home") && <li onClick={() => setMenuOpen(false)}><Link to="/home">Home</Link></li>}
                     {shouldShow("Publications") && <li><Link to="/publications">Publications</Link></li>}
                     {shouldShow("Courses") && <li><Link to="/courses">Courses</Link></li>}
@@ -141,11 +111,27 @@ const Navbar = () => {
                     )}
 
                     {/* Show logout if logged in */}
-                    {isLoggedIn && (
+                    {isLoggedIn && role === "student" && (
                         <li>
                             <button className="logoutbtn" onClick={handleLogout} disabled={isLoggingOut}>
                                 {isLoggingOut ? <div className="spinner"></div> : "Logout"}
                             </button>
+                        </li>
+                    )}
+
+                    {isLoggedIn && role === "admin" && (
+                        <li className="admin-profile-dropdown">
+                            <div className="profile-icon" onClick={() => setMenuOpen(!menuOpen)}>
+                                👤
+                            </div>
+                            {menuOpen && (
+                                <div className="dropdown-menu">
+                                    <Link to="/admin-dashboard" onClick={() => setMenuOpen(false)}>Dashboard</Link>
+                                    <button onClick={handleLogout} disabled={isLoggingOut}>
+                                        {isLoggingOut ? <div className="spinner"></div> : "Logout"}
+                                    </button>
+                                </div>
+                            )}
                         </li>
                     )}
                 </ul>

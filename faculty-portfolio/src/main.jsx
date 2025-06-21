@@ -26,6 +26,7 @@ import AddTrip from './components/Trips/AddTrip';
 import Trips from './components/Trips/Trips';
 import Achievements from './components/Achievements/Achievements.jsx';
 import AddAchievement from './components/Achievements/AddAchievement.jsx';
+import AdminDashboard from './components/AdminDashboard/AdminDashboard';
 
 import './index.css'
 
@@ -88,6 +89,14 @@ createRoot(document.getElementById('root')).render(
             </ProtectedRoute>
           }
         />
+        <Route
+          path="/admin-dashboard"
+          element={
+            <ProtectedRoute allowedRoles={["admin"]}>
+              <AdminDashboard />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/access-denied" element={<AccessDenied />} />
       </Routes>
 
@@ -101,7 +110,7 @@ createRoot(document.getElementById('root')).render(
         pauseOnHover
         draggable
         theme="light"
-        toastClassName="custom-toast"
+      // toastClassName="custom-toast"
       />
     </BrowserRouter>
   </StrictMode>,

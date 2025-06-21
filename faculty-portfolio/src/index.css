@@ -18,11 +18,11 @@ body {
 /* Gradient background and soft glow */
 .custom-toast {
   background: 
-    radial-gradient(circle at 20% 30%, #eed5f7, transparent 40%),
-    radial-gradient(circle at 80% 70%, #cde8f8, transparent 50%),
-    radial-gradient(circle at 60% 20%, #f7d3e6, transparent 40%),
-    radial-gradient(circle at 20% 80%, #d4f6e9, transparent 35%),
-    linear-gradient(135deg, #f9eaff, #e3d4ff);
+    radial-gradient(circle at 20% 30%, #f0ddf7, transparent 40%),
+    radial-gradient(circle at 80% 70%, #d9e8f1, transparent 50%),
+    radial-gradient(circle at 60% 20%, #f2dae7, transparent 40%),
+    radial-gradient(circle at 20% 80%, #e7f6f0, transparent 35%),
+    linear-gradient(135deg, #ead9f1, #e6dbfa);
   color: #222222;
   font-weight: 100;
   border-radius: 10px;
@@ -40,12 +40,12 @@ body {
 
 /* Progress bar as a soft shimmer */
 .Toastify__progress-bar {
-  background: 
+  /* background: 
     radial-gradient(circle at 20% 30%, #b716f1, transparent 40%),
     radial-gradient(circle at 80% 70%, #0d9ff4, transparent 50%),
     radial-gradient(circle at 60% 20%, #f9178f, transparent 40%),
     radial-gradient(circle at 20% 80%, #12f49e, transparent 35%),
-    linear-gradient(135deg, #cb6af1, #9a68f8);
+    linear-gradient(135deg, #cb6af1, #9a68f8); */
   height: 4px;
   border-radius: 10px;
 }
