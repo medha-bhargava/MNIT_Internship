@@ -89,11 +89,11 @@ const AdminDashboard = () => {
                             <tbody>
                                 {pendingStudents.map((student) => (
                                     <tr key={student._id}>
-                                        <td>{student.name}</td>
-                                        <td>{student.rollNumber}</td>
-                                        <td>{student.email}</td>
-                                        <td>{student.department}</td>
-                                        <td>
+                                        <td data-label="Name">{student.name}</td>
+                                        <td data-label="Roll No">{student.rollNumber}</td>
+                                        <td data-label="Email">{student.email}</td>
+                                        <td data-label="Department">{student.department}</td>
+                                        <td data-label="Actions">
                                             <button onClick={() => handleApprove(student._id)} className="approve-btn">Approve</button>
                                             <button onClick={() => handleReject(student._id)} className="reject-btn">Reject</button>
                                         </td>
