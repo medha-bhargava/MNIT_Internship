@@ -1,5 +1,5 @@
 import NewStudent from '../models/newStudentModel.js';
-import User from '../models/userModel.js';
+import User from '../models/User.js';
 
 // Register New Student (pending approval)
 export const registerStudent = async (req, res) => {
