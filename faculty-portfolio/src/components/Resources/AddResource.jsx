@@ -9,7 +9,7 @@ function AddResource() {
 
     const handleAdd = async () => {
         if (!title || !link || !category) {
-            toast.warning('Please fill all fields.');
+            toast.warn('Please fill all fields.');
             return;
         }
 

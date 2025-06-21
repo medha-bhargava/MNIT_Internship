@@ -132,7 +132,7 @@ function EditProfile() {
 
   const handleUpdate = async () => {
     if (!section || !subField) {
-      toast.warning('Please choose both section and sub-field');
+      toast.warn('Please choose both section and sub-field');
       return;
     }
     if (
@@ -191,7 +191,7 @@ function EditProfile() {
 
   const handlePhotoUpdate = async () => {
     if (!selectedPhoto) {
-      toast.warning('Please select a photo to upload.');
+      toast.warn('Please select a photo to upload.');
       return;
     }
 
@@ -215,7 +215,7 @@ function EditProfile() {
 
   const handleCVUpload = async () => {
     if (!selectedCV) {
-      toast.warning('Please select a PDF to upload.');
+      toast.warn('Please select a PDF to upload.');
       return;
     }
 

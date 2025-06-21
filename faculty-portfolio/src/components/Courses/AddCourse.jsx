@@ -64,7 +64,7 @@ function AddCourse() {
 
     const handleAdd = async () => {
         if (!courseId || !courseName || !courseType || !institute || !description) {
-            toast.warning('Please fill all course fields.', { toastId: 'empty-course-fields' });
+            toast.warn('Please fill all course fields.', { toastId: 'empty-course-fields' });
             return;
         }
 
@@ -74,7 +74,7 @@ function AddCourse() {
             //     return;
             // }
             if (!yearEntry.year || !yearEntry.session) {
-                toast.warning('Please fill all year-wise fields.');
+                toast.warn('Please fill all year-wise fields.');
                 return;
             }
         }

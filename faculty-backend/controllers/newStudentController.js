@@ -1,5 +1,6 @@
 import NewStudent from '../models/newStudentModel.js';
 import User from '../models/User.js';
+import { sendStudentCredentials } from '../utils/sendEmail.js';
 
 // Register New Student (pending approval)
 export const registerStudent = async (req, res) => {
@@ -63,6 +64,14 @@ export const approveStudent = async (req, res) => {
             });
         }
 
+        // ✅ Send email to the student
+        try {
+            await sendStudentCredentials(newUser.email, newUser.userId, generatedPassword);
+        } catch (emailErr) {
+            console.error("Email sending failed:", emailErr.message);
+            // Optional: you could delete the user if email fails
+        }
+
         await NewStudent.findByIdAndDelete(studentId);
 
         res.status(201).json({
@@ -70,6 +79,7 @@ export const approveStudent = async (req, res) => {
             userId: newUser.userId,
             userName: newUser.userName,
             password: generatedPassword,
+            emailSent: true
         });
     } catch (err) {
         res.status(500).json({

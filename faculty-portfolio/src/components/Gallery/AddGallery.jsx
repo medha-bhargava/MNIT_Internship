@@ -54,7 +54,7 @@ const AddGallery = () => {
         const { image, caption, category, date } = formData;
 
         if (!image || !date) {
-            toast.warning('Image and Date are required');
+            toast.warn('Image and Date are required');
             return;
         }
         console.log("Submitting:", { image, caption, category, date });

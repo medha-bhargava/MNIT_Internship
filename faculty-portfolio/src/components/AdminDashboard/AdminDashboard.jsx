@@ -39,13 +39,20 @@ const AdminDashboard = () => {
                 password: data.password
             });
 
+            toast.success("Student approved ✅");
+
+            // Show toast for email status
+            if (data.emailSent) {
+                toast.success("Login credentials sent via email 📩");
+            } else {
+                toast.warn("Student approved, but email failed to send❗");
+            }
+
             fetchPending();
         } catch (err) {
             toast.error('Approval failed');
         }
     };
-
-
 
     const handleReject = async (id) => {
         try {

@@ -40,23 +40,23 @@ const AddLecturePlan = () => {
 
     const handleSubmit = async () => {
         if (!selectedCourseId) {
-            toast.warning('Please select a course');
+            toast.warn('Please select a course');
             return;
         }
 
         if (!year) {
-            toast.warning('Please enter year');
+            toast.warn('Please enter year');
             return;
         }
 
         if (!session) {
-            toast.warning('Please enter session');
+            toast.warn('Please enter session');
             return;
         }
 
         for (const lec of lecturePlan) {
             if (!lec.lectureNo || !lec.date || !lec.title) {
-                toast.warning('Please fill all lecture details');
+                toast.warn('Please fill all lecture details');
                 return;
             }
         }

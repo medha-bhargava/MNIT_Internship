@@ -20,7 +20,7 @@ const StudentCredentials = ({ name, userId, password, onClose }) => {
                 <p><strong>Temporary Password:</strong> {password}</p>
 
                 <p className="cred-para">
-                    Please share these credentials with the student.
+                    These credentials have also been emailed to the student.
                 </p>
 
                 <button onClick={handleCopy} className="copy-btn">

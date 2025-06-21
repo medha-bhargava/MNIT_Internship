@@ -21,7 +21,7 @@ function AddTrip() {
 
         for (let field of requiredFields) {
             if (!formData[field]) {
-                toast.warning("Please fill all the required fields.");
+                toast.warn("Please fill all the required fields.");
                 return;
             }
         }

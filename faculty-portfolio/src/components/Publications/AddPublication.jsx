@@ -94,7 +94,7 @@ function AddPublicationForm() {
 
         for (const field of requiredFields) {
             if (!formData[field] || formData[field].trim() === '') {
-                toast.warning('Please fill all required fields', { toastId: 'empty-publication-fields' });
+                toast.warn('Please fill all required fields', { toastId: 'empty-publication-fields' });
                 return;
             }
         }

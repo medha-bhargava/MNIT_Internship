@@ -27,7 +27,7 @@ function AddStudent() {
         const { name, section, topic, yearFrom, yearTo, status, institute } = student;
 
         if (!name || !topic || !yearFrom || !section || !status) {
-            toast.warning('Please fill in all required fields.');
+            toast.warn('Please fill in all required fields.');
             return;
         }
 
