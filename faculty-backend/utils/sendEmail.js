@@ -4,7 +4,10 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const transporter = nodemailer.createTransport({
-  service: 'hotmail',
+  // service: 'hotmail',
+  host: 'smtp.office365.com',
+  port: 587,
+  secure: false,
   auth: {
     user: process.env.MAIL_USER,
     pass: process.env.MAIL_PASS,

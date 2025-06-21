@@ -28,7 +28,9 @@ const StudentCredentials = ({ name, userId, password, onClose }) => {
                     {copied ? "Copied!" : "Copy Credentials"}
                 </button>
                 <br />
-                <button onClick={onClose} className="close-btn">Close</button>
+                <div className="center-btn">
+                    <button onClick={onClose} className="close-btn">Close</button>
+                </div>
             </div>
         </div>
     );
