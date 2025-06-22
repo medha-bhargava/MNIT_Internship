@@ -5,7 +5,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ProtectedRoute from './components/ProtectedRoute.jsx';
 import LoginPage from './components/Login/Login.jsx';
-import ChangePassword from './pages/ChangePassword';
+import ChangePassword from './components/Login/ChangePassword.jsx';
 import HomePage from './components/Home/Home.jsx'
 import PublicationPage from './components/Publications/Publications.jsx'
 import AddPublication from './components/Publications/AddPublication.jsx';
