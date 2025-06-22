@@ -12,7 +12,20 @@ const transporter = nodemailer.createTransport({
     user: process.env.MAIL_USER,
     pass: process.env.MAIL_PASS,
   },
+  tls: {
+    ciphers: 'SSLv3',
+  },
 });
+console.log("MAIL_USER:", process.env.MAIL_USER);
+// inside sendEmail.js, after transporter is created
+transporter.verify(function (error, success) {
+  if (error) {
+    console.log("❌ SMTP connection error:", error);
+  } else {
+    console.log("✅ Server is ready to take messages");
+  }
+});
+
 
 export const sendStudentCredentials = async (to, userId, password) => {
   const mailOptions = {
@@ -30,5 +43,11 @@ export const sendStudentCredentials = async (to, userId, password) => {
     `,
   };
 
-  await transporter.sendMail(mailOptions);
+  try {
+    await transporter.sendMail(mailOptions);
+    console.log("✅ Email sent to", to);
+  } catch (err) {
+    console.error("❌ Error sending email:", err);
+    throw err;
+  }
 };
