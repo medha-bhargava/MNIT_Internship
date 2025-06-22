@@ -25,12 +25,18 @@ export const sendStudentCredentials = async (to, userId, password) => {
     to,
     subject: 'Your Student Login Credentials',
     html: `
-      <h1>Welcome to Faculty Portal 🎓</h1>
-      <h2>🎉 You've been approved!</h2>
-      <p><strong>User ID (Roll No):</strong> ${userId}</p>
-      <p><strong>Temporary Password:</strong> ${password}</p>
-      <p>Please log in and update your password after first login.</p>
-      <br />
+      <h1 style="color: black;">Welcome to Faculty Portal 🎓</h1>
+      <h2 style="color: black;">You've been approved! 🎉 </h2>
+      <p style="color: black;">
+        <span style="font-weight: bold;">User ID (Roll No):</span> ${userId}
+      </p>
+      <p style="color: black;">
+        <span style="font-weight: bold;">Temporary Password:</span> ${password}
+      </p>
+      <p style="color: black;">
+        Please log in and update your password after first login.
+      </p>
+      <hr style="margin: 20px 0;" />
       <p style="color: grey; font-size: 12px;">
         If you didn't request this, please ignore this email.
         <br />
