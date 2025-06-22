@@ -61,14 +61,9 @@ const Login = () => {
             setIsLoggingIn(false);
             toast.success("Login successful!");
 
-            console.log("firstLogin value from backend:", data.firstLogin);
-            console.log("role is:", role);
-
             if (role === "student" && data.firstLogin) {
-                console.log("Navigating to change-password page...");
                 navigate("/change-password");
             } else {
-                console.log("Navigating to home...");
                 navigate(redirectPath || "/home");
             }
 
