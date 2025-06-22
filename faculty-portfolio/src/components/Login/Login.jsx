@@ -56,9 +56,17 @@ const Login = () => {
             localStorage.setItem("role", role);
             localStorage.setItem("userName", data.userName);
             localStorage.setItem("userId", userId);
+            localStorage.setItem("firstLogin", data.firstLogin);
+
             setIsLoggingIn(false);
             toast.success("Login successful!");
-            navigate(redirectPath || "/home");
+
+            if (role === "student" && data.firstLogin) {
+                navigate("/change-password");
+            } else {
+                navigate(redirectPath || "/home");
+            }
+
         } catch (err) {
             setIsLoggingIn(false);
             toast.error(`${err.message}`);

@@ -5,6 +5,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ProtectedRoute from './components/ProtectedRoute.jsx';
 import LoginPage from './components/Login/Login.jsx';
+import ChangePassword from './pages/ChangePassword';
 import HomePage from './components/Home/Home.jsx'
 import PublicationPage from './components/Publications/Publications.jsx'
 import AddPublication from './components/Publications/AddPublication.jsx';
@@ -18,7 +19,6 @@ import Events from './components/Events/Events.jsx';
 import Students from "./components/Students/Students.jsx";
 import EditProfile from './components/EditProfile/EditProfile.jsx';
 import AccessDenied from "./components/AccessDenied/AccessDenied.jsx";
-// import CourseDetails from './components/Courses/CourseDetails.jsx';
 import SyllabusView from './components/Courses/SyllabusView';
 import AddLecturePlan from './components/Courses/AddLecturePlan.jsx';
 import Gallery from './components/Gallery/Gallery';
@@ -41,12 +41,12 @@ createRoot(document.getElementById('root')).render(
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/change-password" element={<ChangePassword />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/publications" element={<PublicationPage />} />
         <Route path="/add-publication" element={<AddPublication />} />
         <Route path="/courses" element={<CoursesPage />} />
         <Route path="/add-course" element={<AddCourse />} />
-        {/* <Route path="/courses/:courseName" element={<CourseDetails />} /> */}
         <Route path="/syllabus/:courseId/:year" element={<SyllabusView />} />
         <Route path="/add-lecture-plan" element={<AddLecturePlan />} />
         <Route path="/projects" element={<Projects />} />
@@ -58,7 +58,6 @@ createRoot(document.getElementById('root')).render(
         <Route path="/add-trip" element={<AddTrip />} />
         <Route path="/achievements" element={<Achievements />} />
         <Route path="/add-achievement" element={<AddAchievement />} />
-
 
         {/* ✅ Protected: only student and admin */}
         <Route

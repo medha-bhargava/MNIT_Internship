@@ -2,22 +2,19 @@ import express from "express";
 // import { login } from "../controllers/authController";
 const router = express.Router();
 import User from "../models/User.js";
+import { changePassword } from "../controllers/authController.js";
+
 
 // router.post("/login", login);
 
+router.post("/change-password", changePassword);
 router.post("/login", async (req, res) => {
-    console.log("Login route hit");
     const userId = req.body.userId;
     const password = req.body.password;
     const role = req.body.role;
-    console.log("LOGIN ATTEMPT:");
-    console.log("userId:", userId);
-    console.log("password:", password);
-    console.log("role:", role);
-
+    
     try {
         const user = await User.findOne({ userId });
-        console.log("User from DB:", user);
 
         if (!user) {
             console.log("User not found");
