@@ -4,23 +4,17 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const transporter = nodemailer.createTransport({
-  // service: 'hotmail',
-  host: 'smtp.office365.com',
-  port: 587,
-  secure: false,
+  service: 'gmail',
   auth: {
     user: process.env.MAIL_USER,
     pass: process.env.MAIL_PASS,
   },
-  tls: {
-    ciphers: 'SSLv3',
-  },
 });
 console.log("MAIL_USER:", process.env.MAIL_USER);
-// inside sendEmail.js, after transporter is created
+
 transporter.verify(function (error, success) {
   if (error) {
-    console.log("❌ SMTP connection error:", error);
+    console.log("❌ Connection error:", error);
   } else {
     console.log("✅ Server is ready to take messages");
   }
