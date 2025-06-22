@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react';
 import Navbar from '../Navbar/Navbar';
 import './AdminDashboard.css';
 import { toast } from 'react-toastify';
-import StudentCredentials from './StudentCredentials';
+// import StudentCredentials from './StudentCredentials';
 
 
 const AdminDashboard = () => {
     const [pendingStudents, setPendingStudents] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [approvedStudent, setApprovedStudent] = useState(null);
+    // const [approvedStudent, setApprovedStudent] = useState(null);
 
     const fetchPending = async () => {
         try {
@@ -33,11 +33,11 @@ const AdminDashboard = () => {
                 return;
             }
 
-            setApprovedStudent({
-                name: data.userName || "Student",
-                userId: data.userId || "Unknown",
-                password: data.password
-            });
+            // setApprovedStudent({
+            //     name: data.userName || "Student",
+            //     userId: data.userId || "Unknown",
+            //     password: data.password
+            // });
 
             toast.success("Student approved ✅");
 
@@ -111,14 +111,14 @@ const AdminDashboard = () => {
                     )}
                 </section>
             </div>
-            {approvedStudent && (
+            {/* {approvedStudent && (
                 <StudentCredentials
                     name={approvedStudent.name}
                     userId={approvedStudent.userId}
                     password={approvedStudent.password}
                     onClose={() => setApprovedStudent(null)}
                 />
-            )}
+            )} */}
         </>
     );
 };

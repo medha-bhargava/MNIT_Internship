@@ -10,7 +10,6 @@ const transporter = nodemailer.createTransport({
     pass: process.env.MAIL_PASS,
   },
 });
-console.log("MAIL_USER:", process.env.MAIL_USER);
 
 transporter.verify(function (error, success) {
   if (error) {
@@ -19,7 +18,6 @@ transporter.verify(function (error, success) {
     console.log("✅ Server is ready to take messages");
   }
 });
-
 
 export const sendStudentCredentials = async (to, userId, password) => {
   const mailOptions = {
@@ -33,7 +31,11 @@ export const sendStudentCredentials = async (to, userId, password) => {
       <p><strong>Temporary Password:</strong> ${password}</p>
       <p>Please log in and update your password after first login.</p>
       <br />
-      <p style="color: grey; font-size: 0.9rem;">Sent by ProfileX Team</p>
+      <p style="color: grey; font-size: 12px;">
+        If you didn't request this, please ignore this email.
+        <br />
+        Sent by ProfileX Team
+      </p>
     `,
   };
 

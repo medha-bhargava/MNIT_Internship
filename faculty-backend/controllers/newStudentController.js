@@ -67,7 +67,6 @@ export const approveStudent = async (req, res) => {
         // ✅ Send email to the student
         try {
             await sendStudentCredentials(newUser.email, newUser.userId, generatedPassword);
-            console.log("📬 Email to be sent to:", newUser.email);
         } catch (emailErr) {
             console.error("Email sending failed:", emailErr.message);
             // Optional: you could delete the user if email fails
