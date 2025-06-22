@@ -37,6 +37,7 @@ router.post("/login", async (req, res) => {
             userId: user.userId,
             userName: user.userName,
             role: user.role,
+            firstLogin: user.firstLogin,
         });
 
     } catch (err) {
