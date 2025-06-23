@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 const ChangePassword = () => {
   const [oldPassword, setOldPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
+  const [isUpdating, setIsUpdating] = useState(false);
   const navigate = useNavigate();
 
   const userId = localStorage.getItem('userId'); // Already stored during login
@@ -16,6 +17,8 @@ const ChangePassword = () => {
       toast.warn("Please fill in all fields");
       return;
     }
+
+    setIsUpdating(true);
 
     try {
       const res = await fetch("https://faculty-backend-koz0.onrender.com/api/auth/change-password", {
@@ -35,6 +38,8 @@ const ChangePassword = () => {
       navigate("/home");
     } catch (err) {
       toast.error(err.message);
+    } finally {
+      setIsUpdating(false);
     }
   };
 
@@ -53,7 +58,9 @@ const ChangePassword = () => {
         value={newPassword}
         onChange={(e) => setNewPassword(e.target.value)}
       />
-      <button className="button" onClick={handleChangePassword}>Update Password</button>
+      <button className="button" onClick={handleChangePassword} disabled={isUpdating}>
+        {isUpdating ? <div className="spinner"></div> : "Update Password"}
+      </button>
     </div>
   );
 };

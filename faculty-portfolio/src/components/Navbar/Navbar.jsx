@@ -95,11 +95,18 @@ const Navbar = () => {
                     {shouldShow("Projects") && <li><Link to="/projects">Projects</Link></li>}
                     {shouldShow("Events") && <li><Link to="/events">Events</Link></li>}
                     {shouldShow("Students") && <li><Link to="/students">Students</Link></li>}
-                    {shouldShow("Gallery") && <li><Link to="/gallery">Gallery</Link></li>}
-                    {shouldShow("Trips") && <li><Link to="/trips">Trips & Travels</Link></li>}
-                    {shouldShow("Achievements") && <li><Link to="/achievements">Achievements</Link></li>}
                     {shouldShow("Resources") && isLoggedIn && isStudentOrAdmin && <li><Link to="/resources">Resources</Link></li>}
-                    {isLoggedIn && role === "admin" && <li><Link to="/editProfile">Edit Profile</Link></li>}
+                    {/* {isLoggedIn && role === "admin" && <li><Link to="/editProfile">Edit Profile</Link></li>} */}
+                    {(shouldShow("Gallery") || shouldShow("Trips") || shouldShow("Achievements")) && (
+                        <li className="explore">
+                            <span className="explorebtn">Explore ▾</span>
+                            <div className="explore-content">
+                                {shouldShow("Gallery") && <Link to="/gallery" onClick={() => setMenuOpen(false)}>Gallery</Link>}
+                                {shouldShow("Trips") && <Link to="/trips" onClick={() => setMenuOpen(false)}>Trips & Travels</Link>}
+                                {shouldShow("Achievements") && <Link to="/achievements" onClick={() => setMenuOpen(false)}>Achievements</Link>}
+                            </div>
+                        </li>
+                    )}
 
                     {/* Show login if not logged in */}
                     {!isLoggedIn && (
@@ -120,20 +127,18 @@ const Navbar = () => {
                     )}
 
                     {isLoggedIn && role === "admin" && (
-                        <li className="admin-profile-dropdown">
-                            <div className="profile-icon" onClick={() => setMenuOpen(!menuOpen)}>
-                                👤
+                        <li className="admin-profile-dropdown hover-trigger">
+                            <div className="profile-icon">👤</div>
+                            <div className="dropdown-menu">
+                                <Link to="/editProfile">Dashboard</Link>
+                                {/* <Link to="/admin-dashboard">Dashboard</Link> */}
+                                <button onClick={handleLogout} disabled={isLoggingOut}>
+                                    {isLoggingOut ? <div className="spinner"></div> : "Logout"}
+                                </button>
                             </div>
-                            {menuOpen && (
-                                <div className="dropdown-menu">
-                                    <Link to="/admin-dashboard" onClick={() => setMenuOpen(false)}>Dashboard</Link>
-                                    <button onClick={handleLogout} disabled={isLoggingOut}>
-                                        {isLoggingOut ? <div className="spinner"></div> : "Logout"}
-                                    </button>
-                                </div>
-                            )}
                         </li>
                     )}
+                    
                 </ul>
             </nav>
         </div>

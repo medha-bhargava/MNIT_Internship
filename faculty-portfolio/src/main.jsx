@@ -88,14 +88,14 @@ createRoot(document.getElementById('root')).render(
             </ProtectedRoute>
           }
         />
-        <Route
+        {/* <Route
           path="/admin-dashboard"
           element={
             <ProtectedRoute allowedRoles={["admin"]}>
               <AdminDashboard />
             </ProtectedRoute>
           }
-        />
+        /> */}
         <Route path="/access-denied" element={<AccessDenied />} />
       </Routes>
 

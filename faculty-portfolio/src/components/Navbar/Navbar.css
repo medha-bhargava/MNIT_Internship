@@ -190,9 +190,18 @@ a:hover {
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
   padding: 10px 0;
   z-index: 999;
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   min-width: 160px;
+}
+
+/* 👤 Hover-triggered dropdown */
+.hover-trigger .dropdown-menu {
+  display: none;
+}
+
+.hover-trigger:hover .dropdown-menu {
+  display: flex;
 }
 
 .dropdown-menu a,
@@ -238,5 +247,75 @@ a:hover {
   .dropdown-menu button {
     width: 100%;
     padding: 12px 10px;
+  }
+}
+
+/* Explore Dropdown Styles */
+.explore {
+  position: relative;
+}
+
+.explorebtn {
+  cursor: pointer;
+  font-size: 17px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: 0.3s;
+  color: #343434;
+}
+
+.explorebtn:hover {
+  background-color: rgba(141, 73, 228, 0.1);
+  color: #5e55fb;
+}
+
+.explore-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  z-index: 999;
+  flex-direction: column;
+  min-width: 180px;
+  padding: 8px 0;
+  top: 100%;
+}
+
+.explore-content a {
+  padding: 10px 16px;
+  display: block;
+  font-size: 15px;
+  color: #343434;
+}
+
+.explore-content a:hover {
+  background-color: rgba(141, 73, 228, 0.1);
+  color: #5e55fb;
+}
+
+.explore:hover .explore-content {
+  display: flex;
+}
+
+/* Mobile view dropdown */
+@media (max-width: 1024px) {
+  .explore-content {
+    position: static;
+    box-shadow: none;
+    background-color: transparent;
+    padding-left: 5px;
+    margin-bottom: -20px;
+  }
+
+  .explore-content a {
+    padding: 10px 0;
+    margin-bottom: 5px;
+    background-color: transparent;
+  }
+
+  .explore:hover .explore-content {
+    display: flex;
+    flex-direction: column;
   }
 }
